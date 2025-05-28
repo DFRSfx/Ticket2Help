@@ -1,0 +1,15 @@
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\Ticket2Help.DAL.csproj.AssemblyReference.cache
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\Ticket2Help.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\Ticket2Help.DAL.AssemblyInfoInputs.cache
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\Ticket2Help.DAL.AssemblyInfo.cs
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\Ticket2Help.DAL.csproj.CoreCompileInputs.cache
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\bin\Debug\net8.0\Ticket2Help.DAL.deps.json
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\bin\Debug\net8.0\Ticket2Help.DAL.dll
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\bin\Debug\net8.0\Ticket2Help.DAL.pdb
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\bin\Debug\net8.0\Ticket2Help.BLL.dll
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\bin\Debug\net8.0\Ticket2Help.BLL.pdb
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\Ticket2H.B2BF2578.Up2Date
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\Ticket2Help.DAL.dll
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\refint\Ticket2Help.DAL.dll
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\Ticket2Help.DAL.pdb
+C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.DAL\obj\Debug\net8.0\ref\Ticket2Help.DAL.dll

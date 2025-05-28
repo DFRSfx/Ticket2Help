@@ -1,0 +1,78 @@
+﻿<Window x:Class="Ticket2Help.UI.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ticket2Help - Login"
+        Height="560" Width="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#f0f0f0">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2c3e50" Height="80">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="🎫 TICKET2HELP" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Sistema de Gestão de Helpdesk" FontSize="12" Foreground="#bdc3c7" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Login Form -->
+        <Border Grid.Row="1" Margin="50,30,50,30" Background="White" CornerRadius="10" 
+                BorderBrush="#bdc3c7" BorderThickness="1">
+            <StackPanel Margin="40">
+                <TextBlock Text="Iniciar Sessão" FontSize="18" FontWeight="Bold" 
+                          HorizontalAlignment="Center" Margin="0,0,0,30" Foreground="#2c3e50"/>
+
+                <!-- Código de Utilizador -->
+                <Label Content="Código de Utilizador:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtCodigo" Height="35" FontSize="14" Padding="10,8"
+                         BorderBrush="#bdc3c7" BorderThickness="1" ToolTip="Introduza o seu código de utilizador"/>
+
+                <!-- Password -->
+                <Label Content="Password:" FontWeight="Bold" Margin="0,15,0,5"/>
+                <PasswordBox x:Name="pwdPassword" Height="35" FontSize="14" Padding="10,8"
+                            BorderBrush="#bdc3c7" BorderThickness="1" ToolTip="Introduza a sua password"/>
+
+                <!-- Botão Login -->
+                <Button x:Name="btnLogin" Content="ENTRAR" Height="40" Margin="0,25,0,0" 
+                        Background="#27ae60" Foreground="White" FontWeight="Bold" FontSize="14"
+                        BorderThickness="0" Click="BtnLogin_Click" Cursor="Hand">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#229954"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <!-- Mensagem de erro -->
+                <TextBlock x:Name="lblErro" Foreground="Red" FontSize="12" HorizontalAlignment="Center" 
+                          Margin="0,15,0,0" Visibility="Collapsed"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Footer -->
+        <Border Grid.Row="2" Background="#34495e" Height="40">
+            <TextBlock Text="© 2024 Ticket2Help - Sistema Interno" FontSize="10" 
+                      Foreground="#bdc3c7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,87 @@
+﻿<Window x:Class="Ticket2Help.UI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ticket2Help - Sistema de Gestão de Helpdesk"
+        Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+    <Grid>
+       
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" Background="#2c3e50">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
+                        <TextBlock Text="🎫" FontSize="24" Foreground="White" VerticalAlignment="Center"/>
+                        <TextBlock Text="TICKET2HELP" FontSize="20" FontWeight="Bold" Foreground="White" 
+                              VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                        <TextBlock x:Name="lblUtilizador" Text="Utilizador: " Foreground="White" 
+                              VerticalAlignment="Center" Margin="0,0,15,0"/>
+                        <Button x:Name="btnLogout" Content="Sair" Background="#e74c3c" Foreground="White" 
+                           BorderThickness="0" Padding="15,5" Click="BtnLogout_Click" Cursor="Hand"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Menu Principal -->
+            <TabControl Grid.Row="1" x:Name="tabControl" Background="#ecf0f1" BorderThickness="0">
+
+                <!-- Tab Criar Ticket (Utilizadores Comuns) -->
+                <TabItem x:Name="tabCriarTicket" Header="➕ Criar Ticket" Visibility="Collapsed">
+                    <Frame x:Name="frameCriarTicket" NavigationUIVisibility="Hidden"/>
+                </TabItem>
+
+                <!-- Tab Meus Tickets (Utilizadores Comuns) -->
+                <TabItem x:Name="tabMeusTickets" Header="📋 Meus Tickets" Visibility="Collapsed">
+                    <Frame x:Name="frameMeusTickets" NavigationUIVisibility="Hidden"/>
+                </TabItem>
+
+                <!-- Tab Atender Tickets (Técnicos) -->
+                <TabItem x:Name="tabAtenderTickets" Header="🔧 Atender Tickets" Visibility="Collapsed">
+                    <Frame x:Name="frameAtenderTickets" NavigationUIVisibility="Hidden"/>
+                </TabItem>
+
+                <!-- Tab Dashboard (Técnicos) -->
+                <TabItem x:Name="tabDashboard" Header="📊 Dashboard" Visibility="Collapsed">
+                    <Frame x:Name="frameDashboard" NavigationUIVisibility="Hidden"/>
+                </TabItem>
+
+                <!-- Tab Início -->
+                <TabItem Header="🏠 Início" IsSelected="True">
+                    <Border Background="White" Margin="20">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="Bem-vindo ao Ticket2Help!" FontSize="24" FontWeight="Bold" 
+                                  HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                            <TextBlock x:Name="lblBoasVindas" FontSize="16" HorizontalAlignment="Center" 
+                                  Margin="0,0,0,30" Foreground="#7f8c8d"/>
+                            <TextBlock Text="Selecione uma opção no menu acima para começar." 
+                                  FontSize="14" HorizontalAlignment="Center" Foreground="#95a5a6"/>
+                        </StackPanel>
+                    </Border>
+                </TabItem>
+            </TabControl>
+
+            <!-- Status Bar -->
+            <StatusBar Grid.Row="2" Background="#34495e">
+                <StatusBarItem>
+                    <TextBlock x:Name="lblStatus" Text="Pronto" Foreground="White" FontSize="11"/>
+                </StatusBarItem>
+                <StatusBarItem HorizontalAlignment="Right">
+                    <TextBlock x:Name="lblDataHora" Foreground="White" FontSize="11"/>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+</Window>
