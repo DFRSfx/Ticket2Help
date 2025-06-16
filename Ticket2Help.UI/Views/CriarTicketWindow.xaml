@@ -1,0 +1,78 @@
+﻿<Window x:Class="Ticket2Help.UI.CriarTicketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Criar Novo Ticket" 
+        Height="400" Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Header -->
+        <Border Grid.Row="0" Background="DarkBlue" Padding="15">
+            <TextBlock x:Name="LblTitulo" Text="Criar Ticket" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        </Border>
+        <!-- Formulário -->
+        <ScrollViewer Grid.Row="1" Margin="20">
+            <StackPanel>
+                <!-- Campos para Hardware -->
+                <StackPanel x:Name="PanelHardware" Visibility="Collapsed">
+                    <TextBlock Text="Equipamento:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="TxtEquipamento" Height="30" FontSize="12" Padding="5" Margin="0,0,0,15"/>
+                    <TextBlock Text="Descrição da Avaria:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="TxtAvaria" Height="80" FontSize="12" Padding="5" Margin="0,0,0,15"
+                             TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                </StackPanel>
+                <!-- Campos para Software -->
+                <StackPanel x:Name="PanelSoftware" Visibility="Collapsed">
+                    <TextBlock Text="Software:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="TxtSoftware" Height="30" FontSize="12" Padding="5" Margin="0,0,0,15"/>
+                    <TextBlock Text="Descrição da Necessidade:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="TxtDescricaoNecessidade" Height="80" FontSize="12" Padding="5" Margin="0,0,0,15"
+                             TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                </StackPanel>
+                <TextBlock Text="Informações Adicionais:" FontWeight="Bold" Margin="0,0,0,5"/>
+                
+                <Grid Margin="0,0,0,15">
+                    <TextBox x:Name="TxtObservacoes" Height="60" FontSize="12" Padding="5"
+                             TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                             Background="Transparent"/>
+                    <TextBlock Text="Informações adicionais (opcional)" 
+                               FontSize="12" 
+                               Padding="8,8,5,5"
+                               Foreground="Gray" 
+                               IsHitTestVisible="False"
+                               VerticalAlignment="Top">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Visible"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=TxtObservacoes}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=TxtObservacoes}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        <!-- Botões -->
+        <Border Grid.Row="2" Background="LightGray" Padding="15">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnCriar" Content="Criar Ticket" Width="100" Height="35" 
+                        Background="Green" Foreground="White" FontWeight="Bold" Margin="0,0,10,0"
+                        Click="BtnCriar_Click"/>
+                <Button x:Name="BtnCancelar" Content="Cancelar" Width="80" Height="35" 
+                        Background="Gray" Foreground="White" FontWeight="Bold"
+                        Click="BtnCancelar_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
