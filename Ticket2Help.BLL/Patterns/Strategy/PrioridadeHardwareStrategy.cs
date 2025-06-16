@@ -1,4 +1,6 @@
-﻿using Ticket2Help.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Ticket2Help.Models;
 
 namespace Ticket2Help.BLL.Patterns.Strategy
 {

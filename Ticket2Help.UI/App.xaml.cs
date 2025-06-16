@@ -1,12 +1,11 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using System;
 using System.Windows;
 using Ticket2Help.UI.Views;
 
 namespace Ticket2Help.UI
 {
     /// <summary>
-    /// Lógica de aplicação para App.xaml
+    /// Lógica de interação para App.xaml
     /// </summary>
     public partial class App : Application
     {
@@ -14,16 +13,13 @@ namespace Ticket2Help.UI
         {
             base.OnStartup(e);
 
-            // Configurar cultura portuguesa
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-PT");
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("pt-PT");
-
             try
             {
                 // Mostrar janela de login
                 var loginWindow = new LoginWindow();
+                var resultado = loginWindow.ShowDialog();
 
-                if (loginWindow.ShowDialog() == true)
+                if (resultado == true && loginWindow.UtilizadorAutenticado != null)
                 {
                     // Login bem-sucedido, mostrar janela principal
                     var mainWindow = new MainWindow();
@@ -32,16 +28,24 @@ namespace Ticket2Help.UI
                 }
                 else
                 {
-                    // Login cancelado, fechar aplicação
+                    // Login cancelado ou falhou, fechar aplicação
                     Shutdown();
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao inicializar a aplicação: {ex.Message}",
-                    "Erro Crítico", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Erro ao iniciar a aplicação: {ex.Message}", "Erro Fatal",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
                 Shutdown();
             }
+        }
+
+        private void Application_DispatcherUnhandledException(object sender,
+            System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show($"Erro não tratado: {e.Exception.Message}", "Erro",
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            e.Handled = true;
         }
     }
 }

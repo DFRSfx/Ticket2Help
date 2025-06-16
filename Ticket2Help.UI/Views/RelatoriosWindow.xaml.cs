@@ -23,6 +23,7 @@ namespace Ticket2Help.UI.Views
             _relatorioRepository = new RelatorioRepository();
 
             InicializarInterface();
+            ConfigurarEventos();
         }
 
         /// <summary>
@@ -36,6 +37,31 @@ namespace Ticket2Help.UI.Views
 
             // Actualizar período exibido
             ActualizarPeriodoExibido();
+
+            // Carregar dados iniciais
+            Loaded += RelatoriosWindow_Loaded;
+        }
+
+        /// <summary>
+        /// Configura os eventos da janela
+        /// </summary>
+        private void ConfigurarEventos()
+        {
+            // Eventos dos DatePickers
+            DatePickerInicio.SelectedDateChanged += DatePicker_SelectedDateChanged;
+            DatePickerFim.SelectedDateChanged += DatePicker_SelectedDateChanged;
+
+            // Eventos do DataGrid
+            DataGridRelatorio.MouseDoubleClick += DataGridRelatorio_MouseDoubleClick;
+
+            // Evento de fechar janela
+            Closing += RelatoriosWindow_Closing;
+        }
+
+        private void RelatoriosWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Gerar relatório automaticamente para o período padrão
+            BtnGerarRelatorio_Click(sender, e);
         }
 
         /// <summary>
@@ -63,8 +89,8 @@ namespace Ticket2Help.UI.Views
 
             try
             {
-                BtnGerarRelatorio.IsEnabled = false;
-                BtnGerarRelatorio.Content = "🔄 A gerar...";
+                // Estado de carregamento
+                DefinirEstadoCarregamento(true);
 
                 var dataInicio = DatePickerInicio.SelectedDate.Value;
                 var dataFim = DatePickerFim.SelectedDate.Value.AddDays(1).AddMilliseconds(-1); // Fim do dia
@@ -73,8 +99,11 @@ namespace Ticket2Help.UI.Views
                 _dadosActuais = _relatorioRepository.ObterRelatorioDetalhado(dataInicio, dataFim);
                 DataGridRelatorio.ItemsSource = _dadosActuais;
 
-                // Actualizar estatísticas
+                // Actualizar estatísticas e interface
                 ActualizarEstatisticas();
+                ActualizarInterfaceResultados();
+
+                LblUltimaActualizacao.Text = DateTime.Now.ToString("HH:mm:ss");
 
                 if (!_dadosActuais.Any())
                 {
@@ -94,8 +123,46 @@ namespace Ticket2Help.UI.Views
             }
             finally
             {
-                BtnGerarRelatorio.IsEnabled = true;
-                BtnGerarRelatorio.Content = "Gerar Relatório";
+                DefinirEstadoCarregamento(false);
+            }
+        }
+
+        /// <summary>
+        /// Define o estado de carregamento da interface
+        /// </summary>
+        private void DefinirEstadoCarregamento(bool carregando)
+        {
+            BtnGerarRelatorio.IsEnabled = !carregando;
+            BtnExportarExcel.IsEnabled = !carregando;
+            DatePickerInicio.IsEnabled = !carregando;
+            DatePickerFim.IsEnabled = !carregando;
+
+            if (carregando)
+            {
+                BtnGerarRelatorio.Content = "🔄 A gerar...";
+                LoadingIndicator.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnGerarRelatorio.Content = "📈 Gerar Relatório";
+                LoadingIndicator.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        /// <summary>
+        /// Actualiza a interface baseada nos resultados
+        /// </summary>
+        private void ActualizarInterfaceResultados()
+        {
+            if (_dadosActuais == null || !_dadosActuais.Any())
+            {
+                NoDataPanel.Visibility = Visibility.Visible;
+                DataGridRelatorio.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                NoDataPanel.Visibility = Visibility.Collapsed;
+                DataGridRelatorio.Visibility = Visibility.Visible;
             }
         }
 
@@ -150,7 +217,9 @@ namespace Ticket2Help.UI.Views
         /// </summary>
         private void ActualizarEstatisticas()
         {
-            LblTotalRegistros.Text = _dadosActuais.Count().ToString();
+            var total = _dadosActuais.Count();
+            LblTotalRegistros.Text = total.ToString();
+            LblTotalRegistrosHeader.Text = $"{total} registos encontrados";
             ActualizarPeriodoExibido();
         }
 
@@ -202,7 +271,7 @@ namespace Ticket2Help.UI.Views
                 finally
                 {
                     BtnExportarExcel.IsEnabled = true;
-                    BtnExportarExcel.Content = "Exportar Excel";
+                    BtnExportarExcel.Content = "📊 Exportar Excel";
                 }
             }
         }
@@ -279,15 +348,6 @@ namespace Ticket2Help.UI.Views
         }
 
         /// <summary>
-        /// Evento de carregamento da janela
-        /// </summary>
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            // Gerar relatório automaticamente para o período padrão
-            BtnGerarRelatorio_Click(sender, e);
-        }
-
-        /// <summary>
         /// Duplo clique no DataGrid para ver detalhes
         /// </summary>
         private void DataGridRelatorio_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -319,7 +379,7 @@ namespace Ticket2Help.UI.Views
         /// <summary>
         /// Fechar janela
         /// </summary>
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void RelatoriosWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // Cleanup se necessário
         }

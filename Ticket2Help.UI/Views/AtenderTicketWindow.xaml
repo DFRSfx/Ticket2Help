@@ -1,4 +1,4 @@
-﻿<Window x:Class="Ticket2Help.UI.AtenderTicketWindow"
+﻿<Window x:Class="Ticket2Help.UI.Views.AtenderTicketWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Atender Ticket" 
@@ -51,39 +51,35 @@
                 </StackPanel>
 
                 <!-- Detalhes específicos por tipo -->
-                <StackPanel x:Name="PanelHardware" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0" Visibility="Collapsed">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="Equipamento:" FontWeight="Bold"/>
-                            <TextBlock x:Name="LblEquipamento" Text=""/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <TextBlock Text="Avaria:" FontWeight="Bold"/>
-                            <TextBlock x:Name="LblAvaria" Text="" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
+                <Grid x:Name="PanelHardware" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Equipamento:" FontWeight="Bold"/>
+                        <TextBlock x:Name="LblEquipamento" Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Avaria:" FontWeight="Bold"/>
+                        <TextBlock x:Name="LblAvaria" Text="" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Grid>
 
-                <StackPanel x:Name="PanelSoftware" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0" Visibility="Collapsed">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="Software:" FontWeight="Bold"/>
-                            <TextBlock x:Name="LblSoftware" Text=""/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <TextBlock Text="Necessidade:" FontWeight="Bold"/>
-                            <TextBlock x:Name="LblNecessidade" Text="" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
+                <Grid x:Name="PanelSoftware" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Software:" FontWeight="Bold"/>
+                        <TextBlock x:Name="LblSoftware" Text=""/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Necessidade:" FontWeight="Bold"/>
+                        <TextBlock x:Name="LblNecessidade" Text="" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Border>
 
@@ -99,18 +95,18 @@
                 <!-- Campos para Hardware -->
                 <StackPanel x:Name="PanelAtendimentoHardware" Visibility="Collapsed">
                     <TextBlock Text="Descrição da Reparação:" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtDescricaoReparacao" Height="80" FontSize="12" Padding="5" Margin="0,0,0,15"
+                    <TextBox x:Name="TxtDescricaoReparacao" MinHeight="80" FontSize="12" Padding="5" Margin="0,0,0,15"
                              TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
 
                     <TextBlock Text="Peças Utilizadas:" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtPecas" Height="60" FontSize="12" Padding="5" Margin="0,0,0,15"
+                    <TextBox x:Name="TxtPecas" MinHeight="60" FontSize="12" Padding="5" Margin="0,0,0,15"
                              TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                 </StackPanel>
 
                 <!-- Campos para Software -->
                 <StackPanel x:Name="PanelAtendimentoSoftware" Visibility="Collapsed">
                     <TextBlock Text="Descrição da Intervenção:" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtDescricaoIntervencao" Height="100" FontSize="12" Padding="5" Margin="0,0,0,15"
+                    <TextBox x:Name="TxtDescricaoIntervencao" MinHeight="100" FontSize="12" Padding="5" Margin="0,0,0,15"
                              TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
                 </StackPanel>
             </StackPanel>

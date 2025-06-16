@@ -259,7 +259,6 @@ namespace Ticket2Help.UI.Views
                     MostrarErro("Por favor, introduza o código do colaborador.");
                     return;
                 }
-
                 TxtSenha.Focus();
                 OcultarErro();
             }

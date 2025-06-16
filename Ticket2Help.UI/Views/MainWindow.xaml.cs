@@ -139,10 +139,11 @@ namespace Ticket2Help.UI
                 dashboard.PercentagemTicketsAtendidos, "atendidos");
         }
 
-        private void ActualizarBarraProgresso(System.Windows.Shapes.Rectangle barra, TextBlock label,
+        private void ActualizarBarraProgresso(Border barra, TextBlock label,
             double percentagem, string sufixo)
         {
-            var larguraMaxima = 300; // Largura máxima da barra
+            // Get the parent container's width as maximum width
+            var larguraMaxima = barra.Parent is FrameworkElement parent ? parent.ActualWidth : 300;
             var larguraActual = (percentagem / 100.0) * larguraMaxima;
 
             barra.Width = larguraActual;

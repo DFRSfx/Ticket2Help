@@ -8,8 +8,6 @@ using Ticket2Help.BLL.Patterns.Strategy;
 using Ticket2Help.BLL.Services;
 using Ticket2Help.DAL.Repositories;
 using Ticket2Help.Models;
-using Ticket2Help.Models.Entities;
-using Ticket2Help.Models.Enums;
 using Ticket2Help.UI.ViewModels;
 
 namespace Ticket2Help.UI.Controllers
