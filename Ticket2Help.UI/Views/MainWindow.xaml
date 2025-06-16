@@ -206,7 +206,7 @@
                         </StackPanel>
                     </Border>
                     <Button x:Name="BtnLogout" Content="Sair" Style="{StaticResource DangerButtonStyle}" 
-                            Click="BtnLogout_Click" Width="80"/>
+                            Click="BtnLogout_Click" Width="80" Cursor="Hand"/>
                 </StackPanel>
             </Grid>
         </Border>
