@@ -26,7 +26,7 @@ namespace Ticket2Help.DAL.Connection
         private DatabaseConnection()
         {
             // Configuração da string de ligação
-            ConnectionString = "Server=localhost;Database=Ticket2Help;Trusted_Connection=true;TrustServerCertificate=true;";
+            ConnectionString = "Data Source=SOARES\\SQLEXPRESS;Initial Catalog=Ticket2Help;Integrated Security=True;Trust Server Certificate=True";
         }
 
         /// <summary>

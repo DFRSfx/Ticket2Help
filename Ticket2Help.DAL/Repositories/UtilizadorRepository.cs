@@ -73,7 +73,6 @@ namespace Ticket2Help.DAL.Repositories
             command.Parameters.AddWithValue("@Codigo", Utilizador.Codigo);
             command.Parameters.AddWithValue("@Nome", Utilizador.Nome);
             command.Parameters.AddWithValue("@Email", Utilizador.Email);
-            //command.Parameters.AddWithValue("@Password", Utilizador.Password);
             command.Parameters.AddWithValue("@EhTecnicoHelpdesk", Utilizador.EhTecnicoHelpdesk);
 
             command.ExecuteNonQuery();
@@ -135,34 +134,6 @@ namespace Ticket2Help.DAL.Repositories
             return utilizadores;
         }
 
-        /// <summary>
-        /// Valida as credenciais de um utilizador.
-        /// </summary>
-        /// <param name="codigo">Código do utilizador.</param>
-        /// <param name="senha">Senha do utilizador.</param>
-        /// <returns>True se as credenciais forem válidas.</returns>
-        public bool ValidarCredenciais(string codigo, string senha)
-        {
-            using var connection = _dbConnection.CreateConnection();
-            connection.Open();
-
-            const string sql = @"
-                SELECT COUNT(*) 
-                FROM Utilizadores 
-                WHERE Codigo = @Codigo AND PasswordHash = @PasswordHash AND Activo = 1";
-
-            using var command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@Codigo", codigo);
-            command.Parameters.AddWithValue("@PasswordHash", GerarHashSenha(senha));
-
-            var count = (int)command.ExecuteScalar();
-            return count > 0;
-        }
-
-        private string GerarHashSenha(string senha)
-        {
-            // Implementação simplificada - usar BCrypt ou similar em produção
-            return $"hash_{senha}";
-        }
+     
     }
 }

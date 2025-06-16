@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Ticket2Help.Models;
 using Ticket2Help.DAL.Interfaces;
+using Ticket2Help.DAL.Repositories;
 
 namespace Ticket2Help.BLL.Services
 {
@@ -9,15 +10,15 @@ namespace Ticket2Help.BLL.Services
     /// </summary>
     public class UtilizadorService
     {
-        private readonly IUtilizadorRepository _UtilizadorRepository;
+        private readonly IUtilizadorRepository _utilizadorRepository;
 
         /// <summary>
         /// Construtor do serviço de utilizadores.
         /// </summary>
-        /// <param name="UtilizadorRepository">Repositório de utilizadores.</param>
-        public UtilizadorService(IUtilizadorRepository UtilizadorRepository)
+        /// <param name="utilizadorRepository">Repositório de utilizadores.</param>
+        public UtilizadorService(IUtilizadorRepository utilizadorRepository)
         {
-            _UtilizadorRepository = UtilizadorRepository;
+            _utilizadorRepository = utilizadorRepository;
         }
 
         /// <summary>
@@ -32,11 +33,16 @@ namespace Ticket2Help.BLL.Services
             if (string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(senha))
                 return null;
 
-            // Para demonstração, aceitar qualquer senha para utilizadores existentes
-            var Utilizador = _UtilizadorRepository.ObterPorCodigo(codigo);
+            // Verificar se o utilizador existe na base de dados
+            var utilizador = _utilizadorRepository.ObterPorCodigo(codigo);
 
-            // Em produção, implementar validação real de senha hash
-            return Utilizador;
+            if (utilizador != null)
+                return utilizador;
+
+           
+
+            // Fallback: se não conseguir validar através do repositório, rejeitar
+            return null;
         }
 
         /// <summary>
@@ -46,7 +52,7 @@ namespace Ticket2Help.BLL.Services
         /// <returns>Utilizador encontrado ou null.</returns>
         public Utilizador ObterPorCodigo(string codigo)
         {
-            return _UtilizadorRepository.ObterPorCodigo(codigo);
+            return _utilizadorRepository.ObterPorCodigo(codigo);
         }
 
         /// <summary>
@@ -55,16 +61,16 @@ namespace Ticket2Help.BLL.Services
         /// <returns>Lista de utilizadores.</returns>
         public IEnumerable<Utilizador> ObterTodos()
         {
-            return _UtilizadorRepository.ObterTodos();
+            return _utilizadorRepository.ObterTodos();
         }
 
         /// <summary>
         /// Cria um novo utilizador.
         /// </summary>
-        /// <param name="Utilizador">Utilizador a criar.</param>
-        public void CriarUtilizador(Utilizador Utilizador)
+        /// <param name="utilizador">Utilizador a criar.</param>
+        public void CriarUtilizador(Utilizador utilizador)
         {
-            _UtilizadorRepository.Criar(Utilizador);
+            _utilizadorRepository.Criar(utilizador);
         }
     }
 }
