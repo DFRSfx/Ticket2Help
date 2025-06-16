@@ -1724,11 +1724,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.UI\\Ticket2Help.UI.csproj",
+      "projectUniqueName": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.UI\\Ticket2Help.UI.csproj",
       "projectName": "Ticket2Help.UI",
-      "projectPath": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.UI\\Ticket2Help.UI.csproj",
+      "projectPath": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.UI\\Ticket2Help.UI.csproj",
       "packagesPath": "C:\\Users\\dario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.UI\\obj\\",
+      "outputPath": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1745,8 +1745,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.BLL\\Ticket2Help.BLL.csproj": {
-              "projectPath": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.BLL\\Ticket2Help.BLL.csproj"
+            "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.BLL\\Ticket2Help.BLL.csproj": {
+              "projectPath": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.BLL\\Ticket2Help.BLL.csproj"
             }
           }
         }

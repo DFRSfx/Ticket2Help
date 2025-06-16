@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj": {}
+    "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj": {
+    "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj",
+        "projectUniqueName": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj",
         "projectName": "Ticket2Help.Models",
-        "projectPath": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj",
+        "projectPath": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj",
         "packagesPath": "C:\\Users\\dario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.Models\\obj\\",
+        "outputPath": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dario\\AppData\\Roaming\\NuGet\\NuGet.Config",

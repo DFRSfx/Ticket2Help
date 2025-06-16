@@ -1687,11 +1687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.DAL\\Ticket2Help.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.DAL\\Ticket2Help.DAL.csproj",
       "projectName": "Ticket2Help.DAL",
-      "projectPath": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.DAL\\Ticket2Help.DAL.csproj",
+      "projectPath": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.DAL\\Ticket2Help.DAL.csproj",
       "packagesPath": "C:\\Users\\dario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.DAL\\obj\\",
+      "outputPath": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1708,8 +1708,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj": {
-              "projectPath": "C:\\Users\\dario\\source\\repos\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj"
+            "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj": {
+              "projectPath": "C:\\Users\\dario\\Documents\\GitHub\\Ticket2Help\\Ticket2Help.Models\\Ticket2Help.Models.csproj"
             }
           }
         }

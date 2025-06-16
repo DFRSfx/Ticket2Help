@@ -1,76 +1,180 @@
-﻿<Window x:Class="Ticket2Help.UI.CriarTicketWindow"
+﻿<Window x:Class="Ticket2Help.UI.Views.CriarTicketWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Criar Novo Ticket" 
-        Height="400" Width="500"
+        Height="550" Width="600"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize">
-    <Grid>
+
+    <Window.Resources>
+        <!-- Estilos modernos -->
+        <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderBrush" Value="#BDC3C7"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#3498DB"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#3498DB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="6" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#2980B9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SuccessButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+            <Setter Property="Background" Value="#27AE60"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#229954"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CancelButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+            <Setter Property="Background" Value="#95A5A6"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#7F8C8D"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#F8F9FA">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
         <!-- Header -->
-        <Border Grid.Row="0" Background="DarkBlue" Padding="15">
-            <TextBlock x:Name="LblTitulo" Text="Criar Ticket" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Border Grid.Row="0" Background="#2C3E50" Padding="25">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="LblIcone" Text="🎫" FontSize="28" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                <StackPanel>
+                    <TextBlock x:Name="LblTitulo" Text="Criar Novo Ticket" Foreground="White" FontSize="24" FontWeight="Bold"/>
+                    <TextBlock x:Name="LblSubtitulo" Text="Hardware" Foreground="#BDC3C7" FontSize="14"/>
+                </StackPanel>
+            </StackPanel>
         </Border>
+
         <!-- Formulário -->
-        <ScrollViewer Grid.Row="1" Margin="20">
+        <ScrollViewer Grid.Row="1" Margin="30" VerticalScrollBarVisibility="Auto">
             <StackPanel>
+                <!-- Informação do Colaborador -->
+                <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,20"
+                        BorderBrush="#E1E8ED" BorderThickness="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Colaborador:" FontWeight="Bold" FontSize="14" Margin="0,0,0,5" Foreground="#2C3E50"/>
+                            <TextBlock x:Name="LblColaborador" Text="Código do colaborador" FontSize="13" Foreground="#7F8C8D"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Data/Hora:" FontWeight="Bold" FontSize="14" Margin="0,0,0,5" Foreground="#2C3E50"/>
+                            <TextBlock x:Name="LblDataHora" Text="Data e hora actuais" FontSize="13" Foreground="#7F8C8D"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
                 <!-- Campos para Hardware -->
                 <StackPanel x:Name="PanelHardware" Visibility="Collapsed">
-                    <TextBlock Text="Equipamento:" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtEquipamento" Height="30" FontSize="12" Padding="5" Margin="0,0,0,15"/>
-                    <TextBlock Text="Descrição da Avaria:" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtAvaria" Height="80" FontSize="12" Padding="5" Margin="0,0,0,15"
-                             TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                    <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,15"
+                            BorderBrush="#E1E8ED" BorderThickness="1">
+                        <StackPanel>
+                            <TextBlock Text="🔧 Informações do Equipamento" FontWeight="Bold" FontSize="16" 
+                                       Margin="0,0,0,15" Foreground="#2C3E50"/>
+
+                            <TextBlock Text="Equipamento*:" FontWeight="SemiBold" Margin="0,0,0,8" Foreground="#2C3E50"/>
+                            <TextBox x:Name="TxtEquipamento" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,15"
+                                     ToolTip="Ex: Computador Dell OptiPlex, Impressora HP LaserJet, etc."/>
+
+                            <TextBlock Text="Descrição da Avaria*:" FontWeight="SemiBold" Margin="0,0,0,8" Foreground="#2C3E50"/>
+                            <TextBox x:Name="TxtAvaria" Style="{StaticResource ModernTextBoxStyle}" Height="100" Margin="0,0,0,15"
+                                     TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                     ToolTip="Descreva detalhadamente o problema encontrado"/>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
+
                 <!-- Campos para Software -->
                 <StackPanel x:Name="PanelSoftware" Visibility="Collapsed">
-                    <TextBlock Text="Software:" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtSoftware" Height="30" FontSize="12" Padding="5" Margin="0,0,0,15"/>
-                    <TextBlock Text="Descrição da Necessidade:" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <TextBox x:Name="TxtDescricaoNecessidade" Height="80" FontSize="12" Padding="5" Margin="0,0,0,15"
-                             TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                    <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,15"
+                            BorderBrush="#E1E8ED" BorderThickness="1">
+                        <StackPanel>
+                            <TextBlock Text="💻 Informações do Software" FontWeight="Bold" FontSize="16" 
+                                       Margin="0,0,0,15" Foreground="#2C3E50"/>
+
+                            <TextBlock Text="Software*:" FontWeight="SemiBold" Margin="0,0,0,8" Foreground="#2C3E50"/>
+                            <TextBox x:Name="TxtSoftware" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,15"
+                                     ToolTip="Ex: Microsoft Office, Adobe Acrobat, AutoCAD, etc."/>
+
+                            <TextBlock Text="Descrição da Necessidade*:" FontWeight="SemiBold" Margin="0,0,0,8" Foreground="#2C3E50"/>
+                            <TextBox x:Name="TxtDescricaoNecessidade" Style="{StaticResource ModernTextBoxStyle}" Height="100" Margin="0,0,0,15"
+                                     TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                     ToolTip="Descreva o que necessita: instalação, configuração, resolução de problema, etc."/>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
-                <TextBlock Text="Informações Adicionais:" FontWeight="Bold" Margin="0,0,0,5"/>
-                
-                <Grid Margin="0,0,0,15">
-                    <TextBox x:Name="TxtObservacoes" Height="60" FontSize="12" Padding="5"
-                             TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
-                             Background="Transparent"/>
-                    <TextBlock Text="Informações adicionais (opcional)" 
-                               FontSize="12" 
-                               Padding="8,8,5,5"
-                               Foreground="Gray" 
-                               IsHitTestVisible="False"
-                               VerticalAlignment="Top">
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Visibility" Value="Visible"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Text, ElementName=TxtObservacoes}" Value="">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding Text, ElementName=TxtObservacoes}" Value="{x:Null}">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                </Grid>
+
+                <!-- Observações Adicionais -->
+                <Border Background="White" CornerRadius="8" Padding="20" 
+                        BorderBrush="#E1E8ED" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="📝 Informações Adicionais (Opcional)" FontWeight="Bold" FontSize="16" 
+                                   Margin="0,0,0,15" Foreground="#2C3E50"/>
+
+                        <TextBox x:Name="TxtObservacoes" Style="{StaticResource ModernTextBoxStyle}" Height="80"
+                                 TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                 Background="#F8F9FA" 
+                                 ToolTip="Informações adicionais que possam ajudar no atendimento"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Nota sobre campos obrigatórios -->
+                <TextBlock Text="* Campos obrigatórios" FontStyle="Italic" FontSize="12" 
+                           Foreground="#E74C3C" Margin="0,10,0,0"/>
             </StackPanel>
         </ScrollViewer>
+
         <!-- Botões -->
-        <Border Grid.Row="2" Background="LightGray" Padding="15">
+        <Border Grid.Row="2" Background="#ECF0F1" Padding="25">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="BtnCriar" Content="Criar Ticket" Width="100" Height="35" 
-                        Background="Green" Foreground="White" FontWeight="Bold" Margin="0,0,10,0"
-                        Click="BtnCriar_Click"/>
-                <Button x:Name="BtnCancelar" Content="Cancelar" Width="80" Height="35" 
-                        Background="Gray" Foreground="White" FontWeight="Bold"
+                <Button x:Name="BtnCriar" Content="✅ Criar Ticket" Style="{StaticResource SuccessButtonStyle}" 
+                        Margin="0,0,15,0" Click="BtnCriar_Click"/>
+                <Button x:Name="BtnCancelar" Content="❌ Cancelar" Style="{StaticResource CancelButtonStyle}"
                         Click="BtnCancelar_Click"/>
             </StackPanel>
         </Border>

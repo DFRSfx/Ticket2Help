@@ -9,3 +9,15 @@ C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Tick
 C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\refint\Ticket2Help.Models.dll
 C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Ticket2Help.Models.pdb
 C:\Users\dario\source\repos\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\ref\Ticket2Help.Models.dll
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\bin\Debug\net8.0\Ticket2Help.Models.deps.json
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\bin\Debug\net8.0\Ticket2Help.Models.dll
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\bin\Debug\net8.0\Ticket2Help.Models.pdb
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Ticket2Help.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Ticket2Help.Models.AssemblyInfoInputs.cache
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Ticket2Help.Models.AssemblyInfo.cs
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Ticket2Help.Models.csproj.CoreCompileInputs.cache
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Ticket2Help.Models.sourcelink.json
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Ticket2Help.Models.dll
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\refint\Ticket2Help.Models.dll
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\Ticket2Help.Models.pdb
+C:\Users\dario\Documents\GitHub\Ticket2Help\Ticket2Help.Models\obj\Debug\net8.0\ref\Ticket2Help.Models.dll

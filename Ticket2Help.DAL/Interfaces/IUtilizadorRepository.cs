@@ -18,14 +18,14 @@ namespace Ticket2Help.DAL.Interfaces
         /// <summary>
         /// Cria um novo utilizador.
         /// </summary>
-        /// <param name="Utilizador">Utilizador a criar.</param>
-        void Criar(Utilizador Utilizador);
+        /// <param name="utilizador">Utilizador a criar.</param>
+        void Criar(Utilizador utilizador);
 
         /// <summary>
         /// Actualiza dados de um utilizador.
         /// </summary>
-        /// <param name="Utilizador">Utilizador com dados actualizados.</param>
-        void Actualizar(Utilizador Utilizador);
+        /// <param name="utilizador">Utilizador com dados actualizados.</param>
+        void Actualizar(Utilizador utilizador);
 
         /// <summary>
         /// Obtém todos os utilizadores activos.

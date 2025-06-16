@@ -1,6 +1,5 @@
 ﻿using System;
 using Ticket2Help.Models;
-using Ticket2Help.Models.Entities;
 
 namespace Ticket2Help.UI.ViewModels
 {
@@ -17,6 +16,7 @@ namespace Ticket2Help.UI.ViewModels
         public string Tipo { get; set; }
         public DateTime? DataAtendimento { get; set; }
         public string EstadoAtendimento { get; set; }
+        public string TempoEspera { get; set; } // Nova propriedade
 
         // Campos específicos para Hardware
         public string Equipamento { get; set; }
