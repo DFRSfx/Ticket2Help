@@ -66,14 +66,14 @@ namespace Ticket2Help.DAL.Repositories
             connection.Open();
 
             const string sql = @"
-                INSERT INTO Utilizadores (Codigo, Nome, Email, PasswordHash, EhTecnicoHelpdesk)
-                VALUES (@Codigo, @Nome, @Email, @PasswordHash, @EhTecnicoHelpdesk)";
+                INSERT INTO Utilizadores (Codigo, Nome, Email, Password, EhTecnicoHelpdesk)
+                VALUES (@Codigo, @Nome, @Email, @Password, @EhTecnicoHelpdesk)";
 
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@Codigo", Utilizador.Codigo);
             command.Parameters.AddWithValue("@Nome", Utilizador.Nome);
             command.Parameters.AddWithValue("@Email", Utilizador.Email);
-            command.Parameters.AddWithValue("@PasswordHash", "hash_temporario"); // Implementar hash real
+            //command.Parameters.AddWithValue("@Password", Utilizador.Password);
             command.Parameters.AddWithValue("@EhTecnicoHelpdesk", Utilizador.EhTecnicoHelpdesk);
 
             command.ExecuteNonQuery();

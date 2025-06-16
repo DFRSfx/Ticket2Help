@@ -207,25 +207,22 @@ GO
 
 -- Dados de teste
 INSERT INTO Utilizadores (Codigo, Nome, Email, PasswordHash, EhTecnicoHelpdesk) VALUES 
-('ADMIN', 'Administrador', 'admin@ticket2help.pt', 'hash_admin', 1),
-('TEC001', 'João Silva', 'joao.silva@ticket2help.pt', 'hash_123', 1),
-('TEC002', 'Maria Santos', 'maria.santos@ticket2help.pt', 'hash_123', 1),
-('COL001', 'Pedro Costa', 'pedro.costa@empresa.pt', 'hash_123', 0),
-('COL002', 'Ana Ferreira', 'ana.ferreira@empresa.pt', 'hash_123', 0),
-('COL003', 'Rui Oliveira', 'rui.oliveira@empresa.pt', 'hash_123', 0)
+('ADMIN', 'Administrador', 'admin@ticket2help.pt', 'admin', 1),
+('TEC001', 'João Silva', 'joao.silva@ticket2help.pt', '123', 1),
+('COL001', 'Rui Oliveira', 'rui.oliveira@empresa.pt', '123', 0)
 GO
 
 -- Tickets de exemplo
 INSERT INTO Tickets (TipoTicket, CodigoColaborador, Equipamento, Avaria) VALUES 
 ('Hardware', 'COL001', 'Computador Dell OptiPlex 7090', 'Computador não liga após queda de energia'),
-('Hardware', 'COL002', 'Impressora HP LaserJet Pro', 'Papel encravado e luzes a piscar'),
-('Hardware', 'COL003', 'Monitor Samsung 24"', 'Ecrã com riscas verticais')
+('Hardware', 'COL001', 'Impressora HP LaserJet Pro', 'Papel encravado e luzes a piscar'),
+('Hardware', 'COL001', 'Monitor Samsung 24"', 'Ecrã com riscas verticais')
 GO
 
 INSERT INTO Tickets (TipoTicket, CodigoColaborador, Software, DescricaoNecessidade) VALUES 
 ('Software', 'COL001', 'Microsoft Office 365', 'Instalação e configuração no novo computador'),
-('Software', 'COL002', 'Adobe Acrobat Pro', 'Problema ao assinar documentos PDF'),
-('Software', 'COL003', 'Windows 11', 'Actualizações automáticas a falhar')
+('Software', 'COL001', 'Adobe Acrobat Pro', 'Problema ao assinar documentos PDF'),
+('Software', 'COL001', 'Windows 11', 'Actualizações automáticas a falhar')
 GO
 
 PRINT 'Base de dados Ticket2Help criada com sucesso!'
