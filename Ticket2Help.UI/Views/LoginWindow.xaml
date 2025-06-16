@@ -99,17 +99,13 @@
     </Window.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="484*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="350"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Painel Esquerdo - Branding -->
-        <Border Grid.Column="0" Background="{StaticResource SidebarGradient}" Grid.RowSpan="2">
+        <Border Grid.Column="0" Background="{StaticResource SidebarGradient}">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30">
                 <!-- Logo -->
                 <Border Background="White" 
@@ -151,8 +147,8 @@
                                        HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         </Border>
                         <StackPanel>
-                            <TextBlock Text="Gestão Eficiente" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
-                            <TextBlock Text="Organize e priorize tickets" Foreground="#E8F4FD" FontSize="12"/>
+                            <TextBlock Text="Autenticação Segura" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
+                            <TextBlock Text="Acesso controlado ao sistema" Foreground="#E8F4FD" FontSize="12"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -162,8 +158,8 @@
                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <StackPanel>
-                            <TextBlock Text="Relatórios Detalhados" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
-                            <TextBlock Text="Acompanhe métricas e estatísticas" Foreground="#E8F4FD" FontSize="12"/>
+                            <TextBlock Text="Gestão Eficiente" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
+                            <TextBlock Text="Organize e priorize tickets" Foreground="#E8F4FD" FontSize="12"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -182,17 +178,22 @@
         </Border>
 
         <!-- Painel Direito - Formulário de Login -->
-        <Grid Grid.Column="1" Background="White" Grid.RowSpan="2">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+        <Grid Grid.Column="1" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
                 <!-- Cabeçalho do Login -->
                 <StackPanel Margin="0,0,0,40">
-                    <TextBlock Text="Bem-vindo de volta!" 
+                    <TextBlock Text="Iniciar Sessão" 
                                FontSize="24" 
                                FontWeight="Bold" 
                                Foreground="{StaticResource PrimaryBrush}" 
                                HorizontalAlignment="Center" 
                                Margin="0,0,0,8"/>
-                    <TextBlock Text="Inicie sessão para continuar" 
+                    <TextBlock Text="Introduza as suas credenciais" 
                                FontSize="14" 
                                Foreground="{StaticResource DarkGrayBrush}" 
                                HorizontalAlignment="Center"/>
@@ -202,7 +203,7 @@
                 <StackPanel>
                     <!-- Campo Código -->
                     <StackPanel Margin="0,0,0,20">
-                        <TextBlock Text="Código do Colaborador" 
+                        <TextBlock Text="Código do Utilizador" 
                                    FontWeight="SemiBold" 
                                    Foreground="{StaticResource DarkGrayBrush}" 
                                    Margin="0,0,0,8"
@@ -264,17 +265,17 @@
 
                     <!-- Utilizadores de Demonstração -->
                     <Border Background="#F8F9FA" 
-                            BorderBrush="#E9ECEF"
-                            BorderThickness="1"
-                            CornerRadius="4" 
-                            Padding="15" 
-                            Margin="0,30,0,0">
+        BorderBrush="#E9ECEF"
+        BorderThickness="1"
+        CornerRadius="4" 
+        Padding="15" 
+        Margin="0,30,0,0">
                         <StackPanel>
                             <TextBlock Text="👥 Utilizadores de Demonstração" 
-                                       FontWeight="Bold" 
-                                       FontSize="12" 
-                                       Foreground="{StaticResource DarkGrayBrush}" 
-                                       Margin="0,0,0,10"/>
+                   FontWeight="Bold" 
+                   FontSize="12" 
+                   Foreground="{StaticResource DarkGrayBrush}" 
+                   Margin="0,0,0,10"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -288,38 +289,37 @@
 
                                 <TextBlock Grid.Row="0" Grid.Column="0" Text="🔧" FontSize="12" Margin="0,0,8,2"/>
                                 <TextBlock Grid.Row="0" Grid.Column="1" Text="Técnico: ADMIN / admin" 
-                                           FontSize="11" Foreground="{StaticResource DarkGrayBrush}" Margin="0,0,0,2"/>
+                       FontSize="11" Foreground="{StaticResource DarkGrayBrush}" Margin="0,0,0,2"/>
 
                                 <TextBlock Grid.Row="1" Grid.Column="0" Text="🔧" FontSize="12" Margin="0,0,8,2"/>
                                 <TextBlock Grid.Row="1" Grid.Column="1" Text="Técnico: TEC001 / 123" 
-                                           FontSize="11" Foreground="{StaticResource DarkGrayBrush}" Margin="0,0,0,2"/>
+                       FontSize="11" Foreground="{StaticResource DarkGrayBrush}" Margin="0,0,0,2"/>
 
                                 <TextBlock Grid.Row="2" Grid.Column="0" Text="👤" FontSize="12" Margin="0,0,8,0"/>
                                 <TextBlock Grid.Row="2" Grid.Column="1" Text="Colaborador: COL001 / 123" 
-                                           FontSize="11" Foreground="{StaticResource DarkGrayBrush}"/>
+                       FontSize="11" Foreground="{StaticResource DarkGrayBrush}"/>
                             </Grid>
                         </StackPanel>
                     </Border>
                 </StackPanel>
             </StackPanel>
 
-         
-           
+            <!-- Footer com Status -->
+            <Border Grid.Row="1" 
+                    Background="{StaticResource PrimaryBrush}" 
+                    Height="40"
+                    VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center">
+                    <Ellipse Width="8" Height="8" Fill="#27AE60" Margin="0,0,8,0"/>
+                    <TextBlock x:Name="LblStatus" 
+                               Text="A carregar..." 
+                               Foreground="White" 
+                               FontSize="12" 
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
         </Grid>
-
-        <!-- Footer -->
-        <Border Grid.Column="0" Grid.ColumnSpan="2" 
-                Background="{StaticResource PrimaryBrush}" 
-                Height="40"
-                VerticalAlignment="Bottom" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center">
-                <TextBlock Text="© 2024/2025 ISLA Gaia - Instituto Politécnico de Gestão e Tecnologia" 
-                           Foreground="White" 
-                           FontSize="11" 
-                           VerticalAlignment="Center"/>
-            </StackPanel>
-        </Border>
     </Grid>
 </Window>
