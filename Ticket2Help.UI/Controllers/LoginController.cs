@@ -26,7 +26,7 @@ namespace Ticket2Help.UI.Controllers
         /// <param name="codigo">Código do utilizador.</param>
         /// <param name="password">Password do utilizador.</param>
         /// <returns>Utilizador autenticado ou null se credenciais inválidas.</returns>
-        public Utilizador Autenticar(string codigo, string password)
+        public Utilizador? Autenticar(string codigo, string password)
         {
             return _utilizadorService.Autenticar(codigo, password);
         }

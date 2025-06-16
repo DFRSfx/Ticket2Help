@@ -12,25 +12,42 @@ using Ticket2Help.Models;
 namespace Ticket2Help.UI
 {
     /// <summary>
-    /// Lógica para MainWindow.xaml
+    /// Lógica para MainWindow.xaml - VERSÃO FINAL DE PRODUÇÃO
     /// </summary>
     public partial class MainWindow : Window
     {
         private readonly TicketController _ticketController;
-        private Utilizador _utilizadorActual;
-        private DispatcherTimer _timer;
+        private Utilizador? _utilizadorActual;
+        private DispatcherTimer? _timer;
+
+        // Evento para notificar logout
+        public event EventHandler? LogoutRequested;
 
         public MainWindow()
         {
             InitializeComponent();
             _ticketController = new TicketController();
+
             InicializarInterface();
             InicializarTimer();
         }
 
-        public void DefinirUtilizador(Utilizador utilizador)
+        public void DefinirUtilizador(Utilizador? utilizador)
         {
+            if (utilizador == null)
+            {
+                MessageBox.Show("Erro: Utilizador não pode ser nulo.", "Erro",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown();
+                return;
+            }
+
+            // Limpar dados do utilizador anterior
+            LimparDadosInterface();
+
             _utilizadorActual = utilizador;
+
+            // Actualizar interface do utilizador
             LblUtilizadorNome.Text = utilizador.Nome;
             LblUtilizadorTipo.Text = utilizador.EhTecnicoHelpdesk ? "Técnico Helpdesk" : "Colaborador";
 
@@ -39,9 +56,51 @@ namespace Ticket2Help.UI
             {
                 TabAtendimento.Visibility = Visibility.Collapsed;
                 TabDashboard.Visibility = Visibility.Collapsed;
+
+                // Voltar para o tab "Meus Tickets" se estiver noutro tab
+                MainTabControl.SelectedIndex = 0;
+            }
+            else
+            {
+                TabAtendimento.Visibility = Visibility.Visible;
+                TabDashboard.Visibility = Visibility.Visible;
             }
 
+            // Carregar dados iniciais
             CarregarDados();
+        }
+
+        private void LimparDadosInterface()
+        {
+            try
+            {
+                // Limpar DataGrids
+                DataGridMeusTickets.ItemsSource = null;
+                DataGridTicketsAtendimento.ItemsSource = null;
+
+                // Limpar métricas do dashboard
+                LblTotalHoje.Text = "0";
+                LblPendentes.Text = "0";
+                LblEmAtendimento.Text = "0";
+                LblTicketsAtendidos.Text = "0%";
+                LblTicketsResolvidos.Text = "0%";
+                LblTicketsNaoResolvidos.Text = "0%";
+                LblMediaHardware.Text = "0h";
+                LblMediaSoftware.Text = "0h";
+
+                // Reset barras de progresso
+                ProgressResolucaoFill.Width = 0;
+                ProgressAtendimentoFill.Width = 0;
+                LblProgressResolucao.Text = "0% resolvidos";
+                LblProgressAtendimento.Text = "0% atendidos";
+
+                // Atualizar status
+                LblStatus.Text = "Trocando utilizador...";
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro ao limpar interface: {ex}");
+            }
         }
 
         private void InicializarInterface()
@@ -51,6 +110,9 @@ namespace Ticket2Help.UI
 
         private void InicializarTimer()
         {
+            // Parar timer existente se houver
+            _timer?.Stop();
+
             _timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMinutes(2) // Actualizar a cada 2 minutos
@@ -59,7 +121,7 @@ namespace Ticket2Help.UI
             _timer.Start();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object? sender, EventArgs e)
         {
             CarregarDados();
         }
@@ -82,6 +144,7 @@ namespace Ticket2Help.UI
             catch (Exception ex)
             {
                 LblStatus.Text = $"Erro ao carregar dados: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine($"Erro ao carregar dados: {ex}");
             }
         }
 
@@ -89,87 +152,136 @@ namespace Ticket2Help.UI
         {
             if (_utilizadorActual == null) return;
 
-            var tickets = _ticketController.ObterTicketsDoColaborador(_utilizadorActual.Codigo);
-
-            // Adicionar tempo de espera
-            foreach (var ticket in tickets)
+            try
             {
-                if (ticket.DataAtendimento.HasValue)
-                {
-                    var tempo = ticket.DataAtendimento.Value - ticket.DataCriacao;
-                    ticket.TempoEspera = $"{tempo.Days}d {tempo.Hours}h {tempo.Minutes}m";
-                }
-                else
-                {
-                    var tempo = DateTime.Now - ticket.DataCriacao;
-                    ticket.TempoEspera = $"{tempo.Days}d {tempo.Hours}h {tempo.Minutes}m";
-                }
-            }
+                var tickets = _ticketController.ObterTicketsDoColaborador(_utilizadorActual.Codigo);
 
-            DataGridMeusTickets.ItemsSource = tickets;
+                // Adicionar tempo de espera
+                foreach (var ticket in tickets)
+                {
+                    if (ticket.DataAtendimento.HasValue)
+                    {
+                        var tempo = ticket.DataAtendimento.Value - ticket.DataCriacao;
+                        ticket.TempoEspera = $"{tempo.Days}d {tempo.Hours}h {tempo.Minutes}m";
+                    }
+                    else
+                    {
+                        var tempo = DateTime.Now - ticket.DataCriacao;
+                        ticket.TempoEspera = $"{tempo.Days}d {tempo.Hours}h {tempo.Minutes}m";
+                    }
+                }
+
+                DataGridMeusTickets.ItemsSource = tickets;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro ao carregar meus tickets: {ex}");
+                // Em caso de erro, manter dados anteriores ou carregar dados de fallback
+            }
         }
 
         private void CarregarTicketsParaAtendimento()
         {
-            var tickets = _ticketController.ObterTicketsParaAtendimento();
-            DataGridTicketsAtendimento.ItemsSource = tickets;
+            try
+            {
+                var tickets = _ticketController.ObterTicketsParaAtendimento();
+                DataGridTicketsAtendimento.ItemsSource = tickets;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro ao carregar tickets para atendimento: {ex}");
+            }
         }
 
         private void CarregarDashboard()
         {
-            var dataInicio = DateTime.Today.AddDays(-30); // Últimos 30 dias
-            var dataFim = DateTime.Now;
+            try
+            {
+                var dataInicio = DateTime.Today.AddDays(-30); // Últimos 30 dias
+                var dataFim = DateTime.Now;
 
-            var dashboard = _ticketController.ObterDadosDashboard(dataInicio, dataFim);
+                var dashboard = _ticketController.ObterDadosDashboard(dataInicio, dataFim);
 
-            // Actualizar métricas
-            LblTotalHoje.Text = dashboard.TotalTicketsHoje.ToString();
-            LblPendentes.Text = dashboard.TicketsPendentes.ToString();
-            LblEmAtendimento.Text = dashboard.TicketsEmAtendimento.ToString();
-            LblTicketsAtendidos.Text = $"{dashboard.PercentagemTicketsAtendidos:F1}%";
-            LblTicketsResolvidos.Text = $"{dashboard.PercentagemTicketsResolvidos:F1}%";
-            LblTicketsNaoResolvidos.Text = $"{dashboard.PercentagemTicketsNaoResolvidos:F1}%";
-            LblMediaHardware.Text = $"{dashboard.MediaTempoAtendimentoHardware:F1}h";
-            LblMediaSoftware.Text = $"{dashboard.MediaTempoAtendimentoSoftware:F1}h";
+                // Actualizar métricas
+                LblTotalHoje.Text = dashboard.TotalTicketsHoje.ToString();
+                LblPendentes.Text = dashboard.TicketsPendentes.ToString();
+                LblEmAtendimento.Text = dashboard.TicketsEmAtendimento.ToString();
+                LblTicketsAtendidos.Text = $"{dashboard.PercentagemTicketsAtendidos:F1}%";
+                LblTicketsResolvidos.Text = $"{dashboard.PercentagemTicketsResolvidos:F1}%";
+                LblTicketsNaoResolvidos.Text = $"{dashboard.PercentagemTicketsNaoResolvidos:F1}%";
+                LblMediaHardware.Text = $"{dashboard.MediaTempoAtendimentoHardware:F1}h";
+                LblMediaSoftware.Text = $"{dashboard.MediaTempoAtendimentoSoftware:F1}h";
 
-            // Actualizar barras de progresso
-            ActualizarBarraProgresso(ProgressResolucaoFill, LblProgressResolucao,
-                dashboard.PercentagemTicketsResolvidos, "resolvidos");
-            ActualizarBarraProgresso(ProgressAtendimentoFill, LblProgressAtendimento,
-                dashboard.PercentagemTicketsAtendidos, "atendidos");
+                // Actualizar barras de progresso
+                ActualizarBarraProgresso(ProgressResolucaoFill, LblProgressResolucao,
+                    dashboard.PercentagemTicketsResolvidos, "resolvidos");
+                ActualizarBarraProgresso(ProgressAtendimentoFill, LblProgressAtendimento,
+                    dashboard.PercentagemTicketsAtendidos, "atendidos");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro ao carregar dashboard: {ex}");
+            }
         }
 
         private void ActualizarBarraProgresso(Border barra, TextBlock label,
             double percentagem, string sufixo)
         {
-            // Get the parent container's width as maximum width
-            var larguraMaxima = barra.Parent is FrameworkElement parent ? parent.ActualWidth : 300;
-            var larguraActual = (percentagem / 100.0) * larguraMaxima;
+            try
+            {
+                var larguraMaxima = barra.Parent is FrameworkElement parent ? parent.ActualWidth : 300;
+                var larguraActual = (percentagem / 100.0) * larguraMaxima;
 
-            barra.Width = larguraActual;
-            label.Text = $"{percentagem:F1}% {sufixo}";
+                barra.Width = larguraActual;
+                label.Text = $"{percentagem:F1}% {sufixo}";
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro ao actualizar barra de progresso: {ex}");
+            }
         }
 
-        // Event Handlers
+        #region Event Handlers
+
         private void BtnCriarTicketHardware_Click(object sender, RoutedEventArgs e)
         {
-            var criarWindow = new CriarTicketWindow(_utilizadorActual, TipoTicket.Hardware);
-            if (criarWindow.ShowDialog() == true)
+            try
             {
-                CarregarMeusTickets();
-                MessageBox.Show("Ticket de hardware criado com sucesso!", "Sucesso",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                if (_utilizadorActual == null) return;
+
+                var criarWindow = new CriarTicketWindow(_utilizadorActual, TipoTicket.Hardware);
+                if (criarWindow.ShowDialog() == true)
+                {
+                    CarregarMeusTickets();
+                    MessageBox.Show("Ticket de hardware criado com sucesso!", "Sucesso",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao criar ticket: {ex.Message}", "Erro",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void BtnCriarTicketSoftware_Click(object sender, RoutedEventArgs e)
         {
-            var criarWindow = new CriarTicketWindow(_utilizadorActual, TipoTicket.Software);
-            if (criarWindow.ShowDialog() == true)
+            try
             {
-                CarregarMeusTickets();
-                MessageBox.Show("Ticket de software criado com sucesso!", "Sucesso",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                if (_utilizadorActual == null) return;
+
+                var criarWindow = new CriarTicketWindow(_utilizadorActual, TipoTicket.Software);
+                if (criarWindow.ShowDialog() == true)
+                {
+                    CarregarMeusTickets();
+                    MessageBox.Show("Ticket de software criado com sucesso!", "Sucesso",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao criar ticket: {ex.Message}", "Erro",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -185,65 +297,127 @@ namespace Ticket2Help.UI
 
         private void BtnAtenderTicket_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
-            if (button?.Tag is int ticketId)
+            try
             {
-                var atenderWindow = new AtenderTicketWindow(ticketId);
-                if (atenderWindow.ShowDialog() == true)
+                var button = sender as Button;
+                if (button?.Tag is int ticketId)
                 {
-                    CarregarTicketsParaAtendimento();
-                    CarregarDashboard();
-                    MessageBox.Show("Ticket atendido com sucesso!", "Sucesso",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    var atenderWindow = new AtenderTicketWindow(ticketId);
+                    if (atenderWindow.ShowDialog() == true)
+                    {
+                        CarregarTicketsParaAtendimento();
+                        CarregarDashboard();
+                        MessageBox.Show("Ticket atendido com sucesso!", "Sucesso",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao atender ticket: {ex.Message}", "Erro",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void DataGridTicketsAtendimento_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (DataGridTicketsAtendimento.SelectedItem is TicketViewModel ticket)
+            try
             {
-                var atenderWindow = new AtenderTicketWindow(ticket.Id);
-                if (atenderWindow.ShowDialog() == true)
+                if (DataGridTicketsAtendimento.SelectedItem is TicketViewModel ticket)
                 {
-                    CarregarTicketsParaAtendimento();
-                    CarregarDashboard();
+                    var atenderWindow = new AtenderTicketWindow(ticket.Id);
+                    if (atenderWindow.ShowDialog() == true)
+                    {
+                        CarregarTicketsParaAtendimento();
+                        CarregarDashboard();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao abrir ticket: {ex.Message}", "Erro",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void ComboEstrategiaAtendimento_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboEstrategiaAtendimento.SelectedItem is ComboBoxItem item)
+            try
             {
-                var estrategia = item.Tag.ToString();
-                _ticketController.AlterarEstrategiaAtendimento(estrategia);
-                CarregarTicketsParaAtendimento();
+                if (ComboEstrategiaAtendimento.SelectedItem is ComboBoxItem item)
+                {
+                    var estrategia = item.Tag?.ToString() ?? "FIFO";
+                    _ticketController.AlterarEstrategiaAtendimento(estrategia);
+                    CarregarTicketsParaAtendimento();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erro ao alterar estratégia: {ex}");
             }
         }
 
         private void BtnGerarMapas_Click(object sender, RoutedEventArgs e)
         {
-            var relatoriosWindow = new RelatoriosWindow();
-            relatoriosWindow.ShowDialog();
+            try
+            {
+                var relatoriosWindow = new RelatoriosWindow();
+                relatoriosWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao abrir relatórios: {ex.Message}", "Erro",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
-            var resultado = MessageBox.Show("Tem a certeza que deseja sair do sistema?",
-                "Confirmar Saída", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var resultado = MessageBox.Show("Tem a certeza que deseja sair da sessão atual?",
+                "Confirmar Logout", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resultado == MessageBoxResult.Yes)
             {
-                _timer?.Stop();
-                Application.Current.Shutdown();
+                try
+                {
+                    // Parar timer e limpar dados
+                    _timer?.Stop();
+                    _utilizadorActual = null;
+
+                    // Limpar interface
+                    LimparDadosInterface();
+
+                    // Notificar App sobre o logout
+                    LogoutRequested?.Invoke(this, EventArgs.Empty);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro durante o logout: {ex.Message}", "Erro",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
-        protected override void OnClosed(EventArgs e)
+        #endregion
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
+            // Se a janela está sendo fechada mas a aplicação não está sendo encerrada,
+            // significa que é um logout, não um fechamento
+            if (Application.Current.MainWindow == this && this.IsVisible)
+            {
+                var resultado = MessageBox.Show("Tem a certeza que deseja fechar o Ticket2Help?\n\nPara trocar de utilizador, use o botão 'Sair' no canto superior direito.",
+                    "Confirmar Encerramento", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (resultado == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
             _timer?.Stop();
-            base.OnClosed(e);
+            base.OnClosing(e);
         }
     }
 }

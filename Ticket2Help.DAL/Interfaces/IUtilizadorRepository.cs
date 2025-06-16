@@ -13,7 +13,7 @@ namespace Ticket2Help.DAL.Interfaces
         /// </summary>
         /// <param name="codigo">Código do utilizador.</param>
         /// <returns>Utilizador encontrado ou null.</returns>
-        Utilizador ObterPorCodigo(string codigo);
+        Utilizador? ObterPorCodigo(string codigo);
 
         /// <summary>
         /// Cria um novo utilizador.

@@ -64,7 +64,7 @@ namespace Ticket2Help.DAL.Repositories
             };
 
             command.Parameters.AddWithValue("@CodigoColaborador", ticket.CodigoColaborador);
-            command.Parameters.AddWithValue("@Equipamento", ticket.Equipamento);
+            command.Parameters.AddWithValue("@Equipamento", ticket.Equipamento ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Avaria", ticket.Avaria);
 
             var result = command.ExecuteScalar();
@@ -82,7 +82,7 @@ namespace Ticket2Help.DAL.Repositories
             };
 
             command.Parameters.AddWithValue("@CodigoColaborador", ticket.CodigoColaborador);
-            command.Parameters.AddWithValue("@Software", ticket.Software);
+            command.Parameters.AddWithValue("@Software", ticket.Software ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@DescricaoNecessidade", ticket.DescricaoNecessidade);
 
             var result = command.ExecuteScalar();
@@ -97,7 +97,7 @@ namespace Ticket2Help.DAL.Repositories
         /// </summary>
         /// <param name="id">Identificador do ticket.</param>
         /// <returns>Ticket encontrado ou null.</returns>
-        public Ticket ObterPorId(int id)
+        public Ticket? ObterPorId(int id)
         {
             using var connection = _dbConnection.CreateConnection();
             connection.Open();
@@ -145,7 +145,11 @@ namespace Ticket2Help.DAL.Repositories
             var tickets = new List<Ticket>();
             while (reader.Read())
             {
-                tickets.Add(MapearTicketDoReader(reader));
+                var ticket = MapearTicketDoReader(reader);
+                if (ticket != null)
+                {
+                    tickets.Add(ticket);
+                }
             }
 
             return tickets;
@@ -178,7 +182,11 @@ namespace Ticket2Help.DAL.Repositories
             var tickets = new List<Ticket>();
             while (reader.Read())
             {
-                tickets.Add(MapearTicketDoReader(reader));
+                var ticket = MapearTicketDoReader(reader);
+                if (ticket != null)
+                {
+                    tickets.Add(ticket);
+                }
             }
 
             return tickets;
@@ -211,7 +219,11 @@ namespace Ticket2Help.DAL.Repositories
             var tickets = new List<Ticket>();
             while (reader.Read())
             {
-                tickets.Add(MapearTicketDoReader(reader));
+                var ticket = MapearTicketDoReader(reader);
+                if (ticket != null)
+                {
+                    tickets.Add(ticket);
+                }
             }
 
             return tickets;
@@ -274,42 +286,53 @@ namespace Ticket2Help.DAL.Repositories
             command.ExecuteNonQuery();
         }
 
-        private Ticket MapearTicketDoReader(SqlDataReader reader)
+        private Ticket? MapearTicketDoReader(SqlDataReader reader)
         {
-            var tipoTicket = reader.GetString("TipoTicket");
-
-            Ticket ticket = tipoTicket switch
+            try
             {
-                "Hardware" => new HardwareTicket
-                {
-                    Equipamento = reader.IsDBNull("Equipamento") ? null : reader.GetString("Equipamento"),
-                    Avaria = reader.IsDBNull("Avaria") ? null : reader.GetString("Avaria"),
-                    DescricaoReparacao = reader.IsDBNull("DescricaoReparacao") ? null : reader.GetString("DescricaoReparacao"),
-                    Pecas = reader.IsDBNull("Pecas") ? null : reader.GetString("Pecas")
-                },
-                "Software" => new SoftwareTicket
-                {
-                    Software = reader.IsDBNull("Software") ? null : reader.GetString("Software"),
-                    DescricaoNecessidade = reader.IsDBNull("DescricaoNecessidade") ? null : reader.GetString("DescricaoNecessidade"),
-                    DescricaoIntervencao = reader.IsDBNull("DescricaoIntervencao") ? null : reader.GetString("DescricaoIntervencao")
-                },
-                _ => throw new ArgumentException($"Tipo de ticket não suportado: {tipoTicket}")
-            };
+                var tipoTicket = reader.GetString("TipoTicket");
+                var codigoColaborador = reader.GetString("CodigoColaborador");
 
-            // Mapear propriedades comuns
-            ticket.Id = reader.GetInt32("Id");
-            ticket.CodigoColaborador = reader.GetString("CodigoColaborador");
-            ticket.DataHoraCriacao = reader.GetDateTime("DataHoraCriacao");
-            ticket.Estado = Enum.Parse<EstadoTicket>(reader.GetString("Estado"));
-            ticket.DataHoraAtendimento = reader.IsDBNull("DataHoraAtendimento")
-                ? null : reader.GetDateTime("DataHoraAtendimento");
+                Ticket ticket = tipoTicket switch
+                {
+                    "Hardware" => new HardwareTicket
+                    {
+                        CodigoColaborador = codigoColaborador,
+                        Equipamento = reader.IsDBNull("Equipamento") ? null : reader.GetString("Equipamento"),
+                        Avaria = reader.IsDBNull("Avaria") ? string.Empty : reader.GetString("Avaria"),
+                        DescricaoReparacao = reader.IsDBNull("DescricaoReparacao") ? null : reader.GetString("DescricaoReparacao"),
+                        Pecas = reader.IsDBNull("Pecas") ? null : reader.GetString("Pecas")
+                    },
+                    "Software" => new SoftwareTicket
+                    {
+                        CodigoColaborador = codigoColaborador,
+                        Software = reader.IsDBNull("Software") ? null : reader.GetString("Software"),
+                        DescricaoNecessidade = reader.IsDBNull("DescricaoNecessidade") ? string.Empty : reader.GetString("DescricaoNecessidade"),
+                        DescricaoIntervencao = reader.IsDBNull("DescricaoIntervencao") ? null : reader.GetString("DescricaoIntervencao")
+                    },
+                    _ => throw new ArgumentException($"Tipo de ticket não suportado: {tipoTicket}")
+                };
 
-            if (!reader.IsDBNull("EstadoAtendimento"))
-            {
-                ticket.EstadoAtendimento = Enum.Parse<EstadoAtendimento>(reader.GetString("EstadoAtendimento"));
+                // Mapear propriedades comuns
+                ticket.Id = reader.GetInt32("Id");
+                ticket.DataHoraCriacao = reader.GetDateTime("DataHoraCriacao");
+                ticket.Estado = Enum.Parse<EstadoTicket>(reader.GetString("Estado"));
+                ticket.DataHoraAtendimento = reader.IsDBNull("DataHoraAtendimento")
+                    ? null : reader.GetDateTime("DataHoraAtendimento");
+
+                if (!reader.IsDBNull("EstadoAtendimento"))
+                {
+                    ticket.EstadoAtendimento = Enum.Parse<EstadoAtendimento>(reader.GetString("EstadoAtendimento"));
+                }
+
+                return ticket;
             }
-
-            return ticket;
+            catch (Exception ex)
+            {
+                // Log do erro para depuração
+                System.Diagnostics.Debug.WriteLine($"Erro ao mapear ticket: {ex.Message}");
+                return null;
+            }
         }
     }
 }

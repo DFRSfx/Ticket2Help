@@ -15,8 +15,13 @@ namespace Ticket2Help.UI.Views
         private readonly Utilizador _utilizador;
         private readonly TipoTicket _tipoTicket;
 
-        public CriarTicketWindow(Utilizador utilizador, TipoTicket tipoTicket)
+        public CriarTicketWindow(Utilizador? utilizador, TipoTicket tipoTicket)
         {
+            if (utilizador == null)
+            {
+                throw new ArgumentNullException(nameof(utilizador), "Utilizador não pode ser nulo.");
+            }
+
             InitializeComponent();
             _ticketController = new TicketController();
             _utilizador = utilizador;

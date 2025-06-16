@@ -19,17 +19,17 @@ namespace Ticket2Help.Models
         /// <summary>
         /// Nome do software que necessita de suporte.
         /// </summary>
-        public string Software { get; set; }
+        public string? Software { get; set; }
 
         /// <summary>
         /// Descrição detalhada da necessidade ou problema.
         /// </summary>
-        public string DescricaoNecessidade { get; set; }
+        public required string DescricaoNecessidade { get; set; }
 
         /// <summary>
         /// Descrição da intervenção efectuada pelo técnico.
         /// </summary>
-        public string DescricaoIntervencao { get; set; }
+        public string? DescricaoIntervencao { get; set; }
 
         /// <summary>
         /// Obtém a descrição completa formatada do ticket de software.

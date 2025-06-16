@@ -26,7 +26,7 @@ namespace Ticket2Help.Models
         /// <summary>
         /// Código do colaborador que submeteu o ticket.
         /// </summary>
-        public string CodigoColaborador { get; set; }
+        public required string CodigoColaborador { get; set; }
 
         /// <summary>
         /// Data e hora de criação do ticket.

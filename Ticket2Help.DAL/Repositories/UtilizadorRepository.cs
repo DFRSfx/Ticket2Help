@@ -30,12 +30,12 @@ namespace Ticket2Help.DAL.Repositories
         /// <param name="codigo">Código do utilizador.</param>
         /// <param name="password">Password do utilizador.</param>
         /// <returns>Utilizador autenticado ou null se credenciais inválidas.</returns>
-        public Utilizador AutenticarUtilizador(string codigo, string password)
+        public Utilizador? AutenticarUtilizador(string codigo, string password)
         {
             if (string.IsNullOrWhiteSpace(codigo) || string.IsNullOrWhiteSpace(password))
                 return null;
 
-            SqlConnection connection = null;
+            SqlConnection? connection = null;
             try
             {
                 connection = _dbConnection.CreateConnection();
@@ -88,12 +88,12 @@ namespace Ticket2Help.DAL.Repositories
         /// </summary>
         /// <param name="codigo">Código do utilizador.</param>
         /// <returns>Utilizador encontrado ou null.</returns>
-        public Utilizador ObterPorCodigo(string codigo)
+        public Utilizador? ObterPorCodigo(string codigo)
         {
             if (string.IsNullOrWhiteSpace(codigo))
                 return null;
 
-            SqlConnection connection = null;
+            SqlConnection? connection = null;
             try
             {
                 connection = _dbConnection.CreateConnection();
@@ -143,7 +143,7 @@ namespace Ticket2Help.DAL.Repositories
         /// <param name="utilizador">Utilizador a criar.</param>
         public void Criar(Utilizador utilizador)
         {
-            SqlConnection connection = null;
+            SqlConnection? connection = null;
             try
             {
                 connection = _dbConnection.CreateConnection();
@@ -183,7 +183,7 @@ namespace Ticket2Help.DAL.Repositories
         /// <param name="utilizador">Utilizador com dados actualizados.</param>
         public void Actualizar(Utilizador utilizador)
         {
-            SqlConnection connection = null;
+            SqlConnection? connection = null;
             try
             {
                 connection = _dbConnection.CreateConnection();
@@ -225,7 +225,7 @@ namespace Ticket2Help.DAL.Repositories
         public IEnumerable<Utilizador> ObterTodos()
         {
             var utilizadores = new List<Utilizador>();
-            SqlConnection connection = null;
+            SqlConnection? connection = null;
 
             try
             {
@@ -288,7 +288,7 @@ namespace Ticket2Help.DAL.Repositories
         /// <returns>True se a ligação for bem-sucedida.</returns>
         public bool TestarLigacao()
         {
-            SqlConnection connection = null;
+            SqlConnection? connection = null;
             try
             {
                 connection = _dbConnection.CreateConnection();
@@ -318,7 +318,7 @@ namespace Ticket2Help.DAL.Repositories
         /// <returns>True se o utilizador existir.</returns>
         public bool UtilizadorExiste(string codigo)
         {
-            SqlConnection connection = null;
+            SqlConnection? connection = null;
             try
             {
                 connection = _dbConnection.CreateConnection();

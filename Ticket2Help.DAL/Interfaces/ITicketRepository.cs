@@ -20,7 +20,7 @@ namespace Ticket2Help.DAL.Interfaces
         /// </summary>
         /// <param name="id">Identificador do ticket.</param>
         /// <returns>Ticket encontrado ou null se não existir.</returns>
-        Ticket ObterPorId(int id);
+        Ticket? ObterPorId(int id);
 
         /// <summary>
         /// Obtém todos os tickets do sistema.

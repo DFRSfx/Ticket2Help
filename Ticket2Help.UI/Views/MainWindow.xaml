@@ -339,7 +339,7 @@
                             <StackPanel Grid.Row="1" Orientation="Horizontal">
                                 <ComboBox x:Name="ComboEstrategiaAtendimento" Width="200" Height="40" 
                                           FontSize="13" Margin="0,0,10,0" SelectionChanged="ComboEstrategiaAtendimento_SelectionChanged">
-                                    <ComboBoxItem Content="FIFO (Primeiro a entrar, primeiro a sair)" Tag="FIFO" IsSelected="True"/>
+                                    <ComboBoxItem Content="FIFO (Primeiro a entrar, primeiro a sair)" Tag="FIFO"/>
                                     <ComboBoxItem Content="Prioridade Hardware" Tag="PrioridadeHardware"/>
                                 </ComboBox>
                                 <Button x:Name="BtnActualizarAtendimento" Content="🔄 Actualizar Lista" 

@@ -16,7 +16,7 @@ namespace Ticket2Help.UI.Views
         /// <summary>
         /// Utilizador autenticado com sucesso
         /// </summary>
-        public Utilizador UtilizadorAutenticado { get; private set; }
+        public Utilizador? UtilizadorAutenticado { get; private set; }
 
         public LoginWindow()
         {
@@ -74,24 +74,29 @@ namespace Ticket2Help.UI.Views
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine("=== TESTANDO LIGAÇÃO À BD ===");
                 LblStatus.Text = "A testar ligação à base de dados...";
 
                 bool ligacaoOK = await Task.Run(() => _loginController.TestarLigacaoBD());
+                System.Diagnostics.Debug.WriteLine($"Resultado do teste de ligação: {ligacaoOK}");
 
                 if (ligacaoOK)
                 {
                     LblStatus.Text = "Sistema pronto";
+                    System.Diagnostics.Debug.WriteLine("✅ Sistema pronto para login");
                 }
                 else
                 {
                     LblStatus.Text = "Aviso: Problemas de ligação à BD";
                     MostrarErro("Aviso: Não foi possível conectar à base de dados. Verifique se o SQL Server está a correr.");
+                    System.Diagnostics.Debug.WriteLine("⚠️ Problemas de ligação à BD");
                 }
             }
             catch (Exception ex)
             {
                 LblStatus.Text = "Erro de ligação";
                 MostrarErro($"Erro ao testar ligação: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"❌ Erro ao testar ligação: {ex}");
             }
         }
 
@@ -267,17 +272,8 @@ namespace Ticket2Help.UI.Views
         /// </summary>
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            var resultado = MessageBox.Show(
-                "Tem a certeza que deseja sair da aplicação?",
-                "Confirmar Saída",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question);
-
-            if (resultado == MessageBoxResult.Yes)
-            {
-                DialogResult = false;
-                Close();
-            }
+            DialogResult = false;
+            Close();   
         }
 
         /// <summary>

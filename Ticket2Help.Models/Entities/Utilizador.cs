@@ -18,17 +18,17 @@ namespace Ticket2Help.Models
         /// <summary>
         /// Código único do colaborador.
         /// </summary>
-        public string Codigo { get; set; }
+        public required string Codigo { get; set; }
 
         /// <summary>
         /// Nome completo do utilizador.
         /// </summary>
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
 
         /// <summary>
         /// Endereço de email do utilizador.
         /// </summary>
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         /// <summary>
         /// Indica se o utilizador é técnico de helpdesk.

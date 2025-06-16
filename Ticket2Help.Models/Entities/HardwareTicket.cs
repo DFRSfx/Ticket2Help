@@ -19,7 +19,7 @@ namespace Ticket2Help.Models
         /// <summary>
         /// Nome ou tipo do equipamento com problema.
         /// </summary>
-        public string Equipamento { get; set; }
+        public string? Equipamento { get; set; }
 
         /// <summary>
         /// Descrição detalhada da avaria ou problema.
@@ -29,12 +29,12 @@ namespace Ticket2Help.Models
         /// <summary>
         /// Descrição da reparação efectuada pelo técnico.
         /// </summary>
-        public string DescricaoReparacao { get; set; }
+        public string? DescricaoReparacao { get; set; }
 
         /// <summary>
         /// Lista de peças utilizadas na reparação.
         /// </summary>
-        public string Pecas { get; set; }
+        public string? Pecas { get; set; }
 
         /// <summary>
         /// Obtém a descrição completa formatada do ticket de hardware.
