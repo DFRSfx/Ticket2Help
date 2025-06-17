@@ -140,39 +140,67 @@ IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_ObterEstati
     DROP PROCEDURE sp_ObterEstatisticasDashboard
 GO
 
-CREATE PROCEDURE sp_ObterEstatisticasDashboard
-    @DataInicio DATETIME2,
-    @DataFim DATETIME2
+CREATE OR ALTER PROCEDURE sp_ObterEstatisticasDashboard
+    @DataInicio DATETIME,
+    @DataFim DATETIME
 AS
 BEGIN
     SET NOCOUNT ON;
     
-    -- Estatísticas gerais
-    DECLARE @TotalTickets INT = (SELECT COUNT(*) FROM Tickets WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim);
-    DECLARE @TicketsAtendidos INT = (SELECT COUNT(*) FROM Tickets WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim AND Estado = 'atendido');
-    DECLARE @TicketsResolvidos INT = (SELECT COUNT(*) FROM Tickets WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim AND EstadoAtendimento = 'resolvido');
-    DECLARE @TicketsNaoResolvidos INT = (SELECT COUNT(*) FROM Tickets WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim AND EstadoAtendimento = 'naoResolvido');
+    DECLARE @TotalTickets INT
+    DECLARE @TicketsAtendidos INT
+    DECLARE @TicketsResolvidos INT
+    DECLARE @TicketsNaoResolvidos INT
     
-    -- Primeiro resultado: percentagens
-    SELECT 
-        CASE WHEN @TotalTickets > 0 THEN CAST(@TicketsAtendidos AS FLOAT) / @TotalTickets * 100 ELSE 0 END AS PercentagemAtendidos,
-        CASE WHEN @TicketsAtendidos > 0 THEN CAST(@TicketsResolvidos AS FLOAT) / @TicketsAtendidos * 100 ELSE 0 END AS PercentagemResolvidos,
-        CASE WHEN @TicketsAtendidos > 0 THEN CAST(@TicketsNaoResolvidos AS FLOAT) / @TicketsAtendidos * 100 ELSE 0 END AS PercentagemNaoResolvidos;
+    -- Obter totais
+    SELECT @TotalTickets = COUNT(*) 
+    FROM Tickets 
+    WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim
     
-    -- Segundo resultado: médias por tipo
-    SELECT 
-        TipoTicket,
-        ISNULL(AVG(CAST(DATEDIFF(HOUR, DataHoraCriacao, DataHoraAtendimento) AS FLOAT)), 0) AS MediaTempoAtendimentoHoras
+    SELECT @TicketsAtendidos = COUNT(*) 
     FROM Tickets 
     WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim 
-      AND DataHoraAtendimento IS NOT NULL
-    GROUP BY TipoTicket;
+    AND Estado = 'atendido'
     
-    -- Terceiro resultado: contadores
+    SELECT @TicketsResolvidos = COUNT(*) 
+    FROM Tickets 
+    WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim 
+    AND EstadoAtendimento = 'resolvido'
+    
+    SELECT @TicketsNaoResolvidos = COUNT(*) 
+    FROM Tickets 
+    WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim 
+    AND EstadoAtendimento = 'naoResolvido'
+    
+    -- Primeira consulta: estatísticas gerais
+    SELECT 
+        CASE 
+            WHEN @TotalTickets = 0 THEN 0.0
+            ELSE CAST(@TicketsAtendidos AS FLOAT) / @TotalTickets * 100
+        END AS PercentagemAtendidos,
+        CASE 
+            WHEN @TicketsAtendidos = 0 THEN 0.0
+            ELSE CAST(@TicketsResolvidos AS FLOAT) / @TicketsAtendidos * 100
+        END AS PercentagemResolvidos,
+        CASE 
+            WHEN @TicketsAtendidos = 0 THEN 0.0
+            ELSE CAST(@TicketsNaoResolvidos AS FLOAT) / @TicketsAtendidos * 100
+        END AS PercentagemNaoResolvidos
+    
+    -- Segunda consulta: médias por tipo
+    SELECT 
+        TipoTicket,
+        AVG(CAST(DATEDIFF(HOUR, DataHoraCriacao, ISNULL(DataHoraAtendimento, GETDATE())) AS FLOAT)) AS MediaTempoAtendimentoHoras
+    FROM Tickets 
+    WHERE DataHoraCriacao BETWEEN @DataInicio AND @DataFim
+    AND Estado = 'atendido'
+    GROUP BY TipoTicket
+    
+    -- Terceira consulta: contadores
     SELECT 
         (SELECT COUNT(*) FROM Tickets WHERE CAST(DataHoraCriacao AS DATE) = CAST(GETDATE() AS DATE)) AS TotalTicketsHoje,
         (SELECT COUNT(*) FROM Tickets WHERE Estado = 'porAtender') AS TicketsPendentes,
-        (SELECT COUNT(*) FROM Tickets WHERE Estado = 'emAtendimento') AS TicketsEmAtendimento;
+        (SELECT COUNT(*) FROM Tickets WHERE Estado = 'emAtendimento') AS TicketsEmAtendimento
 END
 GO
 

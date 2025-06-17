@@ -202,42 +202,101 @@ namespace Ticket2Help.UI
 
                 var dashboard = _ticketController.ObterDadosDashboard(dataInicio, dataFim);
 
-                // Actualizar métricas
+                // Actualizar métricas básicas
                 LblTotalHoje.Text = dashboard.TotalTicketsHoje.ToString();
                 LblPendentes.Text = dashboard.TicketsPendentes.ToString();
                 LblEmAtendimento.Text = dashboard.TicketsEmAtendimento.ToString();
-                LblTicketsAtendidos.Text = $"{dashboard.PercentagemTicketsAtendidos:F1}%";
-                LblTicketsResolvidos.Text = $"{dashboard.PercentagemTicketsResolvidos:F1}%";
-                LblTicketsNaoResolvidos.Text = $"{dashboard.PercentagemTicketsNaoResolvidos:F1}%";
-                LblMediaHardware.Text = $"{dashboard.MediaTempoAtendimentoHardware:F1}h";
-                LblMediaSoftware.Text = $"{dashboard.MediaTempoAtendimentoSoftware:F1}h";
 
-                // Actualizar barras de progresso
+                // Formatação correta das percentagens
+                LblTicketsAtendidos.Text = FormatarPercentagem(dashboard.PercentagemTicketsAtendidos);
+                LblTicketsResolvidos.Text = FormatarPercentagem(dashboard.PercentagemTicketsResolvidos);
+                LblTicketsNaoResolvidos.Text = FormatarPercentagem(dashboard.PercentagemTicketsNaoResolvidos);
+
+                // Formatação das médias de tempo
+                LblMediaHardware.Text = FormatarTempo(dashboard.MediaTempoAtendimentoHardware);
+                LblMediaSoftware.Text = FormatarTempo(dashboard.MediaTempoAtendimentoSoftware);
+
+                // Actualizar barras de progresso com largura fixa
                 ActualizarBarraProgresso(ProgressResolucaoFill, LblProgressResolucao,
-                    dashboard.PercentagemTicketsResolvidos, "resolvidos");
+                    dashboard.PercentagemTicketsResolvidos, "resolvidos", 300);
                 ActualizarBarraProgresso(ProgressAtendimentoFill, LblProgressAtendimento,
-                    dashboard.PercentagemTicketsAtendidos, "atendidos");
+                    dashboard.PercentagemTicketsAtendidos, "atendidos", 300);
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Erro ao carregar dashboard: {ex}");
+                // Definir valores padrão em caso de erro
+                DefinirValoresPadraoDashboard();
             }
         }
 
+        /// <summary>
+        /// Definir valores padrão em caso de erro
+        /// </summary>
+        private void DefinirValoresPadraoDashboard()
+        {
+            LblTotalHoje.Text = "0";
+            LblPendentes.Text = "0";
+            LblEmAtendimento.Text = "0";
+            LblTicketsAtendidos.Text = "0,0%";
+            LblTicketsResolvidos.Text = "0,0%";
+            LblTicketsNaoResolvidos.Text = "0,0%";
+            LblMediaHardware.Text = "0,0h";
+            LblMediaSoftware.Text = "0,0h";
+
+            ProgressResolucaoFill.Width = 0;
+            ProgressAtendimentoFill.Width = 0;
+            LblProgressResolucao.Text = "0% resolvidos";
+            LblProgressAtendimento.Text = "0% atendidos";
+        }
+
+        /// <summary>
+        /// Formatar percentagem com uma casa decimal
+        /// </summary>
+        private string FormatarPercentagem(double valor)
+        {
+            if (double.IsNaN(valor) || double.IsInfinity(valor))
+                return "0,0%";
+
+            return $"{valor:F1}%";
+        }
+
+        /// <summary>
+        /// Formatar tempo em horas com uma casa decimal
+        /// </summary>
+        private string FormatarTempo(double horas)
+        {
+            if (double.IsNaN(horas) || double.IsInfinity(horas))
+                return "0,0h";
+
+            if (horas < 1)
+                return $"{(horas * 60):F0}m";
+            else if (horas >= 24)
+                return $"{(horas / 24):F1}d";
+            else
+                return $"{horas:F1}h";
+        }
+
+        /// <summary>
+        /// Actualizar barra de progresso com largura fixa
+        /// </summary>
         private void ActualizarBarraProgresso(Border barra, TextBlock label,
-            double percentagem, string sufixo)
+            double percentagem, string sufixo, double larguraMaxima)
         {
             try
             {
-                var larguraMaxima = barra.Parent is FrameworkElement parent ? parent.ActualWidth : 300;
-                var larguraActual = (percentagem / 100.0) * larguraMaxima;
+                // Garantir que a percentagem está entre 0 e 100
+                percentagem = Math.Max(0, Math.Min(100, percentagem));
 
+                var larguraActual = (percentagem / 100.0) * larguraMaxima;
                 barra.Width = larguraActual;
                 label.Text = $"{percentagem:F1}% {sufixo}";
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Erro ao actualizar barra de progresso: {ex}");
+                barra.Width = 0;
+                label.Text = $"0% {sufixo}";
             }
         }
 
