@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['software_0',['Software',['../class_ticket2_help_1_1_models_1_1_software_ticket.html#a04bded3b5560a10bffd7fd0d21a5de21',1,'Ticket2Help::Models::SoftwareTicket']]]
+  ['utilizadorautenticado_0',['UtilizadorAutenticado',['../class_ticket2_help_1_1_u_i_1_1_views_1_1_login_window.html#a7181e00cba9d7e39d77df999c2acf81b',1,'Ticket2Help::UI::Views::LoginWindow']]]
 ];

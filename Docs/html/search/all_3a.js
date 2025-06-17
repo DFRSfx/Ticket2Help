@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['🚀_20funcionalidades_20implementadas_0',['🚀 &lt;b&gt;Funcionalidades Implementadas&lt;/b&gt;',['../index.html#autotoc_md12',1,'']]],
-  ['🚀_20roadmap_20e_20extensões_20futuras_1',['🚀 &lt;b&gt;Roadmap e Extensões Futuras&lt;/b&gt;',['../index.html#autotoc_md67',1,'']]]
+  ['🛠️_20ferramentas_20de_20diagnóstico_0',['🛠️ &lt;b&gt;Ferramentas de Diagnóstico&lt;/b&gt;',['../index.html#autotoc_md58',1,'']]],
+  ['🛠️_20instalação_20passo_20a_20passo_1',['🛠️ &lt;b&gt;Instalação Passo-a-Passo&lt;/b&gt;',['../index.html#autotoc_md27',1,'']]],
+  ['🛠️_20tecnologias_20e_20ferramentas_2',['🛠️ &lt;b&gt;Tecnologias e Ferramentas&lt;/b&gt;',['../index.html#autotoc_md74',1,'']]]
 ];
