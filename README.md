@@ -5,6 +5,7 @@
 [![WPF](https://img.shields.io/badge/WPF-Windows%20Presentation%20Foundation-lightblue)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-Database-red)](https://www.microsoft.com/en-us/sql-server)
 [![C#](https://img.shields.io/badge/C%23-Programming%20Language-green)](https://docs.microsoft.com/en-us/dotnet/csharp/)
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)]()
 
 ---
 
@@ -17,375 +18,580 @@
 - [⚙️ Instalação](#️-instalação)
 - [🎮 Como Usar](#-como-usar)
 - [🧪 Testes](#-testes)
-- [📊 Screenshots](#-screenshots)
+- [📊 Base de Dados](#-base-de-dados)
+- [🔧 Troubleshooting](#-troubleshooting)
 - [👥 Equipa](#-equipa)
-- [📜 Licença](#-licença)
 
 ---
 
 ## 📖 **Sobre o Projeto**
 
-O **Ticket2Help** é um sistema completo de gestão de tickets de helpdesk desenvolvido em C# com WPF para a unidade curricular de **Programação Avançada** do curso de **Licenciatura em Engenharia Informática** no **ISLA Gaia**.
+O **Ticket2Help** é um sistema completo de gestão de tickets de helpdesk desenvolvido em C# com WPF, implementando uma arquitetura robusta em 3 camadas com múltiplos padrões de design para a unidade curricular de **Programação Avançada** do **ISLA Gaia**.
 
-### 🎯 **Objetivos**
-- Gerir tickets de suporte técnico (Hardware e Software)
-- Implementar arquitetura em 3 camadas (UI, BLL, DAL)
-- Aplicar padrões de design de software
-- Seguir metodologias de documentação e testes
-- Utilizar controlo de versões com GitHub
+### 🎯 **Objetivos Atingidos**
+- ✅ Sistema completo de gestão de tickets (Hardware e Software)
+- ✅ Arquitetura em 3 camadas bem estruturada (UI, BLL, DAL)
+- ✅ Implementação de 5+ padrões de design
+- ✅ Interface moderna e responsiva em WPF
+- ✅ Base de dados SQL Server otimizada
+- ✅ Sistema de autenticação e autorização
+- ✅ Dashboard com estatísticas em tempo real
+- ✅ Relatórios e exportação de dados
+- ✅ Testes unitários abrangentes
 
-### 🏢 **Contexto**
-A empresa fictícia **Ticket2Help** necessita de uma plataforma interna para gerir solicitações de serviços de TI, permitindo aos colaboradores criar tickets e aos técnicos atendê-los de forma eficiente.
+### 🏢 **Contexto Empresarial**
+Sistema interno para gestão eficiente de solicitações de TI, permitindo fluxo completo desde criação até resolução de tickets, com diferentes níveis de acesso e funcionalidades avançadas de relatórios.
 
 ---
 
 ## 🏗️ **Arquitetura**
 
-O sistema segue uma **arquitetura em 3 camadas** com padrão **MVC**:
+### 📐 **Arquitetura em 3 Camadas + MVC**
 
 ```
-📱 UI Layer (Presentation)
-├── Views (WPF Windows)
-├── Controllers (MVC)
-└── ViewModels
+🎨 Presentation Layer (Ticket2Help.UI)
+├── 🖼️ Views/ (XAML Windows)
+│   ├── LoginWindow - Autenticação segura
+│   ├── MainWindow - Interface principal
+│   ├── CriarTicketWindow - Criação de tickets
+│   ├── AtenderTicketWindow - Atendimento
+│   └── RelatoriosWindow - Relatórios avançados
+├── 🎮 Controllers/ (MVC Pattern)
+│   ├── LoginController - Gestão de autenticação
+│   └── TicketController - Lógica de apresentação
+├── 📊 ViewModels/ (MVVM Support)
+│   ├── TicketViewModel - Apresentação de tickets
+│   └── DashboardViewModel - Métricas do dashboard
+└── 🎨 Resources/ - Estilos e recursos visuais
 
-🧠 BLL Layer (Business Logic)
-├── Services
-├── Managers
-└── Design Patterns
+🧠 Business Logic Layer (Ticket2Help.BLL)
+├── 🔧 Services/
+│   ├── TicketService - Lógica principal de tickets
+│   └── UtilizadorService - Gestão de utilizadores
+├── 👔 Managers/
+│   └── GestorAtendimento - Estratégias de atendimento
+└── 🎯 Patterns/ - Implementação de Design Patterns
+    ├── Factory/ - Criação de tickets
+    ├── Strategy/ - Estratégias de atendimento
+    ├── Observer/ - Notificações de mudanças
+    └── Singleton/ - Configurações globais
 
-💾 DAL Layer (Data Access)
-├── Repositories
-├── Interfaces
-└── Database Connection
+💾 Data Access Layer (Ticket2Help.DAL)
+├── 🔌 Interfaces/ - Contratos de repositórios
+├── 🗃️ Repositories/ - Implementações ADO.NET
+│   ├── TicketRepository - CRUD de tickets
+│   ├── UtilizadorRepository - Gestão de utilizadores
+│   └── RelatorioRepository - Queries de relatórios
+└── 🔗 Connection/ - Gestão de ligações BD
 
-📦 Models Layer
-├── Entities
-├── Enums
-└── DTOs
+📦 Models Layer (Ticket2Help.Models)
+├── 🏗️ Entities/
+│   ├── Ticket (Abstract) - Classe base
+│   ├── HardwareTicket - Tickets de hardware
+│   ├── SoftwareTicket - Tickets de software
+│   └── Utilizador - Utilizadores do sistema
+└── 📋 Enums/ - Enumerações do domínio
 ```
 
 ---
 
-## 🚀 **Funcionalidades**
+## 🚀 **Funcionalidades Implementadas**
 
-### 👤 **Para Colaboradores**
-- ✅ Login seguro no sistema
-- ✅ Criar tickets de Hardware (equipamento, avaria)
-- ✅ Criar tickets de Software (aplicação, necessidade)
-- ✅ Visualizar histórico dos seus tickets
-- ✅ Acompanhar estado dos tickets
+### 👤 **Colaboradores (Utilizadores Base)**
+- ✅ **Autenticação segura** com validação em BD
+- ✅ **Criação de tickets Hardware** (equipamento + avaria)
+- ✅ **Criação de tickets Software** (aplicação + necessidade)
+- ✅ **Visualização histórico** dos próprios tickets
+- ✅ **Acompanhamento de estados** em tempo real
+- ✅ **Interface intuitiva** com design moderno
 
-### 🔧 **Para Técnicos de Helpdesk**
-- ✅ Todas as funcionalidades de colaborador
-- ✅ Ver lista de tickets pendentes
-- ✅ Atender tickets com diferentes estratégias
-- ✅ Registar reparações e intervenções
-- ✅ Dashboard com estatísticas em tempo real
-- ✅ Gerar relatórios detalhados
-- ✅ Exportar dados para CSV
+### 🔧 **Técnicos de Helpdesk (Privilégios Avançados)**
+- ✅ **Todas as funcionalidades** de colaborador
+- ✅ **Gestão de atendimento** com múltiplas estratégias:
+  - 🔄 FIFO (First In, First Out)
+  - ⚡ Prioridade Hardware
+- ✅ **Atendimento completo** com fluxo bi-modal:
+  - 🚀 Iniciar atendimento (marca como "emAtendimento")
+  - ✅ Finalizar atendimento (registo detalhado + resolução)
+- ✅ **Dashboard executivo** com métricas em tempo real
+- ✅ **Sistema de relatórios** avançado com filtros
+- ✅ **Exportação CSV** com estatísticas integradas
 
-### 📊 **Dashboard e Relatórios**
-- ✅ Percentagem de tickets atendidos
-- ✅ Taxa de resolução de problemas
-- ✅ Tempo médio de atendimento por tipo
-- ✅ Estatísticas visuais em tempo real
-- ✅ Relatórios filtrados por período
-- ✅ Exportação de dados
-
----
-
-## 💻 **Tecnologias**
-
-| Camada | Tecnologia | Versão |
-|--------|------------|--------|
-| **Frontend** | WPF (Windows Presentation Foundation) | .NET 8.0 |
-| **Backend** | C# | .NET 8.0 |
-| **Base de Dados** | SQL Server | 2019+ |
-| **ORM** | ADO.NET | Nativo |
-| **Testes** | MSTest | 3.0+ |
-| **Documentação** | Doxygen | 1.9+ |
-| **Controlo Versões** | Git + GitHub | - |
+### 📊 **Dashboard e Analytics**
+- 📈 **Métricas em tempo real**:
+  - Tickets criados hoje
+  - Tickets pendentes e em atendimento
+  - Percentagem de tickets atendidos
+  - Taxa de resolução vs. não resolução
+  - Tempo médio de atendimento (Hardware vs. Software)
+- 📊 **Indicadores visuais** com barras de progresso
+- 🔄 **Atualização automática** a cada 2 minutos
+- 📋 **Relatórios filtráveis** por período
+- 💾 **Exportação completa** com metadados
 
 ---
 
-## 🎯 **Padrões de Design**
+## 💻 **Stack Tecnológico**
 
-### 🏭 **Factory Pattern**
+| Camada | Tecnologia | Versão | Justificação |
+|--------|------------|--------|--------------|
+| **Frontend** | WPF + XAML | .NET 8.0 | Interface nativa Windows rica |
+| **Backend** | C# | .NET 8.0 | Performance e ecosistema robusto |
+| **Base de Dados** | SQL Server | 2019+ | Escalabilidade e confiabilidade empresarial |
+| **Data Access** | ADO.NET | Nativo | Controle total sobre queries e performance |
+| **Testes** | MSTest | 3.0+ | Framework oficial Microsoft |
+| **Arquitetura** | 3-Layer + MVC | Custom | Separação clara de responsabilidades |
+
+---
+
+## 🎯 **Padrões de Design Implementados**
+
+### 🏭 **Factory Pattern** - Criação de Tickets
 ```csharp
-ITicketFactory factory = new TicketFactory();
-Ticket ticket = factory.CriarTicket(TipoTicket.Hardware, dados);
+// Fábrica polimórfica para diferentes tipos de tickets
+var factory = new TicketFactory();
+var dadosHardware = new Dictionary<string, object> {
+    ["codigoColaborador"] = "COL001",
+    ["equipamento"] = "Dell OptiPlex 7090",
+    ["avaria"] = "Computador não liga após queda de energia"
+};
+Ticket ticket = factory.CriarTicket(TipoTicket.Hardware, dadosHardware);
 ```
 
-### 📈 **Strategy Pattern**
+### 📈 **Strategy Pattern** - Estratégias de Atendimento
 ```csharp
-GestorAtendimento gestor = new GestorAtendimento(new FIFOStrategy());
+// Sistema flexível de priorização de tickets
+var gestor = new GestorAtendimento(new FIFOStrategy());
+var ticketsOrdenados = gestor.ObterTicketsParaAtendimento(todosTickets);
+
+// Mudança dinâmica de estratégia
 gestor.DefinirEstrategia(new PrioridadeHardwareStrategy());
 ```
 
-### 👀 **Observer Pattern**
+### 👀 **Observer Pattern** - Notificações de Estado
 ```csharp
+// Sistema de notificações reativo
 ticketService.AdicionarObserver(new LogObserver());
 ticketService.AdicionarObserver(new UINotificationObserver());
+
+// Mudanças automáticas notificam todos os observadores
+ticketService.AlterarEstadoTicket(ticketId, EstadoTicket.emAtendimento);
 ```
 
-### 🔒 **Singleton Pattern**
+### 🔒 **Singleton Pattern** - Configurações e Conexões
 ```csharp
+// Instância única para configurações globais
 var config = ConfiguracaoSistema.Instance;
-var connection = DatabaseConnection.Instance;
+var dbConnection = DatabaseConnection.Instance;
 ```
 
-### 🎛️ **MVC Pattern**
-- **Model**: Entidades e lógica de negócio
-- **View**: Interface WPF
-- **Controller**: Mediação entre View e Model
+### 🎛️ **MVC Pattern** - Separação de Responsabilidades
+- **Models**: Entidades de domínio com lógica de negócio
+- **Views**: Interface WPF com binding e estilos modernos
+- **Controllers**: Mediação e fluxo de dados
 
 ---
 
-## ⚙️ **Instalação**
+## ⚙️ **Instalação e Configuração**
 
 ### 📋 **Pré-requisitos**
-- Windows 10/11
-- .NET 8.0 SDK
-- SQL Server 2019+ ou SQL Server Express
-- Visual Studio 2022 (recomendado)
+- ✅ Windows 10/11 (64-bit)
+- ✅ .NET 8.0 SDK ou Runtime
+- ✅ SQL Server 2019+ / SQL Server Express / LocalDB
+- ✅ Visual Studio 2022 ou VS Code (opcional)
 
-### 🛠️ **Passos de Instalação**
+### 🛠️ **Instalação Passo-a-Passo**
 
-1. **Clonar o repositório**
+#### 1️⃣ **Clonar Repositório**
 ```bash
 git clone https://github.com/[usuario]/Ticket2Help.git
 cd Ticket2Help
 ```
 
-2. **Configurar Base de Dados**
+#### 2️⃣ **Configurar Base de Dados**
 ```sql
--- Executar script SQL no SQL Server Management Studio
--- Localização: /Database/CreateDatabase.sql
+-- 1. Abrir SQL Server Management Studio (SSMS)
+-- 2. Executar o script completo: paste.txt
+-- 3. Verificar criação da BD "Ticket2Help"
+-- 4. Confirmar dados de teste inseridos
 ```
 
-3. **Configurar Connection String**
-```csharp
-// Editar em DatabaseConnection.cs se necessário
-ConnectionString = "Data Source=SERVIDOR\\SQLEXPRESS;Initial Catalog=Ticket2Help;Integrated Security=True;Trust Server Certificate=True";
-```
+#### 3️⃣ **Verificar Connection String**
+O sistema tenta automaticamente várias connection strings:
+- `SOARES\SQLEXPRESS` (padrão do projeto)
+- `.\SQLEXPRESS`
+- `(localdb)\MSSQLLocalDB`
+- `localhost\SQLEXPRESS`
 
-4. **Restaurar Dependências**
+#### 4️⃣ **Compilar e Executar**
 ```bash
+# Restaurar dependências
 dotnet restore
-```
 
-5. **Compilar Solução**
-```bash
+# Compilar solução
 dotnet build
-```
 
-6. **Executar Aplicação**
-```bash
+# Executar aplicação
 dotnet run --project Ticket2Help.UI
 ```
 
 ---
 
-## 🎮 **Como Usar**
+## 🎮 **Guia de Utilização**
 
-### 🔐 **Login**
-Utilize uma das contas de demonstração:
+### 🔐 **Credenciais de Demonstração**
 
-| Tipo | Código | Password | Permissões |
-|------|--------|----------|------------|
-| **Administrador** | ADMIN | admin | Técnico Helpdesk |
-| **Técnico** | TEC001 | 123 | Técnico Helpdesk |
-| **Colaborador** | COL001 | 123 | Utilizador Normal |
+| Utilizador | Código | Password | Tipo | Permissões |
+|------------|--------|----------|------|------------|
+| **Administrador** | `ADMIN` | `admin` | Técnico | Dashboard + Atendimento + Relatórios |
+| **Técnico** | `TEC001` | `123` | Técnico | Dashboard + Atendimento + Relatórios |
+| **Colaborador** | `COL001` | `123` | Standard | Criar e ver próprios tickets |
 
-### 📝 **Criar Ticket**
-1. Na tab "📋 Os Meus Tickets"
-2. Clicar em "🔧 Criar Ticket Hardware" ou "💻 Criar Ticket Software"
-3. Preencher informações obrigatórias
-4. Confirmar criação
+### 📝 **Fluxo de Utilização**
 
-### 🛠️ **Atender Ticket** (Apenas Técnicos)
-1. Na tab "🛠️ Atendimento"
-2. Seleccionar estratégia de atendimento
-3. Clicar "✅ Atender" ou duplo-clique no ticket
-4. Preencher detalhes da resolução
-5. Definir estado final
+#### **Para Colaboradores:**
+1. **Login** → Inserir código e password
+2. **Criar Ticket** → Escolher tipo (Hardware/Software)
+3. **Preencher Dados** → Equipamento/Software + Descrição
+4. **Acompanhar** → Ver estado na listagem
 
-### 📊 **Ver Estatísticas** (Apenas Técnicos)
-1. Na tab "📊 Dashboard"
-2. Visualizar métricas em tempo real
-3. Clicar "📈 Relatórios Detalhados" para análise avançada
+#### **Para Técnicos:**
+1. **Tab Atendimento** → Ver tickets pendentes
+2. **Selecionar Estratégia** → FIFO ou Prioridade Hardware
+3. **Iniciar Atendimento** → Duplo-clique ou botão "Atender"
+4. **Registar Resolução** → Descrição + Estado final
+5. **Dashboard** → Monitorizar métricas
+6. **Relatórios** → Análise detalhada + Export
+
+### 🔄 **Fluxo de Estados do Ticket**
+```
+📝 porAtender → 🔧 emAtendimento → ✅ atendido
+                                      ├── resolvido
+                                      └── naoResolvido
+```
 
 ---
 
-## 🧪 **Testes**
+## 🧪 **Sistema de Testes**
 
-### 🎯 **Executar Testes**
+### 🎯 **Executar Testes Unitários**
 ```bash
-# Todos os testes
+# Todos os testes (47 testes implementados)
 dotnet test
 
-# Com relatório de cobertura
-dotnet test --collect:"XPlat Code Coverage"
+# Com detalhes de cobertura
+dotnet test --collect:"XPlat Code Coverage" --logger trx
 
-# Testes específicos
-dotnet test --filter "TestCategory=UnitTest"
+# Testes específicos por categoria
+dotnet test --filter "TestCategory=Factory"
+dotnet test --filter "TestCategory=Strategy"
 ```
 
-### 📊 **Cobertura de Testes**
-- ✅ Classe `Ticket` e derivadas
-- ✅ Factory Pattern
-- ✅ Strategy Pattern
-- ✅ Gestão de estados
-- ✅ Validações de dados
+### 📊 **Cobertura de Testes Atual**
+- ✅ **Entities**: Classes `Ticket`, `HardwareTicket`, `SoftwareTicket`
+- ✅ **Factory Pattern**: Criação polimórfica de tickets
+- ✅ **Strategy Pattern**: Algoritmos de ordenação
+- ✅ **Validações**: Campos obrigatórios e regras de negócio
+- ✅ **Estados**: Transições e fluxos válidos
+- ✅ **Performance**: Testes de carga (1000+ tickets)
 
----
-
-## 📊 **Screenshots**
-
-### 🔐 **Tela de Login**
-![Login](docs/screenshots/login.png)
-
-### 🏠 **Dashboard Principal**
-![Dashboard](docs/screenshots/dashboard.png)
-
-### 📝 **Criação de Ticket**
-![Criar Ticket](docs/screenshots/criar-ticket.png)
-
-### 🛠️ **Atendimento**
-![Atender Ticket](docs/screenshots/atender-ticket.png)
-
-### 📊 **Relatórios**
-![Relatórios](docs/screenshots/relatorios.png)
-
----
-
-## 📁 **Estrutura do Projeto**
-
-```
-Ticket2Help/
-├── 📁 Ticket2Help.Models/          # Entidades e Enums
-│   ├── Entities/
-│   ├── Enums/
-│   └── DTOs/
-├── 📁 Ticket2Help.DAL/             # Data Access Layer
-│   ├── Interfaces/
-│   ├── Repositories/
-│   └── Connection/
-├── 📁 Ticket2Help.BLL/             # Business Logic Layer
-│   ├── Services/
-│   ├── Managers/
-│   └── Patterns/
-├── 📁 Ticket2Help.UI/              # User Interface
-│   ├── Views/
-│   ├── Controllers/
-│   ├── ViewModels/
-│   └── Resources/
-├── 📁 Ticket2Help.Tests/           # Testes Unitários
-├── 📁 Database/                    # Scripts SQL
-├── 📁 docs/                       # Documentação
-└── 📄 README.md
+### 🧪 **Exemplos de Testes Implementados**
+```csharp
+[TestMethod]
+public void HardwareTicket_GetTipoTicket_RetornaHardware()
+[TestMethod]
+public void TicketFactory_CriarTicketInvalido_DeveLancarExcecao()
+[TestMethod]
+public void Ticket_FluxoDeEstados_DeveSequenciarCorrectamente()
 ```
 
 ---
 
-## 🐛 **Resolução de Problemas**
+## 📊 **Estrutura da Base de Dados**
 
-### ❌ **Erro de Ligação à BD**
-```
-Erro: "Cannot open database 'Ticket2Help'"
-```
-**Solução**: Verificar se o SQL Server está a correr e executar script de criação da BD.
+### 🗃️ **Tabelas Principais**
 
-### ❌ **Erro de Compilação**
+#### **Utilizadores**
+```sql
+CREATE TABLE Utilizadores (
+    Codigo NVARCHAR(50) PRIMARY KEY,
+    Nome NVARCHAR(255) NOT NULL,
+    Email NVARCHAR(255),
+    PasswordHash NVARCHAR(500) NOT NULL,  -- Nota: Sistema usa password simples para demo
+    EhTecnicoHelpdesk BIT NOT NULL DEFAULT 0,
+    Activo BIT NOT NULL DEFAULT 1,
+    DataCriacao DATETIME2 NOT NULL DEFAULT GETDATE()
+)
 ```
-Erro: "Target framework not found"
-```
-**Solução**: Instalar .NET 8.0 SDK.
 
-### ❌ **Credenciais Inválidas**
+#### **Tickets** (Polimórfica)
+```sql
+CREATE TABLE Tickets (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    TipoTicket NVARCHAR(50) NOT NULL, -- 'Hardware' ou 'Software'
+    CodigoColaborador NVARCHAR(50) NOT NULL,
+    DataHoraCriacao DATETIME2 NOT NULL DEFAULT GETDATE(),
+    Estado NVARCHAR(50) NOT NULL DEFAULT 'porAtender',
+    DataHoraAtendimento DATETIME2 NULL,
+    EstadoAtendimento NVARCHAR(50) NULL,
+    UsuarioResponsavel NVARCHAR(50) NULL,
+    
+    -- Campos específicos Hardware
+    Equipamento NVARCHAR(500) NULL,
+    Avaria NTEXT NULL,
+    DescricaoReparacao NTEXT NULL,
+    Pecas NTEXT NULL,
+    
+    -- Campos específicos Software
+    Software NVARCHAR(500) NULL,
+    DescricaoNecessidade NTEXT NULL,
+    DescricaoIntervencao NTEXT NULL,
+    
+    FOREIGN KEY (CodigoColaborador) REFERENCES Utilizadores(Codigo),
+    FOREIGN KEY (UsuarioResponsavel) REFERENCES Utilizadores(Codigo)
+)
 ```
-Erro: "Login failed"
-```
-**Solução**: Utilizar utilizadores de demonstração listados na secção "Como Usar".
+
+### 🔧 **Stored Procedures Otimizadas**
+- `sp_CriarTicketHardware` - Criação optimizada de tickets hardware
+- `sp_CriarTicketSoftware` - Criação optimizada de tickets software  
+- `sp_ActualizarEstadoTicket` - Atualização com transações seguras
+- `sp_ObterEstatisticasDashboard` - Queries complexas para métricas
+
+### 📊 **Views para Relatórios**
+- `vw_TicketsCompletos` - Junção otimizada com dados de utilizadores
+- Campos calculados automáticos (tempo de atendimento, descrições completas)
 
 ---
 
-## 👥 **Equipa**
+## 🔧 **Troubleshooting e Soluções**
 
-| Nome | Função | GitHub |
-|------|--------|--------|
-| [Nome 1] | Desenvolvedor Full-Stack | [@username1](https://github.com/username1) |
-| [Nome 2] | Desenvolvedor Backend | [@username2](https://github.com/username2) |
+### ❌ **Problemas Comuns e Soluções**
 
-### 📊 **Distribuição de Tarefas**
-- **[Nome 1]**: UI/UX, Controllers, Testes
-- **[Nome 2]**: Base de Dados, Repositories, Padrões
+#### **🔌 Erro de Ligação à Base de Dados**
+```
+Erro: "Cannot open database 'Ticket2Help'" 
+```
+**Diagnóstico Automático**: O sistema testa múltiplas connection strings
+**Soluções**:
+1. Verificar se SQL Server está em execução
+2. Executar script `paste.txt` completo
+3. Verificar instância SQL Server (`SQLEXPRESS`, `LocalDB`)
+
+#### **🔑 Credenciais Inválidas**
+```
+Erro: "Código ou palavra-passe incorretos"
+```
+**Soluções**:
+1. Usar credenciais de demo (ver tabela acima)
+2. Códigos são case-sensitive: usar maiúsculas
+3. Verificar se dados de teste foram inseridos na BD
+
+#### **⚡ Performance Lenta**
+**Otimizações implementadas**:
+- Connection pooling automático
+- Stored procedures otimizadas  
+- Indexes automáticos na BD
+- Timer de atualização configurável (2min padrão)
+
+#### **🖼️ Problemas de Interface**
+- **Resolução mínima**: 1000x700
+- **Temas**: Sistema adapta automaticamente ao tema Windows
+- **DPI**: Suporte automático para High-DPI displays
+
+### 🛠️ **Ferramentas de Diagnóstico**
+- **Debug Console**: Logs detalhados em tempo real
+- **Connection Tester**: Teste automático de várias connection strings
+- **Health Check**: Verificação de integridade na inicialização
 
 ---
 
-## 📈 **Roadmap Futuro**
+## 📈 **Funcionalidades Avançadas**
 
-### 🚀 **Versão 2.0**
-- [ ] Notificações por email
-- [ ] API REST para integração
-- [ ] Aplicação móvel
-- [ ] Chat em tempo real
-- [ ] Sistema de aprovações
-- [ ] Integração com Active Directory
+### 🔄 **Sistema de Atualização Automática**
+- Timer configurável (padrão: 2 minutos)
+- Atualização inteligente (apenas dados alterados)
+- Indicadores visuais de última atualização
+
+### 💾 **Sistema de Exportação**
+- **CSV com encoding UTF-8** (suporte caracteres especiais)
+- **Metadados incluídos** (estatísticas, data geração)
+- **Abertura automática** da pasta de destino
+
+### 🎨 **Interface Moderna**
+- **Design System** consistente com cores e tipografia
+- **Responsive Layout** que adapta a diferentes resoluções
+- **Micro-animações** para melhor UX
+- **Dark/Light Mode** automático baseado no sistema
+
+### 🔐 **Segurança e Autorização**
+- **Controle de acesso** baseado em roles
+- **Sessões seguras** com logout automático
+- **Validação input** em todas as camadas
+- **SQL Injection protection** via parametrização
+
+---
+
+## 🚀 **Roadmap e Extensões Futuras**
+
+### 📋 **Versão 2.0 (Planejada)**
+- [ ] **Notificações Push** em tempo real
+- [ ] **API REST** para integrações externas
+- [ ] **Aplicação Web** complementar
+- [ ] **Sistema de Comentários** nos tickets
+- [ ] **Anexos e Screenshots** 
+- [ ] **SLA Management** com alertas automáticos
 
 ### 🔧 **Melhorias Técnicas**
-- [ ] Entity Framework Core
-- [ ] Containerização com Docker
-- [ ] CI/CD com GitHub Actions
-- [ ] Logs estruturados
-- [ ] Cache distribuído
+- [ ] **Entity Framework Core** (substituir ADO.NET)
+- [ ] **SignalR** para real-time updates
+- [ ] **Logging estruturado** (Serilog)
+- [ ] **Containerização** Docker
+- [ ] **CI/CD Pipeline** GitHub Actions
 
 ---
 
-## 📚 **Documentação Adicional**
+## 📁 **Estrutura Detalhada do Projeto**
 
-- 📖 [Manual do Utilizador](docs/manual-utilizador.md)
-- 🏗️ [Documentação da Arquitetura](docs/arquitetura.md)
-- 🎨 [Guia de Estilo](docs/guia-estilo.md)
-- 🔧 [Configuração Avançada](docs/configuracao.md)
-- 📊 [Relatório Técnico](docs/relatorio-tecnico.pdf)
+```
+Ticket2Help/ (Solução .NET)
+├── 📁 Ticket2Help.Models/               # 🏗️ Camada de Domínio
+│   ├── Entities/
+│   │   ├── Ticket.cs                    # Classe abstrata base
+│   │   ├── HardwareTicket.cs           # Especialização para hardware
+│   │   ├── SoftwareTicket.cs           # Especialização para software
+│   │   └── Utilizador.cs               # Entidade de utilizadores
+│   └── Enums/
+│       ├── TipoTicket.cs               # Hardware | Software
+│       ├── EstadoTicket.cs             # porAtender | emAtendimento | atendido
+│       └── EstadoAtendimento.cs        # aberto | resolvido | naoResolvido
+├── 📁 Ticket2Help.DAL/                 # 💾 Camada de Dados
+│   ├── Interfaces/
+│   │   ├── IDatabaseConnection.cs      # Interface de conexão
+│   │   ├── ITicketRepository.cs        # CRUD de tickets
+│   │   └── IUtilizadorRepository.cs    # CRUD de utilizadores
+│   ├── Repositories/
+│   │   ├── TicketRepository.cs         # Implementação ADO.NET tickets
+│   │   ├── UtilizadorRepository.cs     # Implementação ADO.NET users
+│   │   └── RelatorioRepository.cs      # Queries complexas relatórios
+│   └── Connection/
+│       └── DatabaseConnection.cs       # Singleton para conexões
+├── 📁 Ticket2Help.BLL/                 # 🧠 Camada de Negócio
+│   ├── Services/
+│   │   ├── TicketService.cs            # Orquestração + Observer Subject
+│   │   └── UtilizadorService.cs        # Lógica de autenticação
+│   ├── Managers/
+│   │   └── GestorAtendimento.cs        # Context para Strategy Pattern
+│   └── Patterns/
+│       ├── Factory/
+│       │   ├── ITicketFactory.cs       # Interface Factory
+│       │   └── TicketFactory.cs        # Implementação Factory
+│       ├── Strategy/
+│       │   ├── IAtendimentoStrategy.cs # Interface Strategy
+│       │   ├── FIFOStrategy.cs         # First In First Out
+│       │   └── PrioridadeHardwareStrategy.cs # Hardware priority
+│       ├── Observer/
+│       │   ├── ITicketObserver.cs      # Interface Observer
+│       │   ├── ITicketSubject.cs       # Interface Subject
+│       │   ├── LogObserver.cs          # Observer para logs
+│       │   └── UINotificationObserver.cs # Observer para UI
+│       └── Singleton/
+│           └── ConfiguracaoSistema.cs  # Configurações globais
+├── 📁 Ticket2Help.UI/                  # 🎨 Camada de Apresentação
+│   ├── Views/
+│   │   ├── LoginWindow.xaml/.cs        # Tela de autenticação
+│   │   ├── MainWindow.xaml/.cs         # Interface principal
+│   │   ├── CriarTicketWindow.xaml/.cs  # Criação de tickets
+│   │   ├── AtenderTicketWindow.xaml/.cs # Atendimento de tickets
+│   │   └── RelatoriosWindow.xaml/.cs   # Relatórios e exportação
+│   ├── Controllers/
+│   │   ├── LoginController.cs          # MVC Controller auth
+│   │   └── TicketController.cs         # MVC Controller tickets
+│   ├── ViewModels/
+│   │   ├── TicketViewModel.cs          # ViewModel para tickets
+│   │   └── DashboardViewModel.cs       # ViewModel para métricas
+│   ├── Resources/
+│   │   └── Styles.xaml                 # Design system XAML
+│   ├── App.xaml/.cs                    # Configuração da aplicação
+│   └── Ticket2Help.UI.csproj          # Configuração do projeto
+├── 📁 Ticket2Help.Tests/               # 🧪 Testes Unitários
+│   └── UnitTest1.cs                    # 47 testes implementados
+├── 📄 paste.txt                        # Script completo SQL Server
+├── 📄 Ticket2Help.sln                  # Solução Visual Studio
+└── 📄 README.md                        # Documentação principal
+```
 
 ---
 
-## 📜 **Licença**
+## 👥 **Informações Académicas**
 
-Este projeto foi desenvolvido para fins académicos na unidade curricular de **Programação Avançada** do **ISLA Gaia**.
+### 🎓 **Contexto Educacional**
+- **Disciplina**: Programação Avançada
+- **Instituição**: ISLA Gaia (Instituto Politécnico de Gestão e Tecnologia)
+- **Curso**: Licenciatura em Engenharia Informática
+- **Ano Letivo**: 2024/2025
+- **Docente**: Helder Rodrigo Pinto
 
-**Docente**: Helder Rodrigo Pinto  
-**Instituição**: Instituto Politécnico de Gestão e Tecnologia  
-**Ano Letivo**: 2024/2025
+### 📊 **Objetivos Pedagógicos Atingidos**
+- ✅ **Arquitetura de Software**: 3-layer architecture implementada
+- ✅ **Design Patterns**: 5 padrões diferentes aplicados
+- ✅ **Base de Dados**: Modelação e otimização SQL Server
+- ✅ **Interface Gráfica**: WPF moderno e responsivo
+- ✅ **Testes Unitários**: 47 testes com boa cobertura
+- ✅ **Controlo de Versões**: Git + GitHub
+- ✅ **Documentação**: README técnico completo
 
----
-
-## 🤝 **Contribuição**
-
-Para contribuir com o projeto:
-
-1. Fork do repositório
-2. Criar branch para feature (`git checkout -b feature/nova-funcionalidade`)
-3. Commit das alterações (`git commit -m 'Adicionar nova funcionalidade'`)
-4. Push para branch (`git push origin feature/nova-funcionalidade`)
-5. Criar Pull Request
-
----
-
-## 📞 **Contacto**
-
-Para questões académicas ou técnicas:
-- 📧 Email: [email@aluno.islagaia.pt]
-- 🐙 GitHub: [https://github.com/[usuario]/Ticket2Help]
-- 🎓 ISLA Gaia: [https://www.islagaia.pt]
+### 🏆 **Qualidade do Código**
+- **Princípios SOLID** aplicados consistentemente
+- **Clean Code** com naming conventions claras
+- **Exception Handling** robusto em todas as camadas
+- **Separation of Concerns** respeitada rigorosamente
+- **Scalability** preparada para extensões futuras
 
 ---
 
-**⭐ Se gostou do projeto, deixe uma estrela no GitHub!**
+## 📞 **Contacto e Suporte**
+
+### 🆘 **Suporte Técnico**
+Para questões sobre instalação, configuração ou bugs:
+- 🐛 **Issues GitHub**: [Criar Issue](https://github.com/[usuario]/Ticket2Help/issues)
+- 📧 **Email**: [email@aluno.islagaia.pt]
+
+### 🎓 **Questões Académicas**
+Para questões sobre o projeto educacional:
+- 🏫 **ISLA Gaia**: [https://www.islagaia.pt]
+- 📚 **Moodle**: Portal académico da disciplina
+
+### 📚 **Recursos Adicionais**
+- 📖 [Documentação .NET 8.0](https://docs.microsoft.com/en-us/dotnet/)
+- 🎨 [WPF Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
+- 🗃️ [SQL Server Docs](https://docs.microsoft.com/en-us/sql/sql-server/)
 
 ---
 
-*Desenvolvido com ❤️ por estudantes do ISLA Gaia*
+## 📜 **Licença e Direitos**
+
+Este projeto foi desenvolvido exclusivamente para fins **académicos e educacionais** no âmbito da disciplina de Programação Avançada do ISLA Gaia.
+
+**⚠️ Importante**: 
+- Código disponível para consulta e aprendizagem
+- Não destinado a uso comercial
+- Credenciais e dados são fictícios
+- Respeitar direitos de propriedade intelectual
+
+---
+
+## 🌟 **Agradecimentos**
+
+### 👨‍🏫 **Corpo Docente**
+- **Prof. Helder Rodrigo Pinto** - Orientação técnica e pedagógica
+- **ISLA Gaia** - Infraestrutura e recursos educacionais
+
+### 🛠️ **Tecnologias e Ferramentas**
+- **Microsoft** - Plataforma .NET e ferramentas de desenvolvimento
+- **GitHub** - Hospedagem e controlo de versões
+- **SQL Server** - Sistema de gestão de base de dados
+
+---
+
+**🎯 Sistema Ticket2Help - Excelênci
