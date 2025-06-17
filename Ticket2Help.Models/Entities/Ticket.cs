@@ -47,7 +47,11 @@ namespace Ticket2Help.Models
         /// Estado do atendimento do ticket.
         /// </summary>
         public EstadoAtendimento? EstadoAtendimento { get; set; }
-        public string UsuarioResponsavel { get; set; }
+
+        /// <summary>
+        /// Usuário responsável pelo atendimento do ticket.
+        /// </summary>
+        public string? UsuarioResponsavel { get; set; }
 
         /// <summary>
         /// Construtor protegido que define valores padrão.
@@ -73,5 +77,62 @@ namespace Ticket2Help.Models
         /// </summary>
         /// <returns>Tipo do ticket (Hardware ou Software).</returns>
         public abstract TipoTicket GetTipoTicket();
+
+        /// <summary>
+        /// Verifica se o ticket pode ser atendido.
+        /// </summary>
+        /// <returns>True se o ticket estiver no estado "porAtender".</returns>
+        public bool PodeSerAtendido()
+        {
+            return Estado == EstadoTicket.porAtender;
+        }
+
+        /// <summary>
+        /// Verifica se o ticket está em atendimento.
+        /// </summary>
+        /// <returns>True se o ticket estiver no estado "emAtendimento".</returns>
+        public bool EstaEmAtendimento()
+        {
+            return Estado == EstadoTicket.emAtendimento;
+        }
+
+        /// <summary>
+        /// Verifica se o ticket foi atendido.
+        /// </summary>
+        /// <returns>True se o ticket estiver no estado "atendido".</returns>
+        public bool FoiAtendido()
+        {
+            return Estado == EstadoTicket.atendido;
+        }
+
+        /// <summary>
+        /// Calcula o tempo decorrido desde a criação até o atendimento (ou até agora se ainda não foi atendido).
+        /// </summary>
+        /// <returns>TimeSpan com o tempo decorrido.</returns>
+        public TimeSpan CalcularTempoEspera()
+        {
+            DateTime dataFinal = DataHoraAtendimento ?? DateTime.Now;
+            return dataFinal - DataHoraCriacao;
+        }
+
+        /// <summary>
+        /// Obtém uma descrição do estado atual do ticket de forma amigável.
+        /// </summary>
+        /// <returns>String descritiva do estado.</returns>
+        public string GetDescricaoEstado()
+        {
+            return Estado switch
+            {
+                EstadoTicket.porAtender => "Aguardando Atendimento",
+                EstadoTicket.emAtendimento => $"Em Atendimento{(string.IsNullOrEmpty(UsuarioResponsavel) ? "" : $" por {UsuarioResponsavel}")}",
+                EstadoTicket.atendido => EstadoAtendimento switch
+                {
+                    Models.EstadoAtendimento.resolvido => "Atendido - Resolvido",
+                    Models.EstadoAtendimento.naoResolvido => "Atendido - Não Resolvido",
+                    _ => "Atendido"
+                },
+                _ => "Estado Desconhecido"
+            };
+        }
     }
 }

@@ -82,49 +82,51 @@ namespace Ticket2Help.UI.Controllers
         }
 
         /// <summary>
-        /// Atende um ticket.
+        /// Inicia o atendimento de um ticket (coloca em "emAtendimento").
+        /// </summary>
+        /// <param name="ticketId">ID do ticket.</param>
+        /// <param name="usuarioResponsavel">Usuário que irá atender.</param>
+        /// <returns>True se iniciado com sucesso.</returns>
+        public bool IniciarAtendimento(int ticketId, string usuarioResponsavel)
+        {
+            return _ticketService.IniciarAtendimento(ticketId, usuarioResponsavel);
+        }
+
+        /// <summary>
+        /// Finaliza o atendimento de um ticket.
         /// </summary>
         /// <param name="ticketId">ID do ticket.</param>
         /// <param name="dadosAtendimento">Dados do atendimento.</param>
-        /// <returns>True se atendido com sucesso.</returns>
-        public bool AtenderTicket(int ticketId, Dictionary<string, object> dadosAtendimento)
+        /// <returns>True se finalizado com sucesso.</returns>
+        public bool FinalizarAtendimento(int ticketId, Dictionary<string, object> dadosAtendimento)
         {
             try
             {
-                var ticketRepository = new TicketRepository();
-                var ticket = ticketRepository.ObterPorId(ticketId);
-
-                if (ticket == null || ticket.Estado != EstadoTicket.porAtender)
+                // Extrair estado do atendimento
+                if (!dadosAtendimento.ContainsKey("estadoAtendimento"))
                     return false;
 
-                // Actualizar dados específicos do tipo
-                if (ticket is HardwareTicket hw)
-                {
-                    hw.DescricaoReparacao = dadosAtendimento.GetValueOrDefault("descricaoReparacao")?.ToString();
-                    hw.Pecas = dadosAtendimento.GetValueOrDefault("pecas")?.ToString();
-                }
-                else if (ticket is SoftwareTicket sw)
-                {
-                    sw.DescricaoIntervencao = dadosAtendimento.GetValueOrDefault("descricaoIntervencao")?.ToString();
-                }
+                var estadoAtendimento = (EstadoAtendimento)Enum.Parse(typeof(EstadoAtendimento),
+                    dadosAtendimento["estadoAtendimento"].ToString());
 
-                // Definir estado do atendimento
-                if (dadosAtendimento.ContainsKey("estadoAtendimento"))
-                {
-                    var estadoAtendimento = (EstadoAtendimento)Enum.Parse(typeof(EstadoAtendimento),
-                        dadosAtendimento["estadoAtendimento"].ToString());
-                    ticket.EstadoAtendimento = estadoAtendimento;
-                }
-
-                // Alterar estado do ticket
-                _ticketService.AlterarEstadoTicket(ticketId, EstadoTicket.atendido);
-
-                return true;
+                return _ticketService.FinalizarAtendimento(ticketId, estadoAtendimento, dadosAtendimento);
             }
             catch (Exception)
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Método legacy mantido para compatibilidade - agora chama FinalizarAtendimento.
+        /// </summary>
+        /// <param name="ticketId">ID do ticket.</param>
+        /// <param name="dadosAtendimento">Dados do atendimento.</param>
+        /// <returns>True se atendido com sucesso.</returns>
+        [Obsolete("Use IniciarAtendimento seguido de FinalizarAtendimento para melhor controle")]
+        public bool AtenderTicket(int ticketId, Dictionary<string, object> dadosAtendimento)
+        {
+            return FinalizarAtendimento(ticketId, dadosAtendimento);
         }
 
         /// <summary>

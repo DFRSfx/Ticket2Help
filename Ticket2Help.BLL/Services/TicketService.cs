@@ -61,7 +61,8 @@ namespace Ticket2Help.BLL.Services
         /// </summary>
         /// <param name="ticketId">ID do ticket.</param>
         /// <param name="novoEstado">Novo estado.</param>
-        public void AlterarEstadoTicket(int ticketId, EstadoTicket novoEstado)
+        /// <param name="usuarioResponsavel">Usuário responsável pelo atendimento (opcional).</param>
+        public void AlterarEstadoTicket(int ticketId, EstadoTicket novoEstado, string usuarioResponsavel = null)
         {
             var ticket = _ticketRepository.ObterPorId(ticketId);
             if (ticket != null)
@@ -69,13 +70,85 @@ namespace Ticket2Help.BLL.Services
                 var estadoAnterior = ticket.Estado;
                 ticket.Estado = novoEstado;
 
+                // Definir usuário responsável se fornecido
+                if (!string.IsNullOrEmpty(usuarioResponsavel))
+                {
+                    ticket.UsuarioResponsavel = usuarioResponsavel;
+                }
+
+                // Definir data/hora de atendimento quando inicia ou finaliza atendimento
                 if (novoEstado == EstadoTicket.emAtendimento || novoEstado == EstadoTicket.atendido)
                 {
-                    ticket.DataHoraAtendimento = DateTime.Now;
+                    if (ticket.DataHoraAtendimento == null)
+                    {
+                        ticket.DataHoraAtendimento = DateTime.Now;
+                    }
                 }
 
                 _ticketRepository.Actualizar(ticket);
                 NotificarObservers(ticket, estadoAnterior);
+            }
+        }
+
+        /// <summary>
+        /// Inicia o atendimento de um ticket (muda para emAtendimento).
+        /// </summary>
+        /// <param name="ticketId">ID do ticket.</param>
+        /// <param name="usuarioResponsavel">Usuário que irá atender o ticket.</param>
+        /// <returns>True se foi iniciado com sucesso.</returns>
+        public bool IniciarAtendimento(int ticketId, string usuarioResponsavel)
+        {
+            try
+            {
+                var ticket = _ticketRepository.ObterPorId(ticketId);
+                if (ticket == null || ticket.Estado != EstadoTicket.porAtender)
+                    return false;
+
+                AlterarEstadoTicket(ticketId, EstadoTicket.emAtendimento, usuarioResponsavel);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Finaliza o atendimento de um ticket.
+        /// </summary>
+        /// <param name="ticketId">ID do ticket.</param>
+        /// <param name="estadoAtendimento">Estado final do atendimento.</param>
+        /// <param name="dadosAtendimento">Dados específicos do atendimento.</param>
+        /// <returns>True se foi finalizado com sucesso.</returns>
+        public bool FinalizarAtendimento(int ticketId, EstadoAtendimento estadoAtendimento, Dictionary<string, object> dadosAtendimento)
+        {
+            try
+            {
+                var ticket = _ticketRepository.ObterPorId(ticketId);
+                if (ticket == null || ticket.Estado != EstadoTicket.emAtendimento)
+                    return false;
+
+                // Definir estado do atendimento
+                ticket.EstadoAtendimento = estadoAtendimento;
+
+                // Actualizar dados específicos do tipo
+                if (ticket is HardwareTicket hw)
+                {
+                    hw.DescricaoReparacao = dadosAtendimento.GetValueOrDefault("descricaoReparacao")?.ToString();
+                    hw.Pecas = dadosAtendimento.GetValueOrDefault("pecas")?.ToString();
+                }
+                else if (ticket is SoftwareTicket sw)
+                {
+                    sw.DescricaoIntervencao = dadosAtendimento.GetValueOrDefault("descricaoIntervencao")?.ToString();
+                }
+
+                // Finalizar ticket
+                AlterarEstadoTicket(ticketId, EstadoTicket.atendido);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 

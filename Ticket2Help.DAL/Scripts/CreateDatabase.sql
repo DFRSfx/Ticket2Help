@@ -109,31 +109,69 @@ IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_ActualizarE
     DROP PROCEDURE sp_ActualizarEstadoTicket
 GO
 
-CREATE PROCEDURE sp_ActualizarEstadoTicket
+-- Stored Procedure para actualizar estado do ticket - VERSÃO CORRIGIDA
+CREATE OR ALTER PROCEDURE sp_ActualizarEstadoTicket
     @TicketId INT,
     @NovoEstado NVARCHAR(50),
     @EstadoAtendimento NVARCHAR(50) = NULL,
-    @DescricaoReparacao NTEXT = NULL,
-    @Pecas NTEXT = NULL,
-    @DescricaoIntervencao NTEXT = NULL,
-    @UsuarioResponsavel NVARCHAR(50) = NULL
+    @DescricaoReparacao NVARCHAR(MAX) = NULL,
+    @Pecas NVARCHAR(500) = NULL,
+    @DescricaoIntervencao NVARCHAR(MAX) = NULL,
+    @UsuarioResponsavel NVARCHAR(50) = NULL,
+    @DataHoraAtendimento DATETIME = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
     
-    UPDATE Tickets 
-    SET Estado = @NovoEstado,
-        DataHoraAtendimento = CASE WHEN @NovoEstado IN ('emAtendimento', 'atendido') 
-                                   THEN GETDATE() 
-                                   ELSE DataHoraAtendimento END,
-        EstadoAtendimento = @EstadoAtendimento,
-        DescricaoReparacao = ISNULL(@DescricaoReparacao, DescricaoReparacao),
-        Pecas = ISNULL(@Pecas, Pecas),
-        DescricaoIntervencao = ISNULL(@DescricaoIntervencao, DescricaoIntervencao),
-        UsuarioResponsavel = ISNULL(@UsuarioResponsavel, UsuarioResponsavel)
-    WHERE Id = @TicketId;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Validar se o ticket existe
+        IF NOT EXISTS (SELECT 1 FROM Tickets WHERE Id = @TicketId)
+        BEGIN
+            RAISERROR('Ticket não encontrado.', 16, 1);
+            RETURN;
+        END
+        
+        -- Definir DataHoraAtendimento automaticamente se não fornecida
+        IF @DataHoraAtendimento IS NULL AND @NovoEstado IN ('emAtendimento', 'atendido')
+        BEGIN
+            -- Só definir se ainda não tiver data de atendimento
+            IF NOT EXISTS (SELECT 1 FROM Tickets WHERE Id = @TicketId AND DataHoraAtendimento IS NOT NULL)
+            BEGIN
+                SET @DataHoraAtendimento = GETDATE();
+            END
+        END
+        
+        -- Actualizar o ticket
+        UPDATE Tickets 
+        SET 
+            Estado = @NovoEstado,
+            EstadoAtendimento = @EstadoAtendimento,
+            DescricaoReparacao = COALESCE(@DescricaoReparacao, DescricaoReparacao),
+            Pecas = COALESCE(@Pecas, Pecas),
+            DescricaoIntervencao = COALESCE(@DescricaoIntervencao, DescricaoIntervencao),
+            UsuarioResponsavel = COALESCE(@UsuarioResponsavel, UsuarioResponsavel),
+            DataHoraAtendimento = COALESCE(@DataHoraAtendimento, DataHoraAtendimento)
+        WHERE Id = @TicketId;
+        
+        COMMIT TRANSACTION;
+        
+        -- Log da operação
+        PRINT 'Ticket ' + CAST(@TicketId AS NVARCHAR(10)) + ' actualizado para estado: ' + @NovoEstado;
+        
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+            
+        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+        DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+        DECLARE @ErrorState INT = ERROR_STATE();
+        
+        RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
+    END CATCH
 END
-GO
 
 -- SP para obter estatísticas do dashboard
 IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'sp_ObterEstatisticasDashboard')

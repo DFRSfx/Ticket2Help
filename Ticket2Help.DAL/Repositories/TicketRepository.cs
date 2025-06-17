@@ -248,6 +248,7 @@ namespace Ticket2Help.DAL.Repositories
             command.Parameters.AddWithValue("@EstadoAtendimento",
                 ticket.EstadoAtendimento?.ToString() ?? (object)DBNull.Value);
 
+            // Dados específicos por tipo
             if (ticket is HardwareTicket hw)
             {
                 command.Parameters.AddWithValue("@DescricaoReparacao",
@@ -263,8 +264,20 @@ namespace Ticket2Help.DAL.Repositories
                 command.Parameters.AddWithValue("@DescricaoReparacao", DBNull.Value);
                 command.Parameters.AddWithValue("@Pecas", DBNull.Value);
             }
+            else
+            {
+                command.Parameters.AddWithValue("@DescricaoReparacao", DBNull.Value);
+                command.Parameters.AddWithValue("@Pecas", DBNull.Value);
+                command.Parameters.AddWithValue("@DescricaoIntervencao", DBNull.Value);
+            }
 
-            command.Parameters.AddWithValue("@UsuarioResponsavel", DBNull.Value);
+            // CORREÇÃO: Adicionar parâmetro UsuarioResponsavel
+            command.Parameters.AddWithValue("@UsuarioResponsavel",
+                ticket.UsuarioResponsavel ?? (object)DBNull.Value);
+
+            // CORREÇÃO: Adicionar parâmetro DataHoraAtendimento
+            command.Parameters.AddWithValue("@DataHoraAtendimento",
+                ticket.DataHoraAtendimento ?? (object)DBNull.Value);
 
             command.ExecuteNonQuery();
         }

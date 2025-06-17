@@ -9,19 +9,22 @@ using Ticket2Help.DAL.Repositories;
 namespace Ticket2Help.UI.Views
 {
     /// <summary>
-    /// Lógica para AtenderTicketWindow.xaml
+    /// Lógica para AtenderTicketWindow.xaml - VERSÃO CORRIGIDA
     /// </summary>
     public partial class AtenderTicketWindow : Window
     {
         private readonly TicketController _ticketController;
         private readonly int _ticketId;
         private Ticket _ticket;
+        private readonly string _usuarioResponsavel;
+        private bool _ticketJaEmAtendimento = false;
 
-        public AtenderTicketWindow(int ticketId)
+        public AtenderTicketWindow(int ticketId, string usuarioResponsavel = "SISTEMA")
         {
             InitializeComponent();
             _ticketController = new TicketController();
             _ticketId = ticketId;
+            _usuarioResponsavel = usuarioResponsavel;
 
             CarregarTicket();
         }
@@ -41,13 +44,54 @@ namespace Ticket2Help.UI.Views
                     return;
                 }
 
+                // Verificar se o ticket já está em atendimento
+                _ticketJaEmAtendimento = _ticket.Estado == EstadoTicket.emAtendimento;
+
                 PreencherInformacoes();
+                ConfigurarInterface();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao carregar ticket: {ex.Message}",
                     "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
+            }
+        }
+
+        private void ConfigurarInterface()
+        {
+            if (_ticketJaEmAtendimento)
+            {
+                // Ticket já está em atendimento - permitir finalização
+                BtnAtender.Content = "✅ Finalizar Atendimento";
+                Title = $"Finalizar Atendimento - Ticket #{_ticket.Id}";
+            }
+            else
+            {
+                // Ticket ainda não foi iniciado - permitir início
+                BtnAtender.Content = "🔧 Iniciar Atendimento";
+                Title = $"Iniciar Atendimento - Ticket #{_ticket.Id}";
+
+                // Ocultar campos de finalização até iniciar
+                ComboEstadoAtendimento.Visibility = Visibility.Collapsed;
+                PanelAtendimentoHardware.Visibility = Visibility.Collapsed;
+                PanelAtendimentoSoftware.Visibility = Visibility.Collapsed;
+
+                // Adicionar texto explicativo
+                var lblInfo = new TextBlock
+                {
+                    Text = "Clique em 'Iniciar Atendimento' para começar a trabalhar neste ticket.",
+                    FontStyle = FontStyles.Italic,
+                    Margin = new Thickness(0, 10, 0, 0),
+                    TextWrapping = TextWrapping.Wrap
+                };
+
+                // Encontrar o StackPanel principal e adicionar a informação
+                if (Content is Grid grid && grid.Children[2] is ScrollViewer scrollViewer &&
+                    scrollViewer.Content is StackPanel stackPanel)
+                {
+                    stackPanel.Children.Insert(0, lblInfo);
+                }
             }
         }
 
@@ -67,69 +111,62 @@ namespace Ticket2Help.UI.Views
             {
                 PanelHardware.Visibility = Visibility.Visible;
                 PanelSoftware.Visibility = Visibility.Collapsed;
-                PanelAtendimentoHardware.Visibility = Visibility.Visible;
-                PanelAtendimentoSoftware.Visibility = Visibility.Collapsed;
 
                 LblEquipamento.Text = hw.Equipamento;
                 LblAvaria.Text = hw.Avaria;
+
+                if (_ticketJaEmAtendimento)
+                {
+                    PanelAtendimentoHardware.Visibility = Visibility.Visible;
+                    PanelAtendimentoSoftware.Visibility = Visibility.Collapsed;
+
+                    // Preencher dados existentes se houver
+                    TxtDescricaoReparacao.Text = hw.DescricaoReparacao ?? "";
+                    TxtPecas.Text = hw.Pecas ?? "";
+                }
             }
             else if (_ticket is SoftwareTicket sw)
             {
                 PanelHardware.Visibility = Visibility.Collapsed;
                 PanelSoftware.Visibility = Visibility.Visible;
-                PanelAtendimentoHardware.Visibility = Visibility.Collapsed;
-                PanelAtendimentoSoftware.Visibility = Visibility.Visible;
 
                 LblSoftware.Text = sw.Software;
                 LblNecessidade.Text = sw.DescricaoNecessidade;
+
+                if (_ticketJaEmAtendimento)
+                {
+                    PanelAtendimentoHardware.Visibility = Visibility.Collapsed;
+                    PanelAtendimentoSoftware.Visibility = Visibility.Visible;
+
+                    // Preencher dados existentes se houver
+                    TxtDescricaoIntervencao.Text = sw.DescricaoIntervencao ?? "";
+                }
             }
 
-            // Seleccionar estado padrão
-            ComboEstadoAtendimento.SelectedIndex = 0; // Resolvido por padrão
+            // Seleccionar estado padrão se estiver finalizando
+            if (_ticketJaEmAtendimento)
+            {
+                ComboEstadoAtendimento.Visibility = Visibility.Visible;
+                ComboEstadoAtendimento.SelectedIndex = 0; // Resolvido por padrão
+            }
         }
 
         private void BtnAtender_Click(object sender, RoutedEventArgs e)
         {
-            if (!ValidarCampos())
-                return;
-
             try
             {
                 BtnAtender.IsEnabled = false;
-                BtnAtender.Content = "A processar...";
+                BtnAtender.Content = "🔄 A processar...";
 
-                var dadosAtendimento = new Dictionary<string, object>();
-
-                // Estado do atendimento
-                var estadoItem = ComboEstadoAtendimento.SelectedItem as ComboBoxItem;
-                dadosAtendimento["estadoAtendimento"] = estadoItem.Tag.ToString();
-
-                // Campos específicos por tipo
-                if (_ticket is HardwareTicket)
+                if (!_ticketJaEmAtendimento)
                 {
-                    if (!string.IsNullOrWhiteSpace(TxtDescricaoReparacao.Text))
-                        dadosAtendimento["descricaoReparacao"] = TxtDescricaoReparacao.Text.Trim();
-
-                    if (!string.IsNullOrWhiteSpace(TxtPecas.Text))
-                        dadosAtendimento["pecas"] = TxtPecas.Text.Trim();
-                }
-                else if (_ticket is SoftwareTicket)
-                {
-                    if (!string.IsNullOrWhiteSpace(TxtDescricaoIntervencao.Text))
-                        dadosAtendimento["descricaoIntervencao"] = TxtDescricaoIntervencao.Text.Trim();
-                }
-
-                var sucesso = _ticketController.AtenderTicket(_ticketId, dadosAtendimento);
-
-                if (sucesso)
-                {
-                    DialogResult = true;
-                    Close();
+                    // Iniciar atendimento
+                    IniciarAtendimento();
                 }
                 else
                 {
-                    MessageBox.Show("Erro ao atender o ticket. Tente novamente.",
-                        "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                    // Finalizar atendimento
+                    FinalizarAtendimento();
                 }
             }
             catch (Exception ex)
@@ -140,12 +177,76 @@ namespace Ticket2Help.UI.Views
             finally
             {
                 BtnAtender.IsEnabled = true;
-                BtnAtender.Content = "Finalizar Atendimento";
+                RestaurarTextoBotao();
             }
         }
 
-        private bool ValidarCampos()
+        private void IniciarAtendimento()
         {
+            var sucesso = _ticketController.IniciarAtendimento(_ticketId, _usuarioResponsavel);
+
+            if (sucesso)
+            {
+                MessageBox.Show($"Atendimento iniciado com sucesso!\n\nTicket #{_ticketId} está agora em atendimento.",
+                    "Atendimento Iniciado", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Recarregar ticket e reconfigurar interface
+                CarregarTicket();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao iniciar o atendimento. Verifique se o ticket está disponível.",
+                    "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void FinalizarAtendimento()
+        {
+            if (!ValidarCamposFinalizacao())
+                return;
+
+            var dadosAtendimento = new Dictionary<string, object>();
+
+            // Estado do atendimento
+            var estadoItem = ComboEstadoAtendimento.SelectedItem as ComboBoxItem;
+            dadosAtendimento["estadoAtendimento"] = estadoItem.Tag.ToString();
+
+            // Campos específicos por tipo
+            if (_ticket is HardwareTicket)
+            {
+                if (!string.IsNullOrWhiteSpace(TxtDescricaoReparacao.Text))
+                    dadosAtendimento["descricaoReparacao"] = TxtDescricaoReparacao.Text.Trim();
+
+                if (!string.IsNullOrWhiteSpace(TxtPecas.Text))
+                    dadosAtendimento["pecas"] = TxtPecas.Text.Trim();
+            }
+            else if (_ticket is SoftwareTicket)
+            {
+                if (!string.IsNullOrWhiteSpace(TxtDescricaoIntervencao.Text))
+                    dadosAtendimento["descricaoIntervencao"] = TxtDescricaoIntervencao.Text.Trim();
+            }
+
+            var sucesso = _ticketController.FinalizarAtendimento(_ticketId, dadosAtendimento);
+
+            if (sucesso)
+            {
+                MessageBox.Show($"Atendimento finalizado com sucesso!\n\nTicket #{_ticketId} foi marcado como atendido.",
+                    "Atendimento Finalizado", MessageBoxButton.OK, MessageBoxImage.Information);
+                DialogResult = true;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao finalizar o atendimento. Tente novamente.",
+                    "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private bool ValidarCamposFinalizacao()
+        {
+            if (!_ticketJaEmAtendimento)
+                return true; // Não precisa validar se está apenas iniciando
+
             if (ComboEstadoAtendimento.SelectedItem == null)
             {
                 MessageBox.Show("Por favor, seleccione o estado do atendimento.",
@@ -178,9 +279,21 @@ namespace Ticket2Help.UI.Views
             return true;
         }
 
+        private void RestaurarTextoBotao()
+        {
+            if (_ticketJaEmAtendimento)
+            {
+                BtnAtender.Content = "✅ Finalizar Atendimento";
+            }
+            else
+            {
+                BtnAtender.Content = "🔧 Iniciar Atendimento";
+            }
+        }
+
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            var resultado = MessageBox.Show("Tem a certeza que deseja cancelar o atendimento?",
+            var resultado = MessageBox.Show("Tem a certeza que deseja cancelar?",
                 "Confirmar Cancelamento", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resultado == MessageBoxResult.Yes)

@@ -361,19 +361,22 @@ namespace Ticket2Help.UI
                 var button = sender as Button;
                 if (button?.Tag is int ticketId)
                 {
-                    var atenderWindow = new AtenderTicketWindow(ticketId);
+                    // Obter código do usuário atual
+                    string usuarioResponsavel = _utilizadorActual?.Codigo ?? "SISTEMA";
+
+                    var atenderWindow = new AtenderTicketWindow(ticketId, usuarioResponsavel);
                     if (atenderWindow.ShowDialog() == true)
                     {
                         CarregarTicketsParaAtendimento();
                         CarregarDashboard();
-                        MessageBox.Show("Ticket atendido com sucesso!", "Sucesso",
+                        MessageBox.Show("Ticket processado com sucesso!", "Sucesso",
                             MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao atender ticket: {ex.Message}", "Erro",
+                MessageBox.Show($"Erro ao processar ticket: {ex.Message}", "Erro",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -384,7 +387,10 @@ namespace Ticket2Help.UI
             {
                 if (DataGridTicketsAtendimento.SelectedItem is TicketViewModel ticket)
                 {
-                    var atenderWindow = new AtenderTicketWindow(ticket.Id);
+                    // Obter código do usuário atual
+                    string usuarioResponsavel = _utilizadorActual?.Codigo ?? "SISTEMA";
+
+                    var atenderWindow = new AtenderTicketWindow(ticket.Id, usuarioResponsavel);
                     if (atenderWindow.ShowDialog() == true)
                     {
                         CarregarTicketsParaAtendimento();
