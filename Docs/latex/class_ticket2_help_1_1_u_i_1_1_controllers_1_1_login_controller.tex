@@ -1,0 +1,83 @@
+\doxysection{Ticket2\+Help.\+UI.\+Controllers.\+Login\+Controller Class Reference}
+\hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller}{}\label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller}\index{Ticket2Help.UI.Controllers.LoginController@{Ticket2Help.UI.Controllers.LoginController}}
+
+
+Controlador para autenticação simples de utilizadores.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_afecdd386802d4a59f46eff9fd1b9abdc}\label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_afecdd386802d4a59f46eff9fd1b9abdc} 
+{\bfseries Login\+Controller} ()
+\begin{DoxyCompactList}\small\item\em Construtor do controlador de login. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a3b486b757c8e9df27bf70c796cacb80b}{Autenticar}} (string codigo, string password)
+\begin{DoxyCompactList}\small\item\em Autentica um utilizador verificando código e password na base de dados. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a50cf54182408c4947c13f774406a5fbb}{Testar\+Ligacao\+BD}} ()
+\begin{DoxyCompactList}\small\item\em Testa se a ligação à base de dados está disponível. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a853151f99b6138b15057af1b1850522b}{Utilizador\+Existe}} (string codigo)
+\begin{DoxyCompactList}\small\item\em Verifica se um utilizador existe na base de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controlador para autenticação simples de utilizadores. 
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a3b486b757c8e9df27bf70c796cacb80b}\index{Ticket2Help.UI.Controllers.LoginController@{Ticket2Help.UI.Controllers.LoginController}!Autenticar@{Autenticar}}
+\index{Autenticar@{Autenticar}!Ticket2Help.UI.Controllers.LoginController@{Ticket2Help.UI.Controllers.LoginController}}
+\doxysubsubsection{\texorpdfstring{Autenticar()}{Autenticar()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a3b486b757c8e9df27bf70c796cacb80b} 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? Ticket2\+Help.\+UI.\+Controllers.\+Login\+Controller.\+Autenticar (\begin{DoxyParamCaption}\item[{string}]{codigo}{, }\item[{string}]{password}{}\end{DoxyParamCaption})}
+
+
+
+Autentica um utilizador verificando código e password na base de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+{\em password} & Password do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} autenticado ou null se credenciais inválidas.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a50cf54182408c4947c13f774406a5fbb}\index{Ticket2Help.UI.Controllers.LoginController@{Ticket2Help.UI.Controllers.LoginController}!TestarLigacaoBD@{TestarLigacaoBD}}
+\index{TestarLigacaoBD@{TestarLigacaoBD}!Ticket2Help.UI.Controllers.LoginController@{Ticket2Help.UI.Controllers.LoginController}}
+\doxysubsubsection{\texorpdfstring{TestarLigacaoBD()}{TestarLigacaoBD()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a50cf54182408c4947c13f774406a5fbb} 
+bool Ticket2\+Help.\+UI.\+Controllers.\+Login\+Controller.\+Testar\+Ligacao\+BD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Testa se a ligação à base de dados está disponível. 
+
+\begin{DoxyReturn}{Returns}
+True se conseguir ligar à BD.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a853151f99b6138b15057af1b1850522b}\index{Ticket2Help.UI.Controllers.LoginController@{Ticket2Help.UI.Controllers.LoginController}!UtilizadorExiste@{UtilizadorExiste}}
+\index{UtilizadorExiste@{UtilizadorExiste}!Ticket2Help.UI.Controllers.LoginController@{Ticket2Help.UI.Controllers.LoginController}}
+\doxysubsubsection{\texorpdfstring{UtilizadorExiste()}{UtilizadorExiste()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_login_controller_a853151f99b6138b15057af1b1850522b} 
+bool Ticket2\+Help.\+UI.\+Controllers.\+Login\+Controller.\+Utilizador\+Existe (\begin{DoxyParamCaption}\item[{string}]{codigo}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se um utilizador existe na base de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se o utilizador existir.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+UI/\+Controllers/Login\+Controller.\+cs\end{DoxyCompactItemize}

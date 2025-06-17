@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['ticket2help_0',['Ticket2Help',['../namespace_ticket2_help.html',1,'']]],
+  ['ticket2help_3a_3abll_1',['BLL',['../namespace_ticket2_help_1_1_b_l_l.html',1,'Ticket2Help']]],
+  ['ticket2help_3a_3abll_3a_3amanagers_2',['Managers',['../namespace_ticket2_help_1_1_b_l_l_1_1_managers.html',1,'Ticket2Help::BLL']]],
+  ['ticket2help_3a_3abll_3a_3apatterns_3',['Patterns',['../namespace_ticket2_help_1_1_b_l_l_1_1_patterns.html',1,'Ticket2Help::BLL']]],
+  ['ticket2help_3a_3abll_3a_3apatterns_3a_3afactory_4',['Factory',['../namespace_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_factory.html',1,'Ticket2Help::BLL::Patterns']]],
+  ['ticket2help_3a_3abll_3a_3apatterns_3a_3aobserver_5',['Observer',['../namespace_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer.html',1,'Ticket2Help::BLL::Patterns']]],
+  ['ticket2help_3a_3abll_3a_3apatterns_3a_3asingleton_6',['Singleton',['../namespace_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_singleton.html',1,'Ticket2Help::BLL::Patterns']]],
+  ['ticket2help_3a_3abll_3a_3apatterns_3a_3astrategy_7',['Strategy',['../namespace_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy.html',1,'Ticket2Help::BLL::Patterns']]],
+  ['ticket2help_3a_3abll_3a_3aservices_8',['Services',['../namespace_ticket2_help_1_1_b_l_l_1_1_services.html',1,'Ticket2Help::BLL']]],
+  ['ticket2help_3a_3adal_9',['DAL',['../namespace_ticket2_help_1_1_d_a_l.html',1,'Ticket2Help']]],
+  ['ticket2help_3a_3adal_3a_3aconnection_10',['Connection',['../namespace_ticket2_help_1_1_d_a_l_1_1_connection.html',1,'Ticket2Help::DAL']]],
+  ['ticket2help_3a_3adal_3a_3ainterfaces_11',['Interfaces',['../namespace_ticket2_help_1_1_d_a_l_1_1_interfaces.html',1,'Ticket2Help::DAL']]],
+  ['ticket2help_3a_3adal_3a_3arepositories_12',['Repositories',['../namespace_ticket2_help_1_1_d_a_l_1_1_repositories.html',1,'Ticket2Help::DAL']]],
+  ['ticket2help_3a_3amodels_13',['Models',['../namespace_ticket2_help_1_1_models.html',1,'Ticket2Help']]],
+  ['ticket2help_3a_3atests_14',['Tests',['../namespace_ticket2_help_1_1_tests.html',1,'Ticket2Help']]],
+  ['ticket2help_3a_3atests_3a_3ahelpers_15',['Helpers',['../namespace_ticket2_help_1_1_tests_1_1_helpers.html',1,'Ticket2Help::Tests']]],
+  ['ticket2help_3a_3aui_16',['UI',['../namespace_ticket2_help_1_1_u_i.html',1,'Ticket2Help']]],
+  ['ticket2help_3a_3aui_3a_3acontrollers_17',['Controllers',['../namespace_ticket2_help_1_1_u_i_1_1_controllers.html',1,'Ticket2Help::UI']]],
+  ['ticket2help_3a_3aui_3a_3aviewmodels_18',['ViewModels',['../namespace_ticket2_help_1_1_u_i_1_1_view_models.html',1,'Ticket2Help::UI']]],
+  ['ticket2help_3a_3aui_3a_3aviews_19',['Views',['../namespace_ticket2_help_1_1_u_i_1_1_views.html',1,'Ticket2Help::UI']]]
+];

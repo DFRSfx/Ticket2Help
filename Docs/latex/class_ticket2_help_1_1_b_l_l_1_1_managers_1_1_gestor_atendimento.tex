@@ -1,0 +1,97 @@
+\doxysection{Ticket2\+Help.\+BLL.\+Managers.\+Gestor\+Atendimento Class Reference}
+\hypertarget{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento}{}\label{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento}\index{Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}}
+
+
+Gestor para atendimento de tickets utilizando padrão \doxylink{namespace_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy}{Strategy}.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a876a9325b2d1236ebe13901bfd1cca9d}{Gestor\+Atendimento}} (\mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy}{IAtendimento\+Strategy}} estrategia)
+\begin{DoxyCompactList}\small\item\em Construtor que define a estratégia inicial. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a72c3e0c24654de03c0550ced8f8b08b6}{Definir\+Estrategia}} (\mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy}{IAtendimento\+Strategy}} nova\+Estrategia)
+\begin{DoxyCompactList}\small\item\em Define uma nova estratégia de atendimento. \end{DoxyCompactList}\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a590acb881c00fbe09ab1699fbc3d5323}{Obter\+Tickets\+Para\+Atendimento}} (IEnumerable$<$ Ticket $>$ tickets)
+\begin{DoxyCompactList}\small\item\em Obtém tickets ordenados para atendimento. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a819f653642d93bb743c06d329d6b53db}{Get\+Estrategia\+Actual}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o nome da estratégia actual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestor para atendimento de tickets utilizando padrão \doxylink{namespace_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy}{Strategy}. 
+
+\label{doc-constructors}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a876a9325b2d1236ebe13901bfd1cca9d}\index{Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}!GestorAtendimento@{GestorAtendimento}}
+\index{GestorAtendimento@{GestorAtendimento}!Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}}
+\doxysubsubsection{\texorpdfstring{GestorAtendimento()}{GestorAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a876a9325b2d1236ebe13901bfd1cca9d} 
+Ticket2\+Help.\+BLL.\+Managers.\+Gestor\+Atendimento.\+Gestor\+Atendimento (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy}{IAtendimento\+Strategy}}}]{estrategia}{}\end{DoxyParamCaption})}
+
+
+
+Construtor que define a estratégia inicial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em estrategia} & Estratégia de atendimento.\\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a72c3e0c24654de03c0550ced8f8b08b6}\index{Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}!DefinirEstrategia@{DefinirEstrategia}}
+\index{DefinirEstrategia@{DefinirEstrategia}!Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}}
+\doxysubsubsection{\texorpdfstring{DefinirEstrategia()}{DefinirEstrategia()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a72c3e0c24654de03c0550ced8f8b08b6} 
+void Ticket2\+Help.\+BLL.\+Managers.\+Gestor\+Atendimento.\+Definir\+Estrategia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy}{IAtendimento\+Strategy}}}]{nova\+Estrategia}{}\end{DoxyParamCaption})}
+
+
+
+Define uma nova estratégia de atendimento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nova\+Estrategia} & Nova estratégia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a819f653642d93bb743c06d329d6b53db}\index{Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}!GetEstrategiaActual@{GetEstrategiaActual}}
+\index{GetEstrategiaActual@{GetEstrategiaActual}!Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}}
+\doxysubsubsection{\texorpdfstring{GetEstrategiaActual()}{GetEstrategiaActual()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a819f653642d93bb743c06d329d6b53db} 
+string Ticket2\+Help.\+BLL.\+Managers.\+Gestor\+Atendimento.\+Get\+Estrategia\+Actual (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém o nome da estratégia actual. 
+
+\begin{DoxyReturn}{Returns}
+Nome da estratégia.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a590acb881c00fbe09ab1699fbc3d5323}\index{Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}!ObterTicketsParaAtendimento@{ObterTicketsParaAtendimento}}
+\index{ObterTicketsParaAtendimento@{ObterTicketsParaAtendimento}!Ticket2Help.BLL.Managers.GestorAtendimento@{Ticket2Help.BLL.Managers.GestorAtendimento}}
+\doxysubsubsection{\texorpdfstring{ObterTicketsParaAtendimento()}{ObterTicketsParaAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_managers_1_1_gestor_atendimento_a590acb881c00fbe09ab1699fbc3d5323} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+BLL.\+Managers.\+Gestor\+Atendimento.\+Obter\+Tickets\+Para\+Atendimento (\begin{DoxyParamCaption}\item[{IEnumerable$<$ Ticket $>$}]{tickets}{}\end{DoxyParamCaption})}
+
+
+
+Obtém tickets ordenados para atendimento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tickets} & Lista de tickets.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tickets ordenados segundo a estratégia.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+BLL/\+Managers/Gestor\+Atendimento.\+cs\end{DoxyCompactItemize}

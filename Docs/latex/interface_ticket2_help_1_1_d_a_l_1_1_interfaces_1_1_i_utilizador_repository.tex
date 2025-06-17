@@ -1,0 +1,114 @@
+\doxysection{Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository Interface Reference}
+\hypertarget{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository}{}\label{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository}\index{Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}}
+
+
+Interface para operações de dados relacionadas com utilizadores.  
+
+
+Inheritance diagram for Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_a12c12d2ed67d09f4efc4adb7a5a6607c}{Obter\+Por\+Codigo}} (string codigo)
+\begin{DoxyCompactList}\small\item\em Obtém um utilizador pelo código. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_ac18807972a154a4a5efe9ec982e40a46}{Criar}} (\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} utilizador)
+\begin{DoxyCompactList}\small\item\em Cria um novo utilizador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_a6bce9858e2f7d1fa16a5a46d7b2ca8e8}{Actualizar}} (\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} utilizador)
+\begin{DoxyCompactList}\small\item\em Actualiza dados de um utilizador. \end{DoxyCompactList}\item 
+IEnumerable$<$ \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} $>$ \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_afcb63bebc89253ac179d245021df02f2}{Obter\+Todos}} ()
+\begin{DoxyCompactList}\small\item\em Obtém todos os utilizadores activos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para operações de dados relacionadas com utilizadores. 
+
+\label{doc-func-members}
+\Hypertarget{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_a6bce9858e2f7d1fa16a5a46d7b2ca8e8}\index{Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}!Actualizar@{Actualizar}}
+\index{Actualizar@{Actualizar}!Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{Actualizar()}{Actualizar()}}
+{\footnotesize\ttfamily \label{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_a6bce9858e2f7d1fa16a5a46d7b2ca8e8} 
+void Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository.\+Actualizar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}}]{utilizador}{}\end{DoxyParamCaption})}
+
+
+
+Actualiza dados de um utilizador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em utilizador} & \doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} com dados actualizados.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a5c2fbfc8a447555c7ea7222bbd5a0fa8}{Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository}}.
+
+\Hypertarget{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_ac18807972a154a4a5efe9ec982e40a46}\index{Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}!Criar@{Criar}}
+\index{Criar@{Criar}!Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{Criar()}{Criar()}}
+{\footnotesize\ttfamily \label{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_ac18807972a154a4a5efe9ec982e40a46} 
+void Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository.\+Criar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}}]{utilizador}{}\end{DoxyParamCaption})}
+
+
+
+Cria um novo utilizador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em utilizador} & \doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} a criar.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8c691bf3419977f82b99ee325c76460a}{Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository}}.
+
+\Hypertarget{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_a12c12d2ed67d09f4efc4adb7a5a6607c}\index{Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}!ObterPorCodigo@{ObterPorCodigo}}
+\index{ObterPorCodigo@{ObterPorCodigo}!Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{ObterPorCodigo()}{ObterPorCodigo()}}
+{\footnotesize\ttfamily \label{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_a12c12d2ed67d09f4efc4adb7a5a6607c} 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository.\+Obter\+Por\+Codigo (\begin{DoxyParamCaption}\item[{string}]{codigo}{}\end{DoxyParamCaption})}
+
+
+
+Obtém um utilizador pelo código. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} encontrado ou null.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8f9c1b8a33b31be8f89ece66f267a2ff}{Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository}}.
+
+\Hypertarget{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_afcb63bebc89253ac179d245021df02f2}\index{Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}!ObterTodos@{ObterTodos}}
+\index{ObterTodos@{ObterTodos}!Ticket2Help.DAL.Interfaces.IUtilizadorRepository@{Ticket2Help.DAL.Interfaces.IUtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{ObterTodos()}{ObterTodos()}}
+{\footnotesize\ttfamily \label{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_afcb63bebc89253ac179d245021df02f2} 
+IEnumerable$<$ \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} $>$ Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository.\+Obter\+Todos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém todos os utilizadores activos. 
+
+\begin{DoxyReturn}{Returns}
+Lista de utilizadores.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a097e0e8be75d8cabb151d079bec036ea}{Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+DAL/\+Interfaces/IUtilizador\+Repository.\+cs\end{DoxyCompactItemize}

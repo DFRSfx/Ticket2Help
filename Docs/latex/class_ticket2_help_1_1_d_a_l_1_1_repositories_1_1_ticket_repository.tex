@@ -1,0 +1,208 @@
+\doxysection{Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository Class Reference}
+\hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository}{}\label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+
+
+Implementação do repositório para operações de tickets na base de dados.  
+
+
+Inheritance diagram for Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a705a4beb4fc839f2e749604262959945}\label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a705a4beb4fc839f2e749604262959945} 
+{\bfseries Ticket\+Repository} ()
+\begin{DoxyCompactList}\small\item\em Construtor que utiliza a ligação singleton por defeito. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ab00a54fa5601e2855886f3a836dddd9d}{Ticket\+Repository}} (\mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_database_connection}{IDatabase\+Connection}} db\+Connection)
+\begin{DoxyCompactList}\small\item\em Construtor para injecção de dependências (útil para testes). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ae33a9afde61ed3a3fd54770bbdd48d7e}{Criar}} (Ticket ticket)
+\begin{DoxyCompactList}\small\item\em Cria um novo ticket na base de dados. \end{DoxyCompactList}\item 
+Ticket? \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a63de3259d21ef5e5d6cc37b7227a5b4b}{Obter\+Por\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Obtém um ticket pelo seu identificador. \end{DoxyCompactList}\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a24d6fe5a8e604ee410ce5915bfc09d98}{Obter\+Todos}} ()
+\begin{DoxyCompactList}\small\item\em Obtém todos os tickets do sistema. \end{DoxyCompactList}\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a569723998c427ac20f43676c16e5a14e}{Obter\+Por\+Colaborador}} (string codigo\+Colaborador)
+\begin{DoxyCompactList}\small\item\em Obtém tickets de um colaborador específico. \end{DoxyCompactList}\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a81a30af358e406a6ec7ca1a2ef63254d}{Obter\+Por\+Estado}} (\mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}} estado)
+\begin{DoxyCompactList}\small\item\em Obtém tickets por estado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ab9c538b703a3e7d9a8b640d2ed64e01f}{Actualizar}} (Ticket ticket)
+\begin{DoxyCompactList}\small\item\em Actualiza um ticket existente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a93879e0d9d9de2c241399d55e7ba5801}{Eliminar}} (int id)
+\begin{DoxyCompactList}\small\item\em Elimina um ticket da base de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação do repositório para operações de tickets na base de dados. 
+
+\label{doc-constructors}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ab00a54fa5601e2855886f3a836dddd9d}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}!TicketRepository@{TicketRepository}}
+\index{TicketRepository@{TicketRepository}!Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+\doxysubsubsection{\texorpdfstring{TicketRepository()}{TicketRepository()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ab00a54fa5601e2855886f3a836dddd9d} 
+Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository.\+Ticket\+Repository (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_database_connection}{IDatabase\+Connection}}}]{db\+Connection}{}\end{DoxyParamCaption})}
+
+
+
+Construtor para injecção de dependências (útil para testes). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Connection} & Ligação à base de dados.\\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ab9c538b703a3e7d9a8b640d2ed64e01f}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}!Actualizar@{Actualizar}}
+\index{Actualizar@{Actualizar}!Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+\doxysubsubsection{\texorpdfstring{Actualizar()}{Actualizar()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ab9c538b703a3e7d9a8b640d2ed64e01f} 
+void Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository.\+Actualizar (\begin{DoxyParamCaption}\item[{Ticket}]{ticket}{}\end{DoxyParamCaption})}
+
+
+
+Actualiza um ticket existente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket} & Ticket com dados actualizados.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository_a15bd1791117fee320ac87d3bac982c09}{Ticket2\+Help.\+DAL.\+Interfaces.\+ITicket\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ae33a9afde61ed3a3fd54770bbdd48d7e}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}!Criar@{Criar}}
+\index{Criar@{Criar}!Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+\doxysubsubsection{\texorpdfstring{Criar()}{Criar()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_ae33a9afde61ed3a3fd54770bbdd48d7e} 
+void Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository.\+Criar (\begin{DoxyParamCaption}\item[{Ticket}]{ticket}{}\end{DoxyParamCaption})}
+
+
+
+Cria um novo ticket na base de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket} & Ticket a ser criado.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository_a65d86ccf0499bc488f612363d44bb7ca}{Ticket2\+Help.\+DAL.\+Interfaces.\+ITicket\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a93879e0d9d9de2c241399d55e7ba5801}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}!Eliminar@{Eliminar}}
+\index{Eliminar@{Eliminar}!Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+\doxysubsubsection{\texorpdfstring{Eliminar()}{Eliminar()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a93879e0d9d9de2c241399d55e7ba5801} 
+void Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository.\+Eliminar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Elimina um ticket da base de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador do ticket a eliminar.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository_a09948dc8662e1c35a7d9eb6774649e05}{Ticket2\+Help.\+DAL.\+Interfaces.\+ITicket\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a569723998c427ac20f43676c16e5a14e}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}!ObterPorColaborador@{ObterPorColaborador}}
+\index{ObterPorColaborador@{ObterPorColaborador}!Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+\doxysubsubsection{\texorpdfstring{ObterPorColaborador()}{ObterPorColaborador()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a569723998c427ac20f43676c16e5a14e} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository.\+Obter\+Por\+Colaborador (\begin{DoxyParamCaption}\item[{string}]{codigo\+Colaborador}{}\end{DoxyParamCaption})}
+
+
+
+Obtém tickets de um colaborador específico. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Colaborador} & Código do colaborador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista de tickets do colaborador.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository_a54f5064322f1f1fce15404287b399e28}{Ticket2\+Help.\+DAL.\+Interfaces.\+ITicket\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a81a30af358e406a6ec7ca1a2ef63254d}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}!ObterPorEstado@{ObterPorEstado}}
+\index{ObterPorEstado@{ObterPorEstado}!Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+\doxysubsubsection{\texorpdfstring{ObterPorEstado()}{ObterPorEstado()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a81a30af358e406a6ec7ca1a2ef63254d} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository.\+Obter\+Por\+Estado (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}}}]{estado}{}\end{DoxyParamCaption})}
+
+
+
+Obtém tickets por estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em estado} & Estado dos tickets a obter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista de tickets no estado especificado.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository_a77ed2b49674998e9b28b0eb1f9a8bc6e}{Ticket2\+Help.\+DAL.\+Interfaces.\+ITicket\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a63de3259d21ef5e5d6cc37b7227a5b4b}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}!ObterPorId@{ObterPorId}}
+\index{ObterPorId@{ObterPorId}!Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+\doxysubsubsection{\texorpdfstring{ObterPorId()}{ObterPorId()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a63de3259d21ef5e5d6cc37b7227a5b4b} 
+Ticket? Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository.\+Obter\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Obtém um ticket pelo seu identificador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador do ticket.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ticket encontrado ou null.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository_a08423a0231b4318fe794b81e19e26a30}{Ticket2\+Help.\+DAL.\+Interfaces.\+ITicket\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a24d6fe5a8e604ee410ce5915bfc09d98}\index{Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}!ObterTodos@{ObterTodos}}
+\index{ObterTodos@{ObterTodos}!Ticket2Help.DAL.Repositories.TicketRepository@{Ticket2Help.DAL.Repositories.TicketRepository}}
+\doxysubsubsection{\texorpdfstring{ObterTodos()}{ObterTodos()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_repository_a24d6fe5a8e604ee410ce5915bfc09d98} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+DAL.\+Repositories.\+Ticket\+Repository.\+Obter\+Todos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém todos os tickets do sistema. 
+
+\begin{DoxyReturn}{Returns}
+Lista de todos os tickets.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository_ab1b2739fe95f46b51eb0908dbebf9b73}{Ticket2\+Help.\+DAL.\+Interfaces.\+ITicket\+Repository}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+DAL/\+Repositories/Ticket\+Repository.\+cs\end{DoxyCompactItemize}

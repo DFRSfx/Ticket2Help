@@ -1,3 +1,4 @@
+/*! \mainpage
 # 🎫 Ticket2Help
 ## Sistema de Gestão de Tickets de Helpdesk
 
@@ -537,3 +538,5 @@ Este projeto foi desenvolvido exclusivamente para fins **académicos e educacion
 - **GitHub** - Hospedagem e controlo de versões
 - **SQL Server** - Sistema de gestão de base de dados
 
+
+*/

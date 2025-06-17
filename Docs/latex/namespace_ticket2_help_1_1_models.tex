@@ -1,0 +1,101 @@
+\doxysection{Ticket2\+Help.\+Models Namespace Reference}
+\hypertarget{namespace_ticket2_help_1_1_models}{}\label{namespace_ticket2_help_1_1_models}\index{Ticket2Help.Models@{Ticket2Help.Models}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_hardware_ticket}{Hardware\+Ticket}}
+\begin{DoxyCompactList}\small\item\em Representa um ticket de suporte para problemas de hardware. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_software_ticket}{Software\+Ticket}}
+\begin{DoxyCompactList}\small\item\em Representa um ticket de suporte para problemas de software. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}
+\begin{DoxyCompactList}\small\item\em Representa um utilizador do sistema. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7d}{Estado\+Atendimento}} \{ \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7daede9c32565d6429f2e322f152f7eda55}{aberto}}
+, \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7daa07706e8fb5f1a5d50588aab54882392}{resolvido}}
+, \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7dabda07a17d60d43f0a12712fcc0b2ebc6}{nao\+Resolvido}}
+ \}
+\begin{DoxyCompactList}\small\item\em Estados do atendimento de um ticket. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}} \{ \mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baaefb2fb80ac127f3dcf26f219ba37ba9f}{por\+Atender}}
+, \mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baaa7a36e46c5a7a4626000b739a00b3204}{em\+Atendimento}}
+, \mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baa0d438211623d50f342a37138ceebf94c}{atendido}}
+ \}
+\begin{DoxyCompactList}\small\item\em Estados possíveis de um ticket no sistema. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6f}{Tipo\+Ticket}} \{ \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6fa3c02a379965ab0dfcd77b1c484450433}{Hardware}}
+, \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6fa719d067b229178f03bcfa1da4ac4dede}{Software}}
+ \}
+\begin{DoxyCompactList}\small\item\em Tipos de ticket disponíveis no sistema. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{namespace_ticket2_help_1_1_models_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7d}\index{Ticket2Help.Models@{Ticket2Help.Models}!EstadoAtendimento@{EstadoAtendimento}}
+\index{EstadoAtendimento@{EstadoAtendimento}!Ticket2Help.Models@{Ticket2Help.Models}}
+\doxysubsubsection{\texorpdfstring{EstadoAtendimento}{EstadoAtendimento}}
+{\footnotesize\ttfamily \label{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7d} 
+enum \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7d}{Ticket2\+Help.\+Models.\+Estado\+Atendimento}}}
+
+
+
+Estados do atendimento de um ticket. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{aberto@{aberto}!Ticket2Help.Models@{Ticket2Help.Models}}\index{Ticket2Help.Models@{Ticket2Help.Models}!aberto@{aberto}}}\Hypertarget{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7daede9c32565d6429f2e322f152f7eda55}\label{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7daede9c32565d6429f2e322f152f7eda55} 
+aberto&Atendimento iniciado mas não finalizado. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{resolvido@{resolvido}!Ticket2Help.Models@{Ticket2Help.Models}}\index{Ticket2Help.Models@{Ticket2Help.Models}!resolvido@{resolvido}}}\Hypertarget{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7daa07706e8fb5f1a5d50588aab54882392}\label{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7daa07706e8fb5f1a5d50588aab54882392} 
+resolvido&Problema resolvido com sucesso. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{naoResolvido@{naoResolvido}!Ticket2Help.Models@{Ticket2Help.Models}}\index{Ticket2Help.Models@{Ticket2Help.Models}!naoResolvido@{naoResolvido}}}\Hypertarget{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7dabda07a17d60d43f0a12712fcc0b2ebc6}\label{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7dabda07a17d60d43f0a12712fcc0b2ebc6} 
+nao\+Resolvido&Problema não foi possível resolver. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}\index{Ticket2Help.Models@{Ticket2Help.Models}!EstadoTicket@{EstadoTicket}}
+\index{EstadoTicket@{EstadoTicket}!Ticket2Help.Models@{Ticket2Help.Models}}
+\doxysubsubsection{\texorpdfstring{EstadoTicket}{EstadoTicket}}
+{\footnotesize\ttfamily \label{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba} 
+enum \mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Ticket2\+Help.\+Models.\+Estado\+Ticket}}}
+
+
+
+Estados possíveis de um ticket no sistema. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{porAtender@{porAtender}!Ticket2Help.Models@{Ticket2Help.Models}}\index{Ticket2Help.Models@{Ticket2Help.Models}!porAtender@{porAtender}}}\Hypertarget{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baaefb2fb80ac127f3dcf26f219ba37ba9f}\label{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baaefb2fb80ac127f3dcf26f219ba37ba9f} 
+por\+Atender&Ticket criado e aguarda atendimento. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{emAtendimento@{emAtendimento}!Ticket2Help.Models@{Ticket2Help.Models}}\index{Ticket2Help.Models@{Ticket2Help.Models}!emAtendimento@{emAtendimento}}}\Hypertarget{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baaa7a36e46c5a7a4626000b739a00b3204}\label{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baaa7a36e46c5a7a4626000b739a00b3204} 
+em\+Atendimento&Ticket em processo de atendimento. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{atendido@{atendido}!Ticket2Help.Models@{Ticket2Help.Models}}\index{Ticket2Help.Models@{Ticket2Help.Models}!atendido@{atendido}}}\Hypertarget{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baa0d438211623d50f342a37138ceebf94c}\label{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15baa0d438211623d50f342a37138ceebf94c} 
+atendido&Ticket atendido e finalizado. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6f}\index{Ticket2Help.Models@{Ticket2Help.Models}!TipoTicket@{TipoTicket}}
+\index{TipoTicket@{TipoTicket}!Ticket2Help.Models@{Ticket2Help.Models}}
+\doxysubsubsection{\texorpdfstring{TipoTicket}{TipoTicket}}
+{\footnotesize\ttfamily \label{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6f} 
+enum \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6f}{Ticket2\+Help.\+Models.\+Tipo\+Ticket}}}
+
+
+
+Tipos de ticket disponíveis no sistema. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Hardware@{Hardware}!Ticket2Help.Models@{Ticket2Help.Models}}\index{Ticket2Help.Models@{Ticket2Help.Models}!Hardware@{Hardware}}}\Hypertarget{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6fa3c02a379965ab0dfcd77b1c484450433}\label{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6fa3c02a379965ab0dfcd77b1c484450433} 
+Hardware&Ticket relacionado com problemas de hardware. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Software@{Software}!Ticket2Help.Models@{Ticket2Help.Models}}\index{Ticket2Help.Models@{Ticket2Help.Models}!Software@{Software}}}\Hypertarget{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6fa719d067b229178f03bcfa1da4ac4dede}\label{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6fa719d067b229178f03bcfa1da4ac4dede} 
+Software&Ticket relacionado com problemas de software. \\
+\hline
+
+\end{DoxyEnumFields}

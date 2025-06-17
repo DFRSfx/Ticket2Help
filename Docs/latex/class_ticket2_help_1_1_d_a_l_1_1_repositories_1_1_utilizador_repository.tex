@@ -1,0 +1,196 @@
+\doxysection{Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository Class Reference}
+\hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository}{}\label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+
+
+Implementação do repositório para operações de utilizadores com autenticação simples.  
+
+
+Inheritance diagram for Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_aa80e969d231875a242e6d5d8b0acda4b}\label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_aa80e969d231875a242e6d5d8b0acda4b} 
+{\bfseries Utilizador\+Repository} ()
+\begin{DoxyCompactList}\small\item\em Construtor que utiliza a ligação singleton por defeito. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8fd70fb013f6f76217a5a42a9178fd72}{Autenticar\+Utilizador}} (string codigo, string password)
+\begin{DoxyCompactList}\small\item\em Autentica um utilizador verificando código e password na base de dados. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8f9c1b8a33b31be8f89ece66f267a2ff}{Obter\+Por\+Codigo}} (string codigo)
+\begin{DoxyCompactList}\small\item\em Obtém um utilizador pelo código (sem verificar password). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8c691bf3419977f82b99ee325c76460a}{Criar}} (\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} utilizador)
+\begin{DoxyCompactList}\small\item\em Cria um novo utilizador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a5c2fbfc8a447555c7ea7222bbd5a0fa8}{Actualizar}} (\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} utilizador)
+\begin{DoxyCompactList}\small\item\em Actualiza dados de um utilizador. \end{DoxyCompactList}\item 
+IEnumerable$<$ \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} $>$ \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a097e0e8be75d8cabb151d079bec036ea}{Obter\+Todos}} ()
+\begin{DoxyCompactList}\small\item\em Obtém todos os utilizadores activos. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_acf839bc1c95ea8d645580d9ddbaf711e}{Validar\+Credenciais}} (string codigo, string senha)
+\begin{DoxyCompactList}\small\item\em Valida as credenciais de um utilizador (método mantido por compatibilidade). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a6f0517e4b55fe07e5c220ee9dad516be}{Testar\+Ligacao}} ()
+\begin{DoxyCompactList}\small\item\em Testa a ligação à base de dados. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_afeb83917c561e7e23c6a9f3520e0ce04}{Utilizador\+Existe}} (string codigo)
+\begin{DoxyCompactList}\small\item\em Verifica se existe um utilizador com determinado código na base de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação do repositório para operações de utilizadores com autenticação simples. 
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a5c2fbfc8a447555c7ea7222bbd5a0fa8}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}!Actualizar@{Actualizar}}
+\index{Actualizar@{Actualizar}!Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{Actualizar()}{Actualizar()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a5c2fbfc8a447555c7ea7222bbd5a0fa8} 
+void Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository.\+Actualizar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}}]{utilizador}{}\end{DoxyParamCaption})}
+
+
+
+Actualiza dados de um utilizador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em utilizador} & \doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} com dados actualizados.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_a6bce9858e2f7d1fa16a5a46d7b2ca8e8}{Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8fd70fb013f6f76217a5a42a9178fd72}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}!AutenticarUtilizador@{AutenticarUtilizador}}
+\index{AutenticarUtilizador@{AutenticarUtilizador}!Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{AutenticarUtilizador()}{AutenticarUtilizador()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8fd70fb013f6f76217a5a42a9178fd72} 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository.\+Autenticar\+Utilizador (\begin{DoxyParamCaption}\item[{string}]{codigo}{, }\item[{string}]{password}{}\end{DoxyParamCaption})}
+
+
+
+Autentica um utilizador verificando código e password na base de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+{\em password} & Password do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} autenticado ou null se credenciais inválidas.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8c691bf3419977f82b99ee325c76460a}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}!Criar@{Criar}}
+\index{Criar@{Criar}!Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{Criar()}{Criar()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8c691bf3419977f82b99ee325c76460a} 
+void Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository.\+Criar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}}]{utilizador}{}\end{DoxyParamCaption})}
+
+
+
+Cria um novo utilizador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em utilizador} & \doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} a criar.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_ac18807972a154a4a5efe9ec982e40a46}{Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8f9c1b8a33b31be8f89ece66f267a2ff}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}!ObterPorCodigo@{ObterPorCodigo}}
+\index{ObterPorCodigo@{ObterPorCodigo}!Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{ObterPorCodigo()}{ObterPorCodigo()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a8f9c1b8a33b31be8f89ece66f267a2ff} 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository.\+Obter\+Por\+Codigo (\begin{DoxyParamCaption}\item[{string}]{codigo}{}\end{DoxyParamCaption})}
+
+
+
+Obtém um utilizador pelo código (sem verificar password). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} encontrado ou null.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_a12c12d2ed67d09f4efc4adb7a5a6607c}{Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a097e0e8be75d8cabb151d079bec036ea}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}!ObterTodos@{ObterTodos}}
+\index{ObterTodos@{ObterTodos}!Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{ObterTodos()}{ObterTodos()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a097e0e8be75d8cabb151d079bec036ea} 
+IEnumerable$<$ \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} $>$ Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository.\+Obter\+Todos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém todos os utilizadores activos. 
+
+\begin{DoxyReturn}{Returns}
+Lista de utilizadores.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository_afcb63bebc89253ac179d245021df02f2}{Ticket2\+Help.\+DAL.\+Interfaces.\+IUtilizador\+Repository}}.
+
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a6f0517e4b55fe07e5c220ee9dad516be}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}!TestarLigacao@{TestarLigacao}}
+\index{TestarLigacao@{TestarLigacao}!Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{TestarLigacao()}{TestarLigacao()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_a6f0517e4b55fe07e5c220ee9dad516be} 
+bool Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository.\+Testar\+Ligacao (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a ligação à base de dados. 
+
+\begin{DoxyReturn}{Returns}
+True se a ligação for bem-\/sucedida.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_afeb83917c561e7e23c6a9f3520e0ce04}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}!UtilizadorExiste@{UtilizadorExiste}}
+\index{UtilizadorExiste@{UtilizadorExiste}!Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{UtilizadorExiste()}{UtilizadorExiste()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_afeb83917c561e7e23c6a9f3520e0ce04} 
+bool Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository.\+Utilizador\+Existe (\begin{DoxyParamCaption}\item[{string}]{codigo}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se existe um utilizador com determinado código na base de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código a verificar.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se o utilizador existir.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_acf839bc1c95ea8d645580d9ddbaf711e}\index{Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}!ValidarCredenciais@{ValidarCredenciais}}
+\index{ValidarCredenciais@{ValidarCredenciais}!Ticket2Help.DAL.Repositories.UtilizadorRepository@{Ticket2Help.DAL.Repositories.UtilizadorRepository}}
+\doxysubsubsection{\texorpdfstring{ValidarCredenciais()}{ValidarCredenciais()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_utilizador_repository_acf839bc1c95ea8d645580d9ddbaf711e} 
+bool Ticket2\+Help.\+DAL.\+Repositories.\+Utilizador\+Repository.\+Validar\+Credenciais (\begin{DoxyParamCaption}\item[{string}]{codigo}{, }\item[{string}]{senha}{}\end{DoxyParamCaption})}
+
+
+
+Valida as credenciais de um utilizador (método mantido por compatibilidade). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+{\em senha} & Senha do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se as credenciais forem válidas.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+DAL/\+Repositories/Utilizador\+Repository.\+cs\end{DoxyCompactItemize}

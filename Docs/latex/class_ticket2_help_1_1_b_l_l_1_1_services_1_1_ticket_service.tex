@@ -1,0 +1,255 @@
+\doxysection{Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service Class Reference}
+\hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service}{}\label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+
+
+Serviço principal para gestão de tickets. Implementa o padrão \doxylink{namespace_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer}{Observer} como Subject.  
+
+
+Inheritance diagram for Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_acc923aaaf1fdd9043b3fcfb39742df75}{Ticket\+Service}} (\mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository}{ITicket\+Repository}} ticket\+Repository)
+\begin{DoxyCompactList}\small\item\em Construtor do serviço de tickets. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a6306345ccd42edf3259c44a8169d54e1}{Adicionar\+Observer}} (\mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer_1_1_i_ticket_observer}{ITicket\+Observer}} observer)
+\begin{DoxyCompactList}\small\item\em Adiciona um observador para notificações. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_ac45c69a10057eed818bbc273378f250d}{Remover\+Observer}} (\mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer_1_1_i_ticket_observer}{ITicket\+Observer}} observer)
+\begin{DoxyCompactList}\small\item\em Remove um observador das notificações. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_abd3b2bed9005d1b007b3d2731bd1307b}{Notificar\+Observers}} (Ticket ticket, \mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}} estado\+Anterior)
+\begin{DoxyCompactList}\small\item\em Notifica todos os observadores sobre mudança de estado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aab5e742c7d75bac1502662b2f38484b2}{Alterar\+Estado\+Ticket}} (int ticket\+Id, \mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}} novo\+Estado, string usuario\+Responsavel=null)
+\begin{DoxyCompactList}\small\item\em Altera o estado de um ticket e notifica observadores. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_af0566031b6c767e1513ed3feb1ad074d}{Iniciar\+Atendimento}} (int ticket\+Id, string usuario\+Responsavel)
+\begin{DoxyCompactList}\small\item\em Inicia o atendimento de um ticket (muda para em\+Atendimento). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a134b2f2fad08044bbb31b5a2fe85afe3}{Finalizar\+Atendimento}} (int ticket\+Id, \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7d}{Estado\+Atendimento}} estado\+Atendimento, Dictionary$<$ string, object $>$ dados\+Atendimento)
+\begin{DoxyCompactList}\small\item\em Finaliza o atendimento de um ticket. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aff10c1d9232842fcbae6497937029ff3}{Criar\+Ticket}} (Ticket ticket)
+\begin{DoxyCompactList}\small\item\em Cria um novo ticket. \end{DoxyCompactList}\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a90dda9e902c43e2b21269963b90fb0a1}{Obter\+Todos}} ()
+\begin{DoxyCompactList}\small\item\em Obtém todos os tickets. \end{DoxyCompactList}\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aa59c867afb54409888a6483457b28dfb}{Obter\+Tickets\+Colaborador}} (string codigo\+Colaborador)
+\begin{DoxyCompactList}\small\item\em Obtém tickets de um colaborador. \end{DoxyCompactList}\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a7db4d968c17de69c6a87e18e4a10eeb3}{Obter\+Tickets\+Por\+Estado}} (\mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}} estado)
+\begin{DoxyCompactList}\small\item\em Obtém tickets por estado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Serviço principal para gestão de tickets. Implementa o padrão \doxylink{namespace_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer}{Observer} como Subject. 
+
+\label{doc-constructors}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_acc923aaaf1fdd9043b3fcfb39742df75}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!TicketService@{TicketService}}
+\index{TicketService@{TicketService}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{TicketService()}{TicketService()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_acc923aaaf1fdd9043b3fcfb39742df75} 
+Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Ticket\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_ticket_repository}{ITicket\+Repository}}}]{ticket\+Repository}{}\end{DoxyParamCaption})}
+
+
+
+Construtor do serviço de tickets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket\+Repository} & Repositório de tickets.\\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a6306345ccd42edf3259c44a8169d54e1}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!AdicionarObserver@{AdicionarObserver}}
+\index{AdicionarObserver@{AdicionarObserver}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{AdicionarObserver()}{AdicionarObserver()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a6306345ccd42edf3259c44a8169d54e1} 
+void Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Adicionar\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer_1_1_i_ticket_observer}{ITicket\+Observer}}}]{observer}{}\end{DoxyParamCaption})}
+
+
+
+Adiciona um observador para notificações. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & Observador a adicionar.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer_1_1_i_ticket_subject_a8eaf08fd997082d190fec6d45d2fd7e8}{Ticket2\+Help.\+BLL.\+Patterns.\+Observer.\+ITicket\+Subject}}.
+
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aab5e742c7d75bac1502662b2f38484b2}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!AlterarEstadoTicket@{AlterarEstadoTicket}}
+\index{AlterarEstadoTicket@{AlterarEstadoTicket}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{AlterarEstadoTicket()}{AlterarEstadoTicket()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aab5e742c7d75bac1502662b2f38484b2} 
+void Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Alterar\+Estado\+Ticket (\begin{DoxyParamCaption}\item[{int}]{ticket\+Id}{, }\item[{\mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}}}]{novo\+Estado}{, }\item[{string}]{usuario\+Responsavel}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Altera o estado de um ticket e notifica observadores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket\+Id} & ID do ticket.\\
+\hline
+{\em novo\+Estado} & Novo estado.\\
+\hline
+{\em usuario\+Responsavel} & Usuário responsável pelo atendimento (opcional).\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aff10c1d9232842fcbae6497937029ff3}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!CriarTicket@{CriarTicket}}
+\index{CriarTicket@{CriarTicket}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{CriarTicket()}{CriarTicket()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aff10c1d9232842fcbae6497937029ff3} 
+void Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Criar\+Ticket (\begin{DoxyParamCaption}\item[{Ticket}]{ticket}{}\end{DoxyParamCaption})}
+
+
+
+Cria um novo ticket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket} & Ticket a criar.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a134b2f2fad08044bbb31b5a2fe85afe3}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!FinalizarAtendimento@{FinalizarAtendimento}}
+\index{FinalizarAtendimento@{FinalizarAtendimento}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{FinalizarAtendimento()}{FinalizarAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a134b2f2fad08044bbb31b5a2fe85afe3} 
+bool Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Finalizar\+Atendimento (\begin{DoxyParamCaption}\item[{int}]{ticket\+Id}{, }\item[{\mbox{\hyperlink{namespace_ticket2_help_1_1_models_a64e1b87d5cf2a1a87f2ebffe332d9e7d}{Estado\+Atendimento}}}]{estado\+Atendimento}{, }\item[{Dictionary$<$ string, object $>$}]{dados\+Atendimento}{}\end{DoxyParamCaption})}
+
+
+
+Finaliza o atendimento de um ticket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket\+Id} & ID do ticket.\\
+\hline
+{\em estado\+Atendimento} & Estado final do atendimento.\\
+\hline
+{\em dados\+Atendimento} & Dados específicos do atendimento.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se foi finalizado com sucesso.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_af0566031b6c767e1513ed3feb1ad074d}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!IniciarAtendimento@{IniciarAtendimento}}
+\index{IniciarAtendimento@{IniciarAtendimento}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{IniciarAtendimento()}{IniciarAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_af0566031b6c767e1513ed3feb1ad074d} 
+bool Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Iniciar\+Atendimento (\begin{DoxyParamCaption}\item[{int}]{ticket\+Id}{, }\item[{string}]{usuario\+Responsavel}{}\end{DoxyParamCaption})}
+
+
+
+Inicia o atendimento de um ticket (muda para em\+Atendimento). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket\+Id} & ID do ticket.\\
+\hline
+{\em usuario\+Responsavel} & Usuário que irá atender o ticket.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se foi iniciado com sucesso.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_abd3b2bed9005d1b007b3d2731bd1307b}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!NotificarObservers@{NotificarObservers}}
+\index{NotificarObservers@{NotificarObservers}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{NotificarObservers()}{NotificarObservers()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_abd3b2bed9005d1b007b3d2731bd1307b} 
+void Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Notificar\+Observers (\begin{DoxyParamCaption}\item[{Ticket}]{ticket}{, }\item[{\mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}}}]{estado\+Anterior}{}\end{DoxyParamCaption})}
+
+
+
+Notifica todos os observadores sobre mudança de estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket} & Ticket alterado.\\
+\hline
+{\em estado\+Anterior} & Estado anterior.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer_1_1_i_ticket_subject_a7ea104837836d852ebf2fef1665b0129}{Ticket2\+Help.\+BLL.\+Patterns.\+Observer.\+ITicket\+Subject}}.
+
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aa59c867afb54409888a6483457b28dfb}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!ObterTicketsColaborador@{ObterTicketsColaborador}}
+\index{ObterTicketsColaborador@{ObterTicketsColaborador}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{ObterTicketsColaborador()}{ObterTicketsColaborador()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_aa59c867afb54409888a6483457b28dfb} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Obter\+Tickets\+Colaborador (\begin{DoxyParamCaption}\item[{string}]{codigo\+Colaborador}{}\end{DoxyParamCaption})}
+
+
+
+Obtém tickets de um colaborador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Colaborador} & Código do colaborador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tickets do colaborador.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a7db4d968c17de69c6a87e18e4a10eeb3}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!ObterTicketsPorEstado@{ObterTicketsPorEstado}}
+\index{ObterTicketsPorEstado@{ObterTicketsPorEstado}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{ObterTicketsPorEstado()}{ObterTicketsPorEstado()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a7db4d968c17de69c6a87e18e4a10eeb3} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Obter\+Tickets\+Por\+Estado (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_ticket2_help_1_1_models_abcb83e3e333219a980c34ba0834a15ba}{Estado\+Ticket}}}]{estado}{}\end{DoxyParamCaption})}
+
+
+
+Obtém tickets por estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em estado} & Estado a filtrar.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tickets no estado especificado.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a90dda9e902c43e2b21269963b90fb0a1}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!ObterTodos@{ObterTodos}}
+\index{ObterTodos@{ObterTodos}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{ObterTodos()}{ObterTodos()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_a90dda9e902c43e2b21269963b90fb0a1} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Obter\+Todos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém todos os tickets. 
+
+\begin{DoxyReturn}{Returns}
+Lista de tickets.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_ac45c69a10057eed818bbc273378f250d}\index{Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}!RemoverObserver@{RemoverObserver}}
+\index{RemoverObserver@{RemoverObserver}!Ticket2Help.BLL.Services.TicketService@{Ticket2Help.BLL.Services.TicketService}}
+\doxysubsubsection{\texorpdfstring{RemoverObserver()}{RemoverObserver()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_ticket_service_ac45c69a10057eed818bbc273378f250d} 
+void Ticket2\+Help.\+BLL.\+Services.\+Ticket\+Service.\+Remover\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer_1_1_i_ticket_observer}{ITicket\+Observer}}}]{observer}{}\end{DoxyParamCaption})}
+
+
+
+Remove um observador das notificações. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & Observador a remover.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_observer_1_1_i_ticket_subject_ab34329539e0037bff0a616acc416e4fd}{Ticket2\+Help.\+BLL.\+Patterns.\+Observer.\+ITicket\+Subject}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+BLL/\+Services/Ticket\+Service.\+cs\end{DoxyCompactItemize}

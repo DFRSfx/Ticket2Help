@@ -1,0 +1,203 @@
+\doxysection{Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller Class Reference}
+\hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller}{}\label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+
+
+Controlador principal para gestão de tickets (padrão MVC).  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_ad2dc92b111a0c26ac1a80ed4310f6552}\label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_ad2dc92b111a0c26ac1a80ed4310f6552} 
+{\bfseries Ticket\+Controller} ()
+\begin{DoxyCompactList}\small\item\em Construtor do controlador de tickets. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a590674534601e0492489e27ed29d6b2e}{Criar\+Ticket}} (\mbox{\hyperlink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6f}{Tipo\+Ticket}} tipo, Dictionary$<$ string, object $>$ dados)
+\begin{DoxyCompactList}\small\item\em Cria um novo ticket. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_view_models_1_1_ticket_view_model}{Ticket\+View\+Model}} $>$ \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a5214b52297fd00f80f45f26c9d8740d4}{Obter\+Tickets\+Do\+Colaborador}} (string codigo\+Colaborador)
+\begin{DoxyCompactList}\small\item\em Obtém tickets de um colaborador. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_view_models_1_1_ticket_view_model}{Ticket\+View\+Model}} $>$ \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_af3a047792bb455a5dea29943025d76ff}{Obter\+Tickets\+Para\+Atendimento}} ()
+\begin{DoxyCompactList}\small\item\em Obtém tickets para atendimento. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_abbf308c2acea3ff321afc1c50f1bb1e0}{Iniciar\+Atendimento}} (int ticket\+Id, string usuario\+Responsavel)
+\begin{DoxyCompactList}\small\item\em Inicia o atendimento de um ticket (coloca em "{}em\+Atendimento"{}). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_afa176df80242e0729b78c759f0d4dc3f}{Finalizar\+Atendimento}} (int ticket\+Id, Dictionary$<$ string, object $>$ dados\+Atendimento)
+\begin{DoxyCompactList}\small\item\em Finaliza o atendimento de um ticket. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_ab6ddf71c244ef1ad15337a23e296feb1}{Atender\+Ticket}} (int ticket\+Id, Dictionary$<$ string, object $>$ dados\+Atendimento)
+\begin{DoxyCompactList}\small\item\em Método legacy mantido para compatibilidade -\/ agora chama Finalizar\+Atendimento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_ad2b177ebcff3f84a898e40024e7830f8}{Alterar\+Estrategia\+Atendimento}} (string nome\+Estrategia)
+\begin{DoxyCompactList}\small\item\em Altera a estratégia de atendimento. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_view_models_1_1_dashboard_view_model}{Dashboard\+View\+Model}} \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a3276ee21028ced6bf070b876ef179845}{Obter\+Dados\+Dashboard}} (Date\+Time data\+Inicio, Date\+Time data\+Fim)
+\begin{DoxyCompactList}\small\item\em Obtém dados para o dashboard. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a4b253e3743b912b7cb87d2b9f022fe05}{Obter\+Estrategia\+Actual}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o nome da estratégia actual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controlador principal para gestão de tickets (padrão MVC). 
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_ad2b177ebcff3f84a898e40024e7830f8}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!AlterarEstrategiaAtendimento@{AlterarEstrategiaAtendimento}}
+\index{AlterarEstrategiaAtendimento@{AlterarEstrategiaAtendimento}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{AlterarEstrategiaAtendimento()}{AlterarEstrategiaAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_ad2b177ebcff3f84a898e40024e7830f8} 
+void Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Alterar\+Estrategia\+Atendimento (\begin{DoxyParamCaption}\item[{string}]{nome\+Estrategia}{}\end{DoxyParamCaption})}
+
+
+
+Altera a estratégia de atendimento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Estrategia} & Nome da estratégia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_ab6ddf71c244ef1ad15337a23e296feb1}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!AtenderTicket@{AtenderTicket}}
+\index{AtenderTicket@{AtenderTicket}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{AtenderTicket()}{AtenderTicket()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_ab6ddf71c244ef1ad15337a23e296feb1} 
+bool Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Atender\+Ticket (\begin{DoxyParamCaption}\item[{int}]{ticket\+Id}{, }\item[{Dictionary$<$ string, object $>$}]{dados\+Atendimento}{}\end{DoxyParamCaption})}
+
+
+
+Método legacy mantido para compatibilidade -\/ agora chama Finalizar\+Atendimento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket\+Id} & ID do ticket.\\
+\hline
+{\em dados\+Atendimento} & Dados do atendimento.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se atendido com sucesso.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a590674534601e0492489e27ed29d6b2e}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!CriarTicket@{CriarTicket}}
+\index{CriarTicket@{CriarTicket}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{CriarTicket()}{CriarTicket()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a590674534601e0492489e27ed29d6b2e} 
+bool Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Criar\+Ticket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6f}{Tipo\+Ticket}}}]{tipo}{, }\item[{Dictionary$<$ string, object $>$}]{dados}{}\end{DoxyParamCaption})}
+
+
+
+Cria um novo ticket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tipo} & Tipo de ticket.\\
+\hline
+{\em dados} & Dados do ticket.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se criado com sucesso.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_afa176df80242e0729b78c759f0d4dc3f}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!FinalizarAtendimento@{FinalizarAtendimento}}
+\index{FinalizarAtendimento@{FinalizarAtendimento}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{FinalizarAtendimento()}{FinalizarAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_afa176df80242e0729b78c759f0d4dc3f} 
+bool Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Finalizar\+Atendimento (\begin{DoxyParamCaption}\item[{int}]{ticket\+Id}{, }\item[{Dictionary$<$ string, object $>$}]{dados\+Atendimento}{}\end{DoxyParamCaption})}
+
+
+
+Finaliza o atendimento de um ticket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket\+Id} & ID do ticket.\\
+\hline
+{\em dados\+Atendimento} & Dados do atendimento.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se finalizado com sucesso.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_abbf308c2acea3ff321afc1c50f1bb1e0}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!IniciarAtendimento@{IniciarAtendimento}}
+\index{IniciarAtendimento@{IniciarAtendimento}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{IniciarAtendimento()}{IniciarAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_abbf308c2acea3ff321afc1c50f1bb1e0} 
+bool Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Iniciar\+Atendimento (\begin{DoxyParamCaption}\item[{int}]{ticket\+Id}{, }\item[{string}]{usuario\+Responsavel}{}\end{DoxyParamCaption})}
+
+
+
+Inicia o atendimento de um ticket (coloca em "{}em\+Atendimento"{}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticket\+Id} & ID do ticket.\\
+\hline
+{\em usuario\+Responsavel} & Usuário que irá atender.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se iniciado com sucesso.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a3276ee21028ced6bf070b876ef179845}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!ObterDadosDashboard@{ObterDadosDashboard}}
+\index{ObterDadosDashboard@{ObterDadosDashboard}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{ObterDadosDashboard()}{ObterDadosDashboard()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a3276ee21028ced6bf070b876ef179845} 
+\mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_view_models_1_1_dashboard_view_model}{Dashboard\+View\+Model}} Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Obter\+Dados\+Dashboard (\begin{DoxyParamCaption}\item[{Date\+Time}]{data\+Inicio}{, }\item[{Date\+Time}]{data\+Fim}{}\end{DoxyParamCaption})}
+
+
+
+Obtém dados para o dashboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Inicio} & Data de início.\\
+\hline
+{\em data\+Fim} & Data de fim.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+View\+Model com dados do dashboard.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a4b253e3743b912b7cb87d2b9f022fe05}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!ObterEstrategiaActual@{ObterEstrategiaActual}}
+\index{ObterEstrategiaActual@{ObterEstrategiaActual}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{ObterEstrategiaActual()}{ObterEstrategiaActual()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a4b253e3743b912b7cb87d2b9f022fe05} 
+string Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Obter\+Estrategia\+Actual (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém o nome da estratégia actual. 
+
+\begin{DoxyReturn}{Returns}
+Nome da estratégia.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a5214b52297fd00f80f45f26c9d8740d4}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!ObterTicketsDoColaborador@{ObterTicketsDoColaborador}}
+\index{ObterTicketsDoColaborador@{ObterTicketsDoColaborador}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{ObterTicketsDoColaborador()}{ObterTicketsDoColaborador()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_a5214b52297fd00f80f45f26c9d8740d4} 
+List$<$ \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_view_models_1_1_ticket_view_model}{Ticket\+View\+Model}} $>$ Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Obter\+Tickets\+Do\+Colaborador (\begin{DoxyParamCaption}\item[{string}]{codigo\+Colaborador}{}\end{DoxyParamCaption})}
+
+
+
+Obtém tickets de um colaborador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo\+Colaborador} & Código do colaborador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista de \doxylink{namespace_ticket2_help_1_1_u_i_1_1_view_models}{View\+Models} dos tickets.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_af3a047792bb455a5dea29943025d76ff}\index{Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}!ObterTicketsParaAtendimento@{ObterTicketsParaAtendimento}}
+\index{ObterTicketsParaAtendimento@{ObterTicketsParaAtendimento}!Ticket2Help.UI.Controllers.TicketController@{Ticket2Help.UI.Controllers.TicketController}}
+\doxysubsubsection{\texorpdfstring{ObterTicketsParaAtendimento()}{ObterTicketsParaAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_u_i_1_1_controllers_1_1_ticket_controller_af3a047792bb455a5dea29943025d76ff} 
+List$<$ \mbox{\hyperlink{class_ticket2_help_1_1_u_i_1_1_view_models_1_1_ticket_view_model}{Ticket\+View\+Model}} $>$ Ticket2\+Help.\+UI.\+Controllers.\+Ticket\+Controller.\+Obter\+Tickets\+Para\+Atendimento (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém tickets para atendimento. 
+
+\begin{DoxyReturn}{Returns}
+Lista ordenada de tickets para atendimento.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+UI/\+Controllers/Ticket\+Controller.\+cs\end{DoxyCompactItemize}

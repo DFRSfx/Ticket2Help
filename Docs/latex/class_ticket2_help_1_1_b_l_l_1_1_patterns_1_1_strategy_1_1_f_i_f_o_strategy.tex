@@ -1,0 +1,74 @@
+\doxysection{Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+FIFOStrategy Class Reference}
+\hypertarget{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy}{}\label{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy}\index{Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy@{Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy}}
+
+
+Estratégia de atendimento First In, First Out (FIFO).  
+
+
+Inheritance diagram for Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+FIFOStrategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_a4cdb7a30a6b26e2f91629628b08d40f5}{Ordenar\+Tickets\+Para\+Atendimento}} (IEnumerable$<$ Ticket $>$ tickets)
+\begin{DoxyCompactList}\small\item\em Ordena tickets por data de criação (mais antigos primeiro). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_a67104191fdef18a7d1d3149064d24678}{Get\+Nome\+Estrategia}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o nome da estratégia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Estratégia de atendimento First In, First Out (FIFO). 
+
+Ordena os tickets por ordem de criação, atendendo primeiro os tickets mais antigos. 
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_a67104191fdef18a7d1d3149064d24678}\index{Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy@{Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy}!GetNomeEstrategia@{GetNomeEstrategia}}
+\index{GetNomeEstrategia@{GetNomeEstrategia}!Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy@{Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy}}
+\doxysubsubsection{\texorpdfstring{GetNomeEstrategia()}{GetNomeEstrategia()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_a67104191fdef18a7d1d3149064d24678} 
+string Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+FIFOStrategy.\+Get\+Nome\+Estrategia (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retorna o nome da estratégia. 
+
+\begin{DoxyReturn}{Returns}
+"{}\+First In, First Out (\+FIFO)"{}
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_a03d03ae7bc3021c8bd1adfb495817ed6}{Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+IAtendimento\+Strategy}}.
+
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_a4cdb7a30a6b26e2f91629628b08d40f5}\index{Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy@{Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy}!OrdenarTicketsParaAtendimento@{OrdenarTicketsParaAtendimento}}
+\index{OrdenarTicketsParaAtendimento@{OrdenarTicketsParaAtendimento}!Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy@{Ticket2Help.BLL.Patterns.Strategy.FIFOStrategy}}
+\doxysubsubsection{\texorpdfstring{OrdenarTicketsParaAtendimento()}{OrdenarTicketsParaAtendimento()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_a4cdb7a30a6b26e2f91629628b08d40f5} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+FIFOStrategy.\+Ordenar\+Tickets\+Para\+Atendimento (\begin{DoxyParamCaption}\item[{IEnumerable$<$ Ticket $>$}]{tickets}{}\end{DoxyParamCaption})}
+
+
+
+Ordena tickets por data de criação (mais antigos primeiro). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tickets} & Lista de tickets.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tickets ordenados por data de criação ascendente.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_a77d510d2d07864bc4580ad8926b9c9f3}{Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+IAtendimento\+Strategy}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+BLL/\+Patterns/\+Strategy/FIFOStrategy.\+cs\end{DoxyCompactItemize}

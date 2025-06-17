@@ -1,0 +1,72 @@
+\doxysection{Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+IAtendimento\+Strategy Interface Reference}
+\hypertarget{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy}{}\label{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy}\index{Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy@{Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy}}
+
+
+Interface para estratégias de atendimento de tickets.  
+
+
+Inheritance diagram for Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+IAtendimento\+Strategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.477572cm]{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+IEnumerable$<$ Ticket $>$ \mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_a77d510d2d07864bc4580ad8926b9c9f3}{Ordenar\+Tickets\+Para\+Atendimento}} (IEnumerable$<$ Ticket $>$ tickets)
+\begin{DoxyCompactList}\small\item\em Ordena os tickets para atendimento segundo a estratégia específica. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_a03d03ae7bc3021c8bd1adfb495817ed6}{Get\+Nome\+Estrategia}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o nome da estratégia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para estratégias de atendimento de tickets. 
+
+\label{doc-func-members}
+\Hypertarget{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_a03d03ae7bc3021c8bd1adfb495817ed6}\index{Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy@{Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy}!GetNomeEstrategia@{GetNomeEstrategia}}
+\index{GetNomeEstrategia@{GetNomeEstrategia}!Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy@{Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy}}
+\doxysubsubsection{\texorpdfstring{GetNomeEstrategia()}{GetNomeEstrategia()}}
+{\footnotesize\ttfamily \label{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_a03d03ae7bc3021c8bd1adfb495817ed6} 
+string Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+IAtendimento\+Strategy.\+Get\+Nome\+Estrategia (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém o nome da estratégia. 
+
+\begin{DoxyReturn}{Returns}
+Nome descritivo da estratégia.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_a67104191fdef18a7d1d3149064d24678}{Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+FIFOStrategy}}, and \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_prioridade_hardware_strategy_af47dcc8d416cf60d09865073568ed346}{Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+Prioridade\+Hardware\+Strategy}}.
+
+\Hypertarget{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_a77d510d2d07864bc4580ad8926b9c9f3}\index{Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy@{Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy}!OrdenarTicketsParaAtendimento@{OrdenarTicketsParaAtendimento}}
+\index{OrdenarTicketsParaAtendimento@{OrdenarTicketsParaAtendimento}!Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy@{Ticket2Help.BLL.Patterns.Strategy.IAtendimentoStrategy}}
+\doxysubsubsection{\texorpdfstring{OrdenarTicketsParaAtendimento()}{OrdenarTicketsParaAtendimento()}}
+{\footnotesize\ttfamily \label{interface_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_i_atendimento_strategy_a77d510d2d07864bc4580ad8926b9c9f3} 
+IEnumerable$<$ Ticket $>$ Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+IAtendimento\+Strategy.\+Ordenar\+Tickets\+Para\+Atendimento (\begin{DoxyParamCaption}\item[{IEnumerable$<$ Ticket $>$}]{tickets}{}\end{DoxyParamCaption})}
+
+
+
+Ordena os tickets para atendimento segundo a estratégia específica. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tickets} & Lista de tickets a ordenar.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tickets ordenados segundo a estratégia.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_f_i_f_o_strategy_a4cdb7a30a6b26e2f91629628b08d40f5}{Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+FIFOStrategy}}, and \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_patterns_1_1_strategy_1_1_prioridade_hardware_strategy_a85a7d3ed230af42faea08ffb634a5b6d}{Ticket2\+Help.\+BLL.\+Patterns.\+Strategy.\+Prioridade\+Hardware\+Strategy}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+BLL/\+Patterns/\+Strategy/IAtendimento\+Strategy.\+cs\end{DoxyCompactItemize}

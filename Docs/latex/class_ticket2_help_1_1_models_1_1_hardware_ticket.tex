@@ -1,0 +1,76 @@
+\doxysection{Ticket2\+Help.\+Models.\+Hardware\+Ticket Class Reference}
+\hypertarget{class_ticket2_help_1_1_models_1_1_hardware_ticket}{}\label{class_ticket2_help_1_1_models_1_1_hardware_ticket}\index{Ticket2Help.Models.HardwareTicket@{Ticket2Help.Models.HardwareTicket}}
+
+
+Representa um ticket de suporte para problemas de hardware.  
+
+
+Inheritance diagram for Ticket2\+Help.\+Models.\+Hardware\+Ticket\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ticket2_help_1_1_models_1_1_hardware_ticket}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override string \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_hardware_ticket_a9e8cf44537ff8e85dc6341c4f118d65f}{Get\+Descricao\+Completa}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a descrição completa formatada do ticket de hardware. \end{DoxyCompactList}\item 
+override \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6f}{Tipo\+Ticket}} \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_hardware_ticket_a98ef3628a2ecedf74b6f5ca8682cdf07}{Get\+Tipo\+Ticket}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o tipo de ticket como Hardware. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ticket2_help_1_1_models_1_1_hardware_ticket_a0a185bf5b59dad76d4c2e3f740d27943}\label{class_ticket2_help_1_1_models_1_1_hardware_ticket_a0a185bf5b59dad76d4c2e3f740d27943} 
+string? {\bfseries Equipamento}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Nome ou tipo do equipamento com problema. \end{DoxyCompactList}\item 
+\Hypertarget{class_ticket2_help_1_1_models_1_1_hardware_ticket_ae13190cf19ad730b42e3b312579201d5}\label{class_ticket2_help_1_1_models_1_1_hardware_ticket_ae13190cf19ad730b42e3b312579201d5} 
+required string {\bfseries Avaria}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Descrição detalhada da avaria ou problema. \end{DoxyCompactList}\item 
+\Hypertarget{class_ticket2_help_1_1_models_1_1_hardware_ticket_a48e930d3649e28b6cf9192c51a02a8aa}\label{class_ticket2_help_1_1_models_1_1_hardware_ticket_a48e930d3649e28b6cf9192c51a02a8aa} 
+string? {\bfseries Descricao\+Reparacao}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Descrição da reparação efectuada pelo técnico. \end{DoxyCompactList}\item 
+\Hypertarget{class_ticket2_help_1_1_models_1_1_hardware_ticket_af6e9c65d7b8abf2ba25db529661e4633}\label{class_ticket2_help_1_1_models_1_1_hardware_ticket_af6e9c65d7b8abf2ba25db529661e4633} 
+string? {\bfseries Pecas}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Lista de peças utilizadas na reparação. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa um ticket de suporte para problemas de hardware. 
+
+Esta classe estende a classe base Ticket para incluir campos específicos relacionados com equipamentos físicos. 
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_models_1_1_hardware_ticket_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_models_1_1_hardware_ticket_a9e8cf44537ff8e85dc6341c4f118d65f}\index{Ticket2Help.Models.HardwareTicket@{Ticket2Help.Models.HardwareTicket}!GetDescricaoCompleta@{GetDescricaoCompleta}}
+\index{GetDescricaoCompleta@{GetDescricaoCompleta}!Ticket2Help.Models.HardwareTicket@{Ticket2Help.Models.HardwareTicket}}
+\doxysubsubsection{\texorpdfstring{GetDescricaoCompleta()}{GetDescricaoCompleta()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_models_1_1_hardware_ticket_a9e8cf44537ff8e85dc6341c4f118d65f} 
+override string Ticket2\+Help.\+Models.\+Hardware\+Ticket.\+Get\+Descricao\+Completa (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém a descrição completa formatada do ticket de hardware. 
+
+\begin{DoxyReturn}{Returns}
+Descrição no formato "{}\+Hardware -\/ \mbox{[}\+Equipamento\mbox{]}\+: \mbox{[}\+Avaria\mbox{]}"{}.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_models_1_1_hardware_ticket_a98ef3628a2ecedf74b6f5ca8682cdf07}\index{Ticket2Help.Models.HardwareTicket@{Ticket2Help.Models.HardwareTicket}!GetTipoTicket@{GetTipoTicket}}
+\index{GetTipoTicket@{GetTipoTicket}!Ticket2Help.Models.HardwareTicket@{Ticket2Help.Models.HardwareTicket}}
+\doxysubsubsection{\texorpdfstring{GetTipoTicket()}{GetTipoTicket()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_models_1_1_hardware_ticket_a98ef3628a2ecedf74b6f5ca8682cdf07} 
+override \mbox{\hyperlink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6f}{Tipo\+Ticket}} Ticket2\+Help.\+Models.\+Hardware\+Ticket.\+Get\+Tipo\+Ticket (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retorna o tipo de ticket como Hardware. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{namespace_ticket2_help_1_1_models_a4efa422b9dcde44987c6a0d1a6f5ca6fa3c02a379965ab0dfcd77b1c484450433}{Tipo\+Ticket.\+Hardware}
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+Models/\+Entities/Hardware\+Ticket.\+cs\end{DoxyCompactItemize}

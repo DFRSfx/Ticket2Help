@@ -1,0 +1,154 @@
+\doxysection{Ticket2\+Help.\+BLL.\+Services.\+Utilizador\+Service Class Reference}
+\hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service}{}\label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service}\index{Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}}
+
+
+Serviço para gestão de utilizadores com autenticação simples.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a80eddf305d2c8a0c2be1e99635d27572}{Utilizador\+Service}} (\mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository}{IUtilizador\+Repository}} utilizador\+Repository)
+\begin{DoxyCompactList}\small\item\em Construtor do serviço de utilizadores. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a609a8098325e4ddb7b3cb4dbf7ad7ee6}{Autenticar}} (string codigo, string password)
+\begin{DoxyCompactList}\small\item\em Autentica um utilizador no sistema usando código e password. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a8808f44bbd35c65484589b3dcd5ad035}{Obter\+Por\+Codigo}} (string codigo)
+\begin{DoxyCompactList}\small\item\em Obtém um utilizador pelo código (sem verificar password). \end{DoxyCompactList}\item 
+IEnumerable$<$ \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} $>$ \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a2b556d785c35d71115865654158c8736}{Obter\+Todos}} ()
+\begin{DoxyCompactList}\small\item\em Obtém todos os utilizadores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a6475458c08788422e55d4e371033ea9e}{Criar\+Utilizador}} (\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} utilizador)
+\begin{DoxyCompactList}\small\item\em Cria um novo utilizador. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a2ccc814142e5fc486fd02cb297eb91a4}{Utilizador\+Existe}} (string codigo)
+\begin{DoxyCompactList}\small\item\em Verifica se um utilizador existe na base de dados. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a93dc426fb6cb71f99ca059cdd61b0ae1}{Testar\+Ligacao}} ()
+\begin{DoxyCompactList}\small\item\em Testa a ligação à base de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Serviço para gestão de utilizadores com autenticação simples. 
+
+\label{doc-constructors}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a80eddf305d2c8a0c2be1e99635d27572}\index{Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}!UtilizadorService@{UtilizadorService}}
+\index{UtilizadorService@{UtilizadorService}!Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}}
+\doxysubsubsection{\texorpdfstring{UtilizadorService()}{UtilizadorService()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a80eddf305d2c8a0c2be1e99635d27572} 
+Ticket2\+Help.\+BLL.\+Services.\+Utilizador\+Service.\+Utilizador\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_ticket2_help_1_1_d_a_l_1_1_interfaces_1_1_i_utilizador_repository}{IUtilizador\+Repository}}}]{utilizador\+Repository}{}\end{DoxyParamCaption})}
+
+
+
+Construtor do serviço de utilizadores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em utilizador\+Repository} & Repositório de utilizadores.\\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a609a8098325e4ddb7b3cb4dbf7ad7ee6}\index{Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}!Autenticar@{Autenticar}}
+\index{Autenticar@{Autenticar}!Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}}
+\doxysubsubsection{\texorpdfstring{Autenticar()}{Autenticar()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a609a8098325e4ddb7b3cb4dbf7ad7ee6} 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? Ticket2\+Help.\+BLL.\+Services.\+Utilizador\+Service.\+Autenticar (\begin{DoxyParamCaption}\item[{string}]{codigo}{, }\item[{string}]{password}{}\end{DoxyParamCaption})}
+
+
+
+Autentica um utilizador no sistema usando código e password. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+{\em password} & Password do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} autenticado ou null se credenciais inválidas.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a6475458c08788422e55d4e371033ea9e}\index{Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}!CriarUtilizador@{CriarUtilizador}}
+\index{CriarUtilizador@{CriarUtilizador}!Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}}
+\doxysubsubsection{\texorpdfstring{CriarUtilizador()}{CriarUtilizador()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a6475458c08788422e55d4e371033ea9e} 
+void Ticket2\+Help.\+BLL.\+Services.\+Utilizador\+Service.\+Criar\+Utilizador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}}]{utilizador}{}\end{DoxyParamCaption})}
+
+
+
+Cria um novo utilizador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em utilizador} & \doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} a criar.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a8808f44bbd35c65484589b3dcd5ad035}\index{Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}!ObterPorCodigo@{ObterPorCodigo}}
+\index{ObterPorCodigo@{ObterPorCodigo}!Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}}
+\doxysubsubsection{\texorpdfstring{ObterPorCodigo()}{ObterPorCodigo()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a8808f44bbd35c65484589b3dcd5ad035} 
+\mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}}? Ticket2\+Help.\+BLL.\+Services.\+Utilizador\+Service.\+Obter\+Por\+Codigo (\begin{DoxyParamCaption}\item[{string}]{codigo}{}\end{DoxyParamCaption})}
+
+
+
+Obtém um utilizador pelo código (sem verificar password). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador} encontrado ou null.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a2b556d785c35d71115865654158c8736}\index{Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}!ObterTodos@{ObterTodos}}
+\index{ObterTodos@{ObterTodos}!Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}}
+\doxysubsubsection{\texorpdfstring{ObterTodos()}{ObterTodos()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a2b556d785c35d71115865654158c8736} 
+IEnumerable$<$ \mbox{\hyperlink{class_ticket2_help_1_1_models_1_1_utilizador}{Utilizador}} $>$ Ticket2\+Help.\+BLL.\+Services.\+Utilizador\+Service.\+Obter\+Todos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Obtém todos os utilizadores. 
+
+\begin{DoxyReturn}{Returns}
+Lista de utilizadores.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a93dc426fb6cb71f99ca059cdd61b0ae1}\index{Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}!TestarLigacao@{TestarLigacao}}
+\index{TestarLigacao@{TestarLigacao}!Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}}
+\doxysubsubsection{\texorpdfstring{TestarLigacao()}{TestarLigacao()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a93dc426fb6cb71f99ca059cdd61b0ae1} 
+bool Ticket2\+Help.\+BLL.\+Services.\+Utilizador\+Service.\+Testar\+Ligacao (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a ligação à base de dados. 
+
+\begin{DoxyReturn}{Returns}
+True se a ligação estiver disponível.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a2ccc814142e5fc486fd02cb297eb91a4}\index{Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}!UtilizadorExiste@{UtilizadorExiste}}
+\index{UtilizadorExiste@{UtilizadorExiste}!Ticket2Help.BLL.Services.UtilizadorService@{Ticket2Help.BLL.Services.UtilizadorService}}
+\doxysubsubsection{\texorpdfstring{UtilizadorExiste()}{UtilizadorExiste()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_b_l_l_1_1_services_1_1_utilizador_service_a2ccc814142e5fc486fd02cb297eb91a4} 
+bool Ticket2\+Help.\+BLL.\+Services.\+Utilizador\+Service.\+Utilizador\+Existe (\begin{DoxyParamCaption}\item[{string}]{codigo}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se um utilizador existe na base de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em codigo} & Código do utilizador.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se o utilizador existir.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+BLL/\+Services/Utilizador\+Service.\+cs\end{DoxyCompactItemize}

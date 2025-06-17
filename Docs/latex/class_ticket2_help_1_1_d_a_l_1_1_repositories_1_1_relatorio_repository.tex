@@ -1,0 +1,70 @@
+\doxysection{Ticket2\+Help.\+DAL.\+Repositories.\+Relatorio\+Repository Class Reference}
+\hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository}{}\label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository}\index{Ticket2Help.DAL.Repositories.RelatorioRepository@{Ticket2Help.DAL.Repositories.RelatorioRepository}}
+
+
+Repositório para geração de relatórios e estatísticas.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_aa5f6f86b5118bb549e8c4298473de9a1}\label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_aa5f6f86b5118bb549e8c4298473de9a1} 
+{\bfseries Relatorio\+Repository} ()
+\begin{DoxyCompactList}\small\item\em Construtor que utiliza a ligação singleton por defeito. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_dashboard_dto}{Dashboard\+Dto}} \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_a2a4e2102e2986e138a5e4ffb13ae0305}{Obter\+Estatisticas\+Dashboard}} (Date\+Time data\+Inicio, Date\+Time data\+Fim)
+\begin{DoxyCompactList}\small\item\em Obtém estatísticas para o dashboard. \end{DoxyCompactList}\item 
+IEnumerable$<$ \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_relatorio_dto}{Ticket\+Relatorio\+Dto}} $>$ \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_a741dc1284dc3d806c465dc79a07e4939}{Obter\+Relatorio\+Detalhado}} (Date\+Time data\+Inicio, Date\+Time data\+Fim)
+\begin{DoxyCompactList}\small\item\em Obtém relatório detalhado de tickets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Repositório para geração de relatórios e estatísticas. 
+
+\label{doc-func-members}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_a2a4e2102e2986e138a5e4ffb13ae0305}\index{Ticket2Help.DAL.Repositories.RelatorioRepository@{Ticket2Help.DAL.Repositories.RelatorioRepository}!ObterEstatisticasDashboard@{ObterEstatisticasDashboard}}
+\index{ObterEstatisticasDashboard@{ObterEstatisticasDashboard}!Ticket2Help.DAL.Repositories.RelatorioRepository@{Ticket2Help.DAL.Repositories.RelatorioRepository}}
+\doxysubsubsection{\texorpdfstring{ObterEstatisticasDashboard()}{ObterEstatisticasDashboard()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_a2a4e2102e2986e138a5e4ffb13ae0305} 
+\mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_dashboard_dto}{Dashboard\+Dto}} Ticket2\+Help.\+DAL.\+Repositories.\+Relatorio\+Repository.\+Obter\+Estatisticas\+Dashboard (\begin{DoxyParamCaption}\item[{Date\+Time}]{data\+Inicio}{, }\item[{Date\+Time}]{data\+Fim}{}\end{DoxyParamCaption})}
+
+
+
+Obtém estatísticas para o dashboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Inicio} & Data de início do período.\\
+\hline
+{\em data\+Fim} & Data de fim do período.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dados estatísticos do dashboard.
+\end{DoxyReturn}
+\Hypertarget{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_a741dc1284dc3d806c465dc79a07e4939}\index{Ticket2Help.DAL.Repositories.RelatorioRepository@{Ticket2Help.DAL.Repositories.RelatorioRepository}!ObterRelatorioDetalhado@{ObterRelatorioDetalhado}}
+\index{ObterRelatorioDetalhado@{ObterRelatorioDetalhado}!Ticket2Help.DAL.Repositories.RelatorioRepository@{Ticket2Help.DAL.Repositories.RelatorioRepository}}
+\doxysubsubsection{\texorpdfstring{ObterRelatorioDetalhado()}{ObterRelatorioDetalhado()}}
+{\footnotesize\ttfamily \label{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_relatorio_repository_a741dc1284dc3d806c465dc79a07e4939} 
+IEnumerable$<$ \mbox{\hyperlink{class_ticket2_help_1_1_d_a_l_1_1_repositories_1_1_ticket_relatorio_dto}{Ticket\+Relatorio\+Dto}} $>$ Ticket2\+Help.\+DAL.\+Repositories.\+Relatorio\+Repository.\+Obter\+Relatorio\+Detalhado (\begin{DoxyParamCaption}\item[{Date\+Time}]{data\+Inicio}{, }\item[{Date\+Time}]{data\+Fim}{}\end{DoxyParamCaption})}
+
+
+
+Obtém relatório detalhado de tickets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Inicio} & Data de início.\\
+\hline
+{\em data\+Fim} & Data de fim.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista de dados para relatório.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/dario/\+Documents/\+Git\+Hub/\+Ticket2\+Help/\+Ticket2\+Help.\+DAL/\+Repositories/Relatorio\+Repository.\+cs\end{DoxyCompactItemize}
