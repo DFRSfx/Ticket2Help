@@ -270,7 +270,7 @@ dotnet run --project Ticket2Help.UI
 
 ### 🎯 **Executar Testes Unitários**
 ```bash
-# Todos os testes (47 testes implementados)
+# Todos os testes (25 testes implementados)
 dotnet test
 
 # Com detalhes de cobertura
