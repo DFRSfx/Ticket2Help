@@ -434,20 +434,10 @@ Erro: "Código ou palavra-passe incorretos"
 
 ## 🚀 **Roadmap e Extensões Futuras**
 
-### 📋 **Versão 2.0 (Planejada)**
-- [ ] **Notificações Push** em tempo real
-- [ ] **API REST** para integrações externas
-- [ ] **Aplicação Web** complementar
-- [ ] **Sistema de Comentários** nos tickets
-- [ ] **Anexos e Screenshots** 
-- [ ] **SLA Management** com alertas automáticos
-
 ### 🔧 **Melhorias Técnicas**
-- [ ] **Entity Framework Core** (substituir ADO.NET)
-- [ ] **SignalR** para real-time updates
-- [ ] **Logging estruturado** (Serilog)
-- [ ] **Containerização** Docker
-- [ ] **CI/CD Pipeline** GitHub Actions
+- [ ] **Notificações Push** em tempo real
+- [ ] **Sistema de Comentários** nos tickets
+- [ ] **Melhorias nos mapas estatísticos** no dashboard
 
 ---
 
@@ -515,59 +505,14 @@ Ticket2Help/ (Solução .NET)
 │   ├── App.xaml/.cs                    # Configuração da aplicação
 │   └── Ticket2Help.UI.csproj          # Configuração do projeto
 ├── 📁 Ticket2Help.Tests/               # 🧪 Testes Unitários
-│   └── UnitTest1.cs                    # 47 testes implementados
-├── 📄 paste.txt                        # Script completo SQL Server
+│   └── UnitTest1.cs                    # 25 testes implementados
+├── 📁 Database/               # 🛢 SQL Server
+│   └── CreateDatabase.sql                    # Script completo SQL Server
+├── 📁 Docs               # 📇 Doxygen
 ├── 📄 Ticket2Help.sln                  # Solução Visual Studio
 └── 📄 README.md                        # Documentação principal
 ```
 
----
-
-## 👥 **Informações Académicas**
-
-### 🎓 **Contexto Educacional**
-- **Disciplina**: Programação Avançada
-- **Instituição**: ISLA Gaia (Instituto Politécnico de Gestão e Tecnologia)
-- **Curso**: Licenciatura em Engenharia Informática
-- **Ano Letivo**: 2024/2025
-- **Docente**: Helder Rodrigo Pinto
-
-### 📊 **Objetivos Pedagógicos Atingidos**
-- ✅ **Arquitetura de Software**: 3-layer architecture implementada
-- ✅ **Design Patterns**: 5 padrões diferentes aplicados
-- ✅ **Base de Dados**: Modelação e otimização SQL Server
-- ✅ **Interface Gráfica**: WPF moderno e responsivo
-- ✅ **Testes Unitários**: 47 testes com boa cobertura
-- ✅ **Controlo de Versões**: Git + GitHub
-- ✅ **Documentação**: README técnico completo
-
-### 🏆 **Qualidade do Código**
-- **Princípios SOLID** aplicados consistentemente
-- **Clean Code** com naming conventions claras
-- **Exception Handling** robusto em todas as camadas
-- **Separation of Concerns** respeitada rigorosamente
-- **Scalability** preparada para extensões futuras
-
----
-
-## 📞 **Contacto e Suporte**
-
-### 🆘 **Suporte Técnico**
-Para questões sobre instalação, configuração ou bugs:
-- 🐛 **Issues GitHub**: [Criar Issue](https://github.com/[usuario]/Ticket2Help/issues)
-- 📧 **Email**: [email@aluno.islagaia.pt]
-
-### 🎓 **Questões Académicas**
-Para questões sobre o projeto educacional:
-- 🏫 **ISLA Gaia**: [https://www.islagaia.pt]
-- 📚 **Moodle**: Portal académico da disciplina
-
-### 📚 **Recursos Adicionais**
-- 📖 [Documentação .NET 8.0](https://docs.microsoft.com/en-us/dotnet/)
-- 🎨 [WPF Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
-- 🗃️ [SQL Server Docs](https://docs.microsoft.com/en-us/sql/sql-server/)
-
----
 
 ## 📜 **Licença e Direitos**
 
@@ -592,6 +537,3 @@ Este projeto foi desenvolvido exclusivamente para fins **académicos e educacion
 - **GitHub** - Hospedagem e controlo de versões
 - **SQL Server** - Sistema de gestão de base de dados
 
----
-
-**🎯 Sistema Ticket2Help - Excelênci
