@@ -121,29 +121,5 @@ namespace Ticket2Help.DAL.Connection
                 throw;
             }
         }
-
-        /// <summary>
-        /// Testa a ligação à base de dados.
-        /// </summary>
-        /// <returns>True se a ligação estiver disponível.</returns>
-        public bool TestarLigacao()
-        {
-            try
-            {
-                using var connection = CreateConnection();
-                connection.Open();
-
-                using var command = new SqlCommand("SELECT 1", connection);
-                command.ExecuteScalar();
-
-                System.Diagnostics.Debug.WriteLine("✅ Teste de ligação bem-sucedido");
-                return true;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"❌ Teste de ligação falhou: {ex.Message}");
-                return false;
-            }
-        }
     }
 }
