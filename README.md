@@ -75,7 +75,6 @@ Sistema interno para gestão eficiente de solicitações de TI, permitindo fluxo
     ├── Factory/ - Criação de tickets
     ├── Strategy/ - Estratégias de atendimento
     ├── Observer/ - Notificações de mudanças
-    └── Singleton/ - Configurações globais
 
 💾 Data Access Layer (Ticket2Help.DAL)
 ├── 🔌 Interfaces/ - Contratos de repositórios
@@ -179,12 +178,6 @@ ticketService.AdicionarObserver(new UINotificationObserver());
 ticketService.AlterarEstadoTicket(ticketId, EstadoTicket.emAtendimento);
 ```
 
-### 🔒 **Singleton Pattern** - Configurações e Conexões
-```csharp
-// Instância única para configurações globais
-var config = ConfiguracaoSistema.Instance;
-var dbConnection = DatabaseConnection.Instance;
-```
 
 ### 🎛️ **MVC Pattern** - Separação de Responsabilidades
 - **Models**: Entidades de domínio com lógica de negócio
@@ -461,12 +454,11 @@ Ticket2Help/ (Solução .NET)
 │   │   ├── IDatabaseConnection.cs      # Interface de conexão
 │   │   ├── ITicketRepository.cs        # CRUD de tickets
 │   │   └── IUtilizadorRepository.cs    # CRUD de utilizadores
-│   ├── Repositories/
-│   │   ├── TicketRepository.cs         # Implementação ADO.NET tickets
-│   │   ├── UtilizadorRepository.cs     # Implementação ADO.NET users
-│   │   └── RelatorioRepository.cs      # Queries complexas relatórios
-│   └── Connection/
-│       └── DatabaseConnection.cs       # Singleton para conexões
+│   └── Repositories/
+│      ├── TicketRepository.cs         # Implementação ADO.NET tickets
+│       ├── UtilizadorRepository.cs     # Implementação ADO.NET users
+│       └── RelatorioRepository.cs      # Queries complexas relatórios
+│   
 ├── 📁 Ticket2Help.BLL/                 # 🧠 Camada de Negócio
 │   ├── Services/
 │   │   ├── TicketService.cs            # Orquestração + Observer Subject
@@ -481,13 +473,13 @@ Ticket2Help/ (Solução .NET)
 │       │   ├── IAtendimentoStrategy.cs # Interface Strategy
 │       │   ├── FIFOStrategy.cs         # First In First Out
 │       │   └── PrioridadeHardwareStrategy.cs # Hardware priority
-│       ├── Observer/
-│       │   ├── ITicketObserver.cs      # Interface Observer
-│       │   ├── ITicketSubject.cs       # Interface Subject
-│       │   ├── LogObserver.cs          # Observer para logs
-│       │   └── UINotificationObserver.cs # Observer para UI
-│       └── Singleton/
-│           └── ConfiguracaoSistema.cs  # Configurações globais
+│       └── Observer/
+│           ├── ITicketObserver.cs      # Interface Observer
+│           ├── ITicketSubject.cs       # Interface Subject
+│           ├── LogObserver.cs          # Observer para logs
+│           └── UINotificationObserver.cs # Observer para UI
+│       
+│        
 ├── 📁 Ticket2Help.UI/                  # 🎨 Camada de Apresentação
 │   ├── Views/
 │   │   ├── LoginWindow.xaml/.cs        # Tela de autenticação
