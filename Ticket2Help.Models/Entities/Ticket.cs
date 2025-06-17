@@ -47,6 +47,7 @@ namespace Ticket2Help.Models
         /// Estado do atendimento do ticket.
         /// </summary>
         public EstadoAtendimento? EstadoAtendimento { get; set; }
+        public string UsuarioResponsavel { get; set; }
 
         /// <summary>
         /// Construtor protegido que define valores padrão.
